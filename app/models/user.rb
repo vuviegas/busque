@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :companies, dependent: :nullify
+  has_many :companies
 
   validates :email, :role, presence: true
   validates :role, inclusion: { in: %w(admin clerk police),
