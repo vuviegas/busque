@@ -1,0 +1,14 @@
+<div class="container">
+  <table style="width:100%">
+    <tr>
+      <th>Nome da Empresa</th>
+      <th>Balconista</th>
+    </tr>
+    <% @companies.each do |company| %>
+      <tr>
+          <td><%= company.company_name %></td>
+          <td><%= company.user.email %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

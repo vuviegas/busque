@@ -4,15 +4,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :companies, dependent: :nullify
+  has_many :companies
 
   validates :email, :role, presence: true
   validates :role, inclusion: { in: %w(admin clerk police),
                   message: "%{value} não é uma opção válida" }
   validates :email,
-    format: { with: /\A([\w+\-]\.?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/, message: "Formato de e-mail inválido" },
-    uniqueness: { case_sensitive: false },
-    length: { minimum: 4, maximum: 254 }
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 255 },
+            format: { with: URI::MailTo::EMAIL_REGEXP },
+            case_sesitive: false
 
   def admin?
     role == 'admin'
