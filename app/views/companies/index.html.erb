@@ -1,11 +1,14 @@
 <div class="container">
-
-  <% @companies.each do |company| %>
-  <ul>
-    <h2><%= company.company_name %></h2>
-    <h3><%= company.user_id %></h3>
-  </ul>
-  <!-- = link_to car_path(car), :class => "btn-details" do %>Detalhes-->
-  <% end %>
-
+  <table style="width:100%">
+    <tr>
+      <th>Nome da Empresa</th>
+      <th>Balconista</th>
+    </tr>
+    <% @companies.each do |company| %>
+      <tr>
+          <td><%= company.company_name %></td>
+          <td><%= company.user.email %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
