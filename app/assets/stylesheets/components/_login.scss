@@ -29,17 +29,24 @@
 	width:100%;
 }
 .logo-back{
-	background: url("../img/log-img.png");
+	background: url("https://images.unsplash.com/photo-1584634669217-ac52d9f223a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1850&q=80");
 	background-size: auto auto;
 	display: inline-block;
-	width: 100%;
-	min-height: 450px;
+	width: 110%;
 	align-items: center;
 	justify-content: center;
-	height: 100%;
+	height: 107%;
 	border-radius: 10px 0px 0px 10px;
 	background-size: cover;
 	background-repeat: no-repeat;
+	opacity: 1;
+	p{
+		color: #fff;
+		padding-left: 18px;
+    padding-top: 19px;
+    font-size: larger;
+    text-align: center;
+	}
 }
 .log-content{
 	padding:40px 20px 0px;
@@ -84,4 +91,19 @@
 }
 .log-bottom-cotent{
 	margin-top:28%;
+}
+
+.fa, .fa-bus-alt {
+	color: $yellow;
+	padding-left: 80px;
+  padding-top: 150px;
+}
+
+.fa, .fa-search {
+	vertical-align: -11%;
+	margin-right: -5px;
+}
+
+.logo-sign {
+	font-weight: bolder;
 }
