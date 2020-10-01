@@ -1,6 +1,6 @@
 class TravelLine < ApplicationRecord
   belongs_to :company
-  has_many :bus_travels
+  has_many :bus_travels, dependent: :destroy
 
   validates :identification_number,
             :origin,

@@ -1,8 +1,6 @@
 class BusTravelsController < ApplicationController
-
   def index
-    # Filtros por tipo de usuário serão implementados aqui
-    @bus_travels = BusTravel.all
+    @bus_travels = BusTravel.where(departure_on: Date.today)
   end
 
   def new

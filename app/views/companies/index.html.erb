@@ -3,18 +3,25 @@
     <tr>
       <th>Nome da Empresa</th>
       <th>Balconista</th>
+      <% if current_user.admin? %>
+        <th>Opção</th>
+      <% end %>
     </tr>
     <% @companies.each do |company| %>
-      <tr>
+      <% if current_user.admin? || current_user.police? || company.user == current_user %>
+        <tr>
           <td><%= company.company_name %></td>
           <td><%= company.user.email %></td>
-          <td>
-            <%= link_to "Excluir",
-                            company_path(company),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } %>
-          </td>
-      </tr>
+          <% if current_user.admin? %>
+            <td>
+              <%= link_to "Excluir",
+                              company_path(company),
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
     <% end %>
   </table>
 </div>
