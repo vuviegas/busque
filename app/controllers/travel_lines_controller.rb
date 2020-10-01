@@ -1,6 +1,6 @@
 class TravelLinesController < ApplicationController
   def index
-    @travel_lines = TravelLine.all
+    @travel_lines = TravelLine.where(company_id: params[:company_id])
   end
 
   def new
