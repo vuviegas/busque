@@ -46,6 +46,6 @@ amap_330 = TravelLine.create!(identification_number: "330", origin: "Porto Grand
   bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(12))
 end
 
-5.times do | passanger |
-  passenger = Passenger.create!(full_name: ,date_of_birth: ,gender: ,cpf: , identification_number: ,identification_state: ,)
-end
+# 5.times do | passanger |
+#   passenger = Passenger.create!(full_name: ,date_of_birth: ,gender: ,cpf: , identification_number: ,identification_state: ,)
+# end
