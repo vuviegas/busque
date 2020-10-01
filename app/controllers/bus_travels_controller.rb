@@ -1,6 +1,7 @@
 class BusTravelsController < ApplicationController
 
   def index
+    # Filtros por tipo de usuário serão implementados aqui
     @bus_travels = BusTravel.all
   end
 
@@ -21,12 +22,10 @@ class BusTravelsController < ApplicationController
   end
 
   def destroy
-    @bus_travel = BusTravel.find(params[:id])
-    @travel_line = @bus_travel.travel_line
-    # @company = @travel_line.company
-    @bus_travel.destroy
+    bus_travel = BusTravel.find(params[:id])
+    bus_travel.destroy
 
-    redirect_to travel_line_bus_travels_path (@travel_line)
+    redirect_to authenticated_root_path
   end
 
   private
