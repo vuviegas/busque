@@ -46,6 +46,12 @@ amap_330 = TravelLine.create!(identification_number: "330", origin: "Porto Grand
   bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(12))
 end
 
-5.times do | passanger |
-  passenger = Passenger.create!(full_name: ,date_of_birth: ,gender: ,cpf: , identification_number: ,identification_state: ,)
+180.times do | passanger |
+  passenger = Passenger.create!(full_name: Faker::Name.name_with_middle,
+    date_of_birth: Faker::Date.birthday,
+    gender: ["feminino", "masculino", "não informado"].sample,
+    cpf: Faker::IDNumber.brazilian_citizen_number(formatted: true),
+    identification_number: Faker::IDNumber.brazilian_id(formatted: true),
+    identification_state: w% ['AC' 'AL' 'AP' 'AM' 'BA' 'CE' 'ES' 'GO' 'MA' 'MT' 'MS' 'MG' 'PA' 'PB' 'PR' 'PE' 'PI' 'RJ' 'RN' 'RS' 'RO' 'RR' 'SC' 'SP' 'SE' 'TO' 'DF'].sample)
 end
+# AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF
