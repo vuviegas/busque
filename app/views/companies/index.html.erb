@@ -8,6 +8,12 @@
       <tr>
           <td><%= company.company_name %></td>
           <td><%= company.user.email %></td>
+          <td>
+            <%= link_to "Excluir",
+                            company_path(company),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+          </td>
       </tr>
     <% end %>
   </table>
