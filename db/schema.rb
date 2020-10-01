@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_200409) do
+ActiveRecord::Schema.define(version: 2020_10_01_143550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bus_travels", force: :cascade do |t|
+    t.date "departure_on"
+    t.date "arrival_on"
+    t.bigint "travel_line_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["travel_line_id"], name: "index_bus_travels_on_travel_line_id"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "company_name"
@@ -21,6 +30,31 @@ ActiveRecord::Schema.define(version: 2020_09_30_200409) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "passengers", force: :cascade do |t|
+    t.string "full_name"
+    t.date "date_of_birth"
+    t.string "gender"
+    t.string "cpf"
+    t.string "identification_number"
+    t.string "identification_state"
+    t.bigint "bus_travel_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bus_travel_id"], name: "index_passengers_on_bus_travel_id"
+  end
+
+  create_table "travel_lines", force: :cascade do |t|
+    t.string "identification_number"
+    t.string "origin"
+    t.string "destination"
+    t.string "departure_at"
+    t.string "arrival_at"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_travel_lines_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,5 +70,8 @@ ActiveRecord::Schema.define(version: 2020_09_30_200409) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bus_travels", "travel_lines"
   add_foreign_key "companies", "users"
+  add_foreign_key "passengers", "bus_travels"
+  add_foreign_key "travel_lines", "companies"
 end

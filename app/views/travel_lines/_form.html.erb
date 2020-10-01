@@ -1,0 +1,25 @@
+<div class="container">
+  <%= simple_form_for [@company, @travel_line] do |f| %>
+    <div class="form-inputs">
+      <%= f.association :company, collection: Company.all, label_method: :company_name %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :identification_number, label: "Linha" %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :origin, label: "Origem" %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :destination, label: "Destino" %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :departure_at, label: "Hora de Partida" %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :arrival_at, label: "Hora de Chegada" %>
+    </div>
+    <div class="form-actions text-right">
+       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

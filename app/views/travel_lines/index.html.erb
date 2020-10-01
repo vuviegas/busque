@@ -1,0 +1,28 @@
+<div class="container">
+  <table style="width:100%">
+    <tr>
+      <th>Empresa</th>
+      <th>Linha</th>
+      <th>Origem</th>
+      <th>Destino</th>
+      <th>Horário Saída</th>
+      <th>Horário Chegada</th>
+    </tr>
+    <% @travel_lines.each do |travel_line| %>
+      <tr>
+          <td><%= travel_line.company.company_name %></td>
+          <td><%= travel_line.identification_number %></td>
+          <td><%= travel_line.origin %></td>
+          <td><%= travel_line.destination %></td>
+          <td><%= travel_line.departure_at %></td>
+          <td><%= travel_line.arrival_at %></td>
+          <td>
+            <%= link_to "Excluir",
+                            travel_line_path(travel_line),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" } %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
