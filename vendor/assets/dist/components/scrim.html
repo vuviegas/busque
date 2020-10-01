@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrim</title>
+    <!-- Fonte Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+    <!-- Fonte Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="../css/dsgov.css">
+    <!-- Fontawesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+    <style>
+      .bloco1 {
+        margin-bottom: 50px;
+        width: 50%;
+        height: 200px;
+        display: block;
+        color: black;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        background-size: cover;
+        background-image: url("./assets/design-system/docs/components/scrim/imagens/agricultura.jpeg");
+        box-sizing: border-box;
+        border: solid 1px black;
+        text-align: right;
+        padding: 20px;
+      }
+      .bloco2 {
+        margin-bottom: 50px;
+        width: 100%;
+        height: 200px;
+        font-size: 20px;
+        color: white;
+        display: block;
+        background-size: cover;
+        background-image: url("./assets/design-system/docs/components/scrim/imagens/agricultura.jpeg");
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        border: solid 1px black;
+        text-align: left;
+        padding: 20px 0;
+        line-height: 1.5;
+      }
+      .bloco3:not(is-inibicao){
+        cursor: pointer;
+      }
+      .bloco3{
+        width: 100%;
+        height: 200px;
+        font-size: 20px;
+        color: black;
+        padding: 10px 0;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+        background-size: cover;
+        background-image:url("/assets/design-system/docs/components/scrim/imagens/agricultura.jpeg");
+        border: solid 1px black;
+        text-align: center;
+        vertical-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="br-scrim is-foco">
+        <div class="br-modal is-medium">
+          <div class="br-modal-dialog">
+            <div class="br-modal-content">
+              <div class="br-modal-header">
+                <h1 class="br-modal-title">Scrim com Foco</h1>
+              </div>
+              <div class="br-modal-body">
+                <p>Exemplo utilizando o componente scrim com FOCO</p>
+              </div>
+              <div class="br-modal-footer justify-content-end">
+                <button class="br-button is-secondary is-mini ml-3 mr-3" type="button">Cancelar</button>
+                <button class="br-button is-primary is-mini ml-3 mr-3" type="button">Retornar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>Scrim - Foco</h2>
+      <div class="bloco1">
+        <button class="br-button is-primary" type="button">Testar Efeito</button>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <h2>Scrim - Legibilidade</h2>
+          <div class="br-scrim is-legibilidade">
+            <div class="bloco2">
+              <div class="scrim-text" text-white="">Scrim - Legibilidade</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>Scrim - SEM Inibição (Clicável) e COM Inibição(Não Clicável)</h2>
+      <div class="row">
+        <div class="col-lg">
+          <p>SEM Scrim Inibição(a área do elemento é Clicável)</p>
+          <div class="bloco3" onclick="alert('Exemplo scrim sem inibição(Área Clicável)')"></div>
+        </div>
+        <div class="col-lg">
+          <p>COM Scrim Inibição(a área do elemento torna-se desativada)</p>
+          <div class="br-scrim is-inibicao">
+            <div class="bloco3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/dsgov.js"></script>
+  </body>
+</html>

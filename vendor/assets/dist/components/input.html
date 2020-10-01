@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Input</title>
+    <!-- Fonte Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+    <!-- Fonte Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="../css/dsgov.css">
+    <!-- Fontawesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-around mb-5">
+        <div class="col-md-4">
+          <p class="h2">Input Simples</p>
+          <div class="mb-3">
+            <div class="br-input">
+              <label for="cpf-id1">CPF</label>
+              <input id="cpf-id1" type="text" placeholder="Digite somente números">
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="br-input" valid>
+              <label for="cpf-id2">CPF</label>
+              <input id="cpf-id2" type="text" placeholder="Digite somente números">
+            </div>
+            <div class="feedback color-success"><i class="fas fa-check-circle"></i><span>CPF válido</span></div>
+          </div>
+          <div class="mb-3">
+            <div class="br-input" invalid>
+              <label for="cpf-id3">CPF</label>
+              <input id="cpf-id3" type="text" placeholder="Digite somente números">
+            </div>
+            <div class="feedback color-danger"><i class="fas fa-times-circle"></i><span>CPF inválido</span></div>
+          </div>
+          <div class="mb-3">
+            <div class="br-input">
+              <label for="cpf-id4">CPF</label>
+              <input id="cpf-id4" type="text" placeholder="Digite somente números" disabled>
+            </div>
+            <div class="feedback"><i class="fas fa-exclamation-triangle"></i><span>Campo Desabilitado</span></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p class="h2">Input com Ícone</p>
+          <div class="mb-3">
+            <div class="br-input">
+              <label for="password-id1">Senha</label>
+              <input id="password-id1" type="password" placeholder="Sua senha de 8 a 11 digitos">
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="br-input" valid>
+              <label for="password-id2">Senha</label>
+              <input id="password-id2" type="password" placeholder="Sua senha de 8 a 11 digitos">
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="feedback color-success"><i class="fas fa-check-circle"></i><span>Campo correto</span></div>
+          </div>
+          <div class="mb-3">
+            <div class="br-input" invalid>
+              <label for="password-id3">Senha</label>
+              <input id="password-id3" type="password" placeholder="Sua senha de 8 a 11 digitos">
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="feedback color-danger"><i class="fas fa-times-circle"></i><span>Senha incorreta</span></div>
+          </div>
+          <div class="mb-3">
+            <div class="br-input">
+              <label for="password-id4">Senha</label>
+              <input id="password-id4" type="password" placeholder="Sua senha de 8 a 11 digitos" disabled>
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="feedback"><i class="fas fa-exclamation-triangle"></i><span>Campo Desabilitado</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-around mb-5">
+        <div class="col-md-4">
+          <p class="h2">Input com Ícone e Texto Auxiliar</p>
+          <div class="mb-3">
+            <div class="br-input">
+              <label for="password-id5">Senha</label>
+              <input id="password-id5" type="password" placeholder="Sua senha de 8 a 11 digitos">
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <p class="help">Texto auxiliar ao preenchimento, tem a função de previnir erros.</p>
+          </div>
+          <div class="mb-3">
+            <div class="br-input" valid>
+              <label for="password-id6">Senha</label>
+              <input id="password-id6" type="password" placeholder="Sua senha de 8 a 11 digitos">
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="feedback color-success"><i class="fas fa-check-circle"></i><span>Campo correto</span></div>
+            <p class="help">Texto auxiliar ao preenchimento, tem a função de previnir erros.</p>
+          </div>
+          <div class="mb-3">
+            <div class="br-input" invalid>
+              <label for="password-id7">Senha</label>
+              <input id="password-id7" type="password" placeholder="Sua senha de 8 a 11 digitos">
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="feedback color-danger"><i class="fas fa-times-circle"></i><span>Senha incorreta</span></div>
+            <p class="help">Texto auxiliar ao preenchimento, tem a função de previnir erros.</p>
+          </div>
+          <div class="mb-3">
+            <div class="br-input">
+              <label for="password-id8">Senha</label>
+              <input id="password-id8" type="password" placeholder="Sua senha de 8 a 11 digitos" disabled>
+              <button class="icon" type="button"><span class="sr-only">Mostrar senha</span><i class="fas fa-eye"></i></button>
+            </div>
+            <div class="feedback"><i class="fas fa-exclamation-triangle"></i><span>Campo Desabilitado</span></div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p class="h2">Input para Filtros</p>
+          <div class="mb-3">
+            <div class="br-input" filter>
+              <label for="filtro-id">Filtrar por:</label>
+              <input id="filtro-id" type="text" placeholder="Pesquisar em notícias">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/dsgov.js"></script>
+  </body>
+</html>
