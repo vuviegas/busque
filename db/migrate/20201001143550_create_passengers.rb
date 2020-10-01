@@ -7,6 +7,7 @@ class CreatePassengers < ActiveRecord::Migration[6.0]
       t.string :cpf
       t.string :identification_number
       t.string :identification_state
+      t.references :bus_travel, null: false, foreign_key: true
 
       t.timestamps
     end
