@@ -1,5 +1,6 @@
 class TravelLine < ApplicationRecord
   belongs_to :company
+  has_many :bus_travels
 
   validates :identification_number,
             :origin,
