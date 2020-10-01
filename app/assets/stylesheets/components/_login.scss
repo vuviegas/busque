@@ -1,0 +1,87 @@
+.secound-head .navbar-nav li .nav-link{
+	color:#000;
+}
+.secound-head .navbar-brand{
+	color:#000;
+}
+.secound-head.light-header{
+	position:fixed;
+	width:100%;
+	background:#fff;
+	z-index:99999;
+	transition:ease 0.5s;
+}
+.login-page{
+	background: #f6f6f6;  /* fallback for old browsers\
+	background: -webkit-linear-gradient(to bottom, #2399f4, #12D8FA, #1FA2FF);  /* Chrome 10-25, Safari 5.1-6 
+	background: linear-gradient(to bottom, #2399f4, #12D8FA, #1FA2FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	padding:40px 0px;
+	min-height:650px;
+	position:relative;
+	display:inline-flex;
+	width:100%;
+}
+.log-box{
+	border-radius:10px;
+	min-height:500px;
+	box-shadow:0px 0px 10px #ccc;
+	display:inline-block;
+	width:100%;
+}
+.logo-back{
+	background: url("../img/log-img.png");
+	background-size: auto auto;
+	display: inline-block;
+	width: 100%;
+	min-height: 450px;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	border-radius: 10px 0px 0px 10px;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.log-content{
+	padding:40px 20px 0px;
+	display:inline-block;
+	width:100%;
+	background-color:#fff;
+	min-height:460px;
+	border-radius:0px 10px 10px 0px;
+}
+.myr-top{
+	margin-top:15px;
+}
+.log-content .log-body{
+	margin-top:50px;
+}
+.log-content label{
+	margin:0px;
+	font-family:inherit;
+	font-size:14px;
+}
+.log-content .custom{
+	border-bottom:1px solid #000;
+	padding:10px 10px 10px 0px
+}
+.log-btn{
+	padding-bottom:20px;
+}
+.btn-theme1{
+	font-size:16px;
+	font-family:Poppins-R;
+	padding:10px 20px;
+	background-color:#35cbdf;
+	color:#fff;
+	border:1px solid transparent;
+	border-radius:50px;
+	transition:ease 0.5s;
+}
+.btn-theme1:hover{
+	color:#35cbdf;
+	background-color:#fff;
+	border:1px solid #000;
+}
+.log-bottom-cotent{
+	margin-top:28%;
+}
