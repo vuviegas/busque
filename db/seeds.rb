@@ -31,27 +31,29 @@ amap_310 = TravelLine.create!(identification_number: "310", origin: "Serra do Na
 amap_320 = TravelLine.create!(identification_number: "320", origin: "Macapá", destination: "Porto Grande", departure_at: "07:30", arrival_at: "09:00", company: amap)
 amap_330 = TravelLine.create!(identification_number: "330", origin: "Porto Grande", destination: "Macapá", departure_at: "11:00", arrival_at: "13:30", company: amap)
 
+travel_lines = TravelLine.all
+
 30.times do |i|
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(1))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(2))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(3))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(4))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(5))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(6))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(7))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(8))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(9))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(10))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(11))
-  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: TravelLine.find(12))
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[1 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[2 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[3 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[4 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[5 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[6 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[7 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[8 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[9 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[10 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[11 -1] )
+  bus_travel = BusTravel.create!(departure_on: Date.today + i.days, arrival_on: Date.today + i.days, travel_line: travel_lines[12 -1] )
 end
 
 180.times do | passanger |
   passenger = Passenger.create!(full_name: Faker::Name.name_with_middle,
     date_of_birth: Faker::Date.birthday,
     gender: ["feminino", "masculino", "não informado"].sample,
-    cpf: Faker::IDNumber.brazilian_citizen_number(formatted: true),
-    identification_number: Faker::IDNumber.brazilian_id(formatted: true),
-    identification_state: w% ['AC' 'AL' 'AP' 'AM' 'BA' 'CE' 'ES' 'GO' 'MA' 'MT' 'MS' 'MG' 'PA' 'PB' 'PR' 'PE' 'PI' 'RJ' 'RN' 'RS' 'RO' 'RR' 'SC' 'SP' 'SE' 'TO' 'DF'].sample)
+    cpf: Faker::IDNumber.brazilian_citizen_number(formatted: false),
+    identification_number: Faker::IDNumber.brazilian_id(formatted: false),
+    identification_state: %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF].sample)
 end
 # AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF

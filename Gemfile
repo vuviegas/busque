@@ -36,6 +36,7 @@ gem 'simple_form'
 
 gem 'cpf_cnpj'
 gem 'validates_timeliness', '~> 5.0.0.beta1'
+gem 'faker'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
