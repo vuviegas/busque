@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Avatar</title>
+    <!-- Fonte Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+    <!-- Fonte Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="../css/dsgov.css">
+    <!-- Fontawesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+    <style>
+      .card {
+        box-shadow: 0 3px 6px rgba(var(--rgb-secondary-09), 0.16);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-auto">
+          <div class="d-flex align-items-center">
+            <div class="br-badge" danger>
+              <div class="icon">5</div>
+              <div class="content">
+                <div class="br-avatar">
+                  <div class="image"><img src="https://picsum.photos/id/823/400" alt="Avatar"></div>
+                </div>
+              </div>
+            </div>
+            <button class="br-button" type="button" mini circle><i class="fas fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="d-flex align-items-center">
+            <div class="br-badge" danger>
+              <div class="icon">5</div>
+              <div class="content">
+                <div class="br-avatar">
+                  <div class="image"><i class="fas fa-user"></i></div>
+                </div>
+              </div>
+            </div>
+            <button class="br-button" type="button" mini circle><i class="fas fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-sm-10 col-lg-5 mt-1 mt-sm-0">
+          <div class="card card-3 p-3 d-flex">
+            <div class="mr-3">
+              <div class="br-avatar">
+                <div class="image"><img src="https://picsum.photos/id/823/400" alt="Avatar"></div>
+              </div>
+            </div>
+            <div class="flex-grow-1">
+              <p class="h6 text-primary-default mt-0 mb-1 px-0">Maria Amorim</p><span>UX Designer</span>
+            </div>
+            <div>
+              <button class="br-button is-tertiary is-circle" type="button">
+                <icon><i class="fas fa-phone"></i></icon>
+              </button>
+              <button class="br-button is-tertiary is-circle" type="button">
+                <icon><i class="fas fa-comment"></i></icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-sm-9 col-md-8 col-lg-7 col-xl-5">
+          <div class="card p-3 d-flex">
+            <div class="mr-3">
+              <div class="br-avatar">
+                <div class="image"><img src="https://picsum.photos/id/823/400" alt="Avatar"></div>
+              </div>
+            </div>
+            <div class="flex-grow-1">
+              <div class="br-textarea">
+                <label for="comments"></label>
+                <textarea id="comments" placeholder="Digite seu comentário"></textarea>
+              </div>
+              <div class="mt-3 d-flex justify-content-end">
+                <button class="br-button" type="button">
+                  <u>Cancelar</u>
+                </button>
+                <button class="br-button is-primary ml-4" type="button">Enviar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-3 mb-5">
+        <div class="col-sm-5 col-md-4 col-lg-3 col-xl-2">
+          <div class="card p-3 text-center mt-3 mt-md-0">
+            <div class="br-badge" medium success>
+              <div class="icon"></div>
+              <div class="content">
+                <div class="br-avatar" medium>
+                  <div class="image"><img src="https://picsum.photos/id/823/400" alt="Avatar"></div>
+                </div>
+              </div>
+            </div>
+            <p class="h5 text-primary-default">Maria Amorim</p>
+            <p>UX Designer</p>
+            <hr>
+            <p><i class="fas-fa-phone"></i>
+              +55 81 9999 9999
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-7 col-lg-6 col-xl-5">
+          <div class="card p-3 mt-3 mt-xl-0">
+            <div class="text-center">
+              <div class="br-avatar" large change>
+                <button class="change" type="button"><span class="image"><i class="fas fa-user"></i></span><span class="icon text-primary-default"><i class="fas fa-camera"></i></span>
+                </button>
+              </div>
+            </div>
+            <p class="h4 text-center">Clique na imagem acima para trocar sua foto no perfil.</p>
+            <div class="d-flex text-info px-0">
+              <div class="pr-1"><span class="icon-lg"><i class="fas fa-info-circle"></i></span></div>
+              <spam>Os arquivos devem ser nos formatos PNG, JPG, PDF e ter no máximo 1G</spam>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/dsgov.js"></script>
+  </body>
+</html>
