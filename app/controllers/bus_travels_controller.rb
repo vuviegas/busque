@@ -26,7 +26,7 @@ class BusTravelsController < ApplicationController
     @company = @travel_line.company
     @bus_travel.destroy
 
-    redirect_to company_travel_line_bus_travel_path
+    redirect_to company_travel_line_bus_travels_path(@company)
   end
 
   private
