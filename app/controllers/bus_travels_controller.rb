@@ -23,10 +23,10 @@ class BusTravelsController < ApplicationController
   def destroy
     @bus_travel = BusTravel.find(params[:id])
     @travel_line = @bus_travel.travel_line
-    @company = @travel_line.company
+    # @company = @travel_line.company
     @bus_travel.destroy
 
-    redirect_to company_travel_line_bus_travels_path(@company)
+    redirect_to travel_line_bus_travels_path (@travel_line)
   end
 
   private
