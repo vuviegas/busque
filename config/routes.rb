@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   resources :companies, only: [:destroy]
   resources :travel_lines, only: [:destroy]
   resources :bus_travels, only: [:destroy]
+
+  resources :passengers, only: [:show, :new, :create, :destroy]
 end
