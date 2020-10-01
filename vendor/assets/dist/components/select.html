@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select</title>
+    <!-- Fonte Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+    <!-- Fonte Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="../css/dsgov.css">
+    <!-- Fontawesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md">
+          <div class="mb-3">
+            <div class="br-select">
+              <label for="normal">Normal</label>
+              <select id="normal">
+                <option value="0">Selecione</option>
+                <option value="1">opção 1 opção 1 opção 1 opção 1 opção 1 opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+            <p class="help">Texto auxiliar ao preenchimento, tem a função de previnir erros.</p>
+          </div>
+          <div class="mb-3">
+            <div class="br-select is-medium">
+              <label for="medium">Médio</label>
+              <select id="medium">
+                <option value="0">Selecione</option>
+                <option value="1">opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="br-select is-small">
+              <label for="small">Pequeno</label>
+              <select id="small">
+                <option value="0">Selecione</option>
+                <option value="1">opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="mb-3">
+            <div class="br-select is-focus">
+              <label for="focus">Focus</label>
+              <select id="focus">
+                <option value="0">Selecione</option>
+                <option value="1">opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="br-select is-disabled">
+              <label for="disabled">Desabilitado</label>
+              <select id="disabled" disabled>
+                <option value="0">Selecione</option>
+                <option value="1">opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="mb-3">
+            <div class="br-select is-invalid">
+              <label for="invalid">Inválido</label>
+              <select id="invalid">
+                <option value="0">Selecione</option>
+                <option value="1">opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+            <div class="feedback is-invalid"><i class="fas fa-times-circle"></i>
+              <span>Erro</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="br-select is-valid">
+              <label for="valid">Válido</label>
+              <select id="valid">
+                <option value="0">Selecione</option>
+                <option value="1">opção 1</option>
+                <option value="2">opção 2</option>
+                <option value="3">opção 3</option>
+                <option value="4">opção 4</option>
+              </select>
+            </div>
+            <div class="feedback is-valid"><i class="fas fa-check-circle"></i>
+              <span>Ok</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/dsgov.js"></script>
+  </body>
+</html>

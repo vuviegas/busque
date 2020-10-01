@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loading</title>
+    <!-- Fonte Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+    <!-- Fonte Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="../css/dsgov.css">
+    <!-- Fontawesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Loading</h1>
+      <p>Indicadores de progresso que expressam um tempo de espera não especificado ou exibem a duração de um processo.</p>
+      <h2>Loading Determinado</h2>
+      <div class="row">
+        <div class="col-3 d-flex justify-content-top flex-column align-items-center"><span>Loading Determinado com Botão</span>
+          <div class="br-loading" data-progress="75">
+            <div class="br-loading-mask" full>
+              <div class="br-loading-fill"></div>
+            </div>
+            <div class="br-loading-mask">
+              <div class="br-loading-fill"></div>
+            </div>
+          </div>
+          <button class="br-button is-tertiary" type="button">Cancelar</button>
+        </div>
+        <div class="col-3 d-flex justify-content-top flex-column align-items-center"><span>Loading Determinado sem Botão</span>
+          <div class="br-loading" data-progress="90">
+            <div class="br-loading-mask" full>
+              <div class="br-loading-fill"></div>
+            </div>
+            <div class="br-loading-mask">
+              <div class="br-loading-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h2>Loading Indeterminado</h2>
+      <div class="row">
+        <div class="col-3 d-flex justify-content-top flex-column align-items-center"><span>Loading Indeterminado com Rótulo</span><br>
+          <div loading md label></div><span>Carregando...</span>
+        </div>
+        <div class="col-3 d-flex justify-content-top flex-column align-items-center"><span>Loading Indeterminado sem Rótulo</span><br><br>
+          <div loading md></div>
+        </div>
+      </div>
+      <div class="br-divider"></div>
+      <div class="row mb-5">
+        <div class="col-3 d-flex justify-content-top flex-column align-items-center"><span>Loading Indeterminado Pequeno com Rótulo</span><br>
+          <div class="d-flex align-items-center">
+            <div loading label></div><span>Carregando...</span>
+          </div>
+        </div>
+        <div class="col-3 d-flex justify-content-top flex-column align-items-center"><span>Loading Indeterminado Pequeno sem Rótulo</span><br><br>
+          <div loading></div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/dsgov.js"></script>
+  </body>
+</html>

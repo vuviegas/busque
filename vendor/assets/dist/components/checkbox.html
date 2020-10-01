@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Checkbox</title>
+    <!-- Fonte Rawline-->
+    <link rel="stylesheet" href="https://cdn.dsgovserprodesign.estaleiro.serpro.gov.br/design-system/fonts/rawline/css/rawline.css">
+    <!-- Fonte Raleway-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900&amp;display=swap">
+    <!-- Design System de Governo-->
+    <link rel="stylesheet" href="../css/dsgov.css">
+    <!-- Fontawesome-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <p class="label mb-0">Selecione uma opção</p>
+      <p class="help-text">Informações adicionais</p>
+      <div class="br-checkbox">
+        <input id="checkbox-1" type="checkbox">
+        <label for="checkbox-1">Opção 1</label>
+      </div>
+      <div class="br-checkbox">
+        <input id="checkbox-2" type="checkbox" checked>
+        <label for="checkbox-2">Opção 2 selecionada</label>
+      </div>
+      <div class="br-checkbox">
+        <input id="checkbox-3" type="checkbox">
+        <label for="checkbox-3">Opção 3</label>
+      </div>
+      <div class="feedback"><i class="fas fa-exclamation-triangle"></i><span> Texto de mensagem</span></div>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="label mt-3">Selecione várias opções</p>
+          <div class="br-checkbox">
+            <input id="filtro-5" type="checkbox">
+            <label for="filtro-5">Nome do filtro 5</label>
+          </div>
+          <div class="br-checkbox">
+            <input id="filtro-6" type="checkbox">
+            <label for="filtro-6">Nome do filtro 6</label>
+          </div>
+          <div class="br-checkbox">
+            <input id="filtro-7" type="checkbox">
+            <label for="filtro-7">Nome do filtro 7</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p class="label mt-3">Selecione várias opções</p>
+          <div class="br-checkbox">
+            <input id="filtro-1" type="checkbox">
+            <label for="filtro-1">Nome do filtro 1</label>
+          </div>
+          <div class="br-checkbox">
+            <input id="filtro-2" type="checkbox">
+            <label for="filtro-2">Nome do filtro 2</label>
+          </div>
+          <div class="br-checkbox">
+            <input id="filtro-3" type="checkbox">
+            <label for="filtro-3">Nome do filtro 3</label>
+          </div>
+          <div class="br-checkbox">
+            <input id="filtro-4" type="checkbox">
+            <label for="filtro-4">Nome do filtro 4</label>
+          </div>
+        </div>
+      </div>
+      <p class="label mt-3">Listagem horizontal</p>
+      <div class="br-checkbox d-inline">
+        <input id="h-checkbox-1" type="checkbox">
+        <label for="h-checkbox-1">Opção 1</label>
+      </div>
+      <div class="br-checkbox d-inline">
+        <input id="h-checkbox-2" type="checkbox">
+        <label for="h-checkbox-2">Opção 2</label>
+      </div>
+      <div class="br-checkbox d-inline">
+        <input id="h-checkbox-3" type="checkbox">
+        <label for="h-checkbox-3">Opção 3</label>
+      </div>
+      <p class="label mt-3">Estados e validação</p>
+      <div class="br-checkbox">
+        <input id="check-state-disabled" type="checkbox" disabled>
+        <label for="check-state-disabled">desativado</label>
+      </div>
+      <div class="br-checkbox" invalid>
+        <input id="check-state-invalid" type="checkbox">
+        <label for="check-state-invalid">Inválido</label>
+      </div>
+      <div class="br-checkbox" valid>
+        <input id="check-state-valid" type="checkbox" checked>
+        <label for="check-state-valid">Válido</label>
+      </div>
+      <div class="feedback is-invalid"><i class="fas fa-times-circle"></i>
+        <span>Preenchimento Obrigatório</span>
+      </div>
+    </div>
+    <script src="../js/dsgov.js"></script>
+  </body>
+</html>
