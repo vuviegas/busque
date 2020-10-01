@@ -1,6 +1,7 @@
 class Passenger < ApplicationRecord
 
   belongs_to :bus_travel
+  has_many :passenger_trips
 
   validates :full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state, presence: true
   validates :date_of_birth, timeliness: { on_or_before: lambda { Date.current }, type: :date }
