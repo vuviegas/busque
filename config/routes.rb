@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :travel_lines, only: [:index, :new, :create]
   end
   resources :companies, only: [:destroy]
-  resources :companies, only: [:destroy]
+  resources :travel_lines, only: [:destroy]
 end
