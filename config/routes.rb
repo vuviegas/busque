@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  # root to: 'pages#home' MUDAR PARA A PÁGINA DE INDEX DOS BUS_TRAVELS
+  devise_scope :user do
+    authenticated :user do
+      root to: 'bus_travels#index', as: :authenticated_root
+    end
+    unauthenticated do
+      root to: 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+
   resources :companies, only: [:index, :new, :create] do
     resources :travel_lines, only: [:index, :new, :create] do
       resources :bus_travels, only: [:index, :new, :create]
