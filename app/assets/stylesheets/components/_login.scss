@@ -95,29 +95,26 @@
 	margin-top:28%;
 }
 
-.fa, .fa-bus-alt {
+.fa-bus-alt {
 	color: $yellow;
 	padding-left: 130px;
   padding-top: 150px;
 }
 
-.fa, .fa-search {
+.fa-search {
 	vertical-align: -11%;
-	margin-right: 4px;
-	font-size: xx-large;
+	margin-right: 6px;
+	font-size: 28px;
+}
+
+.search-nav {
+	vertical-align: -11%;
+	margin-right: -9px;
+	font-size: 17px;
+	color: $gray;
 }
 
 .logo-sign {
 	font-weight: bolder;
-}
-
-.logo-navbar {
-	font-weight: bolder;
-	font-size: 25px;
-	i {
-		font-size: 19px;
-    vertical-align: -17%;
-		margin-right: -5px;
-		margin-left: -2px;
-	}
+	color: $gray;
 }
