@@ -22,43 +22,42 @@
 
   <ul class="nav flex-column bg-white mb-0">
     <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic bg-light">
-                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                Início
+      <%= link_to root_path, class: "nav-link text-dark bg-light" do %>
+        <i class="fas fa-home mr-3 text-primary fa-fw"></i>Início
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <a href="devise/registrations" class="nav-link text-dark">
+                <i class="fas fa-user-circle mr-3 text-primary fa-fw"></i>
+                Criar Usuário
             </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-tachometer-alt mr-3 text-primary fa-fw"></i>
-                Dashboard
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
+      <a href="/bus_travels" class="nav-link text-dark">
                 <i class="fa fa-bus mr-3 text-primary fa-fw"></i>
                 Linhas de ônibus
             </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
+      <a href="/passenger_trips" class="nav-link text-dark">
                 <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
                 Lista de Passageiros
             </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
+      <a href="/companies" class="nav-link text-dark">
                 <i class="fa fa-city mr-3 text-primary fa-fw"></i>
                 Empresas Cadastradas
             </a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
+      <a href="#" class="nav-link text-dark">
                 <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
                 Alertas
             </a>
     </li>
         <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
+      <a href="#" class="nav-link text-dark">
                 <i class="fa fa-book mr-3 text-primary fa-fw"></i>
                 Diário
             </a>
