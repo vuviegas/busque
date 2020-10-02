@@ -1,6 +1,7 @@
 class PassengerTrip < ApplicationRecord
   belongs_to :passenger
   belongs_to :bus_travel
+  belongs_to :travel_line
 
   validates :bus_travel, uniqueness: { scope: :passenger }
   validates :seat, :passenger_id, :bus_travel_id, presence: true

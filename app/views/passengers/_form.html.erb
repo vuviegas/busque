@@ -1,7 +1,7 @@
 <div class="container">
-  <%= simple_form_for (@passenger) do |f| %>
+  <%= simple_form_for [@travel_line, @bus_travel, @passenger_trip, @passenger] do |f| %>
     <div>
-      <%#= f.association :travel_line, collection: TravelLine.all.map {|u| u.identification_number}, label: "Linha" %>
+      <%= f.association :travel_line, collection: TravelLine.all.map {|u| u.identification_number}, label: "Linha" %>
       <%= f.association :bus_travel, collection: BusTravel.all.map {|u| u.departure_on}, label: "Data de Saída", input_html: { multiple: true } %>
     </div>
     <div class="form-inputs">
