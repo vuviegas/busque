@@ -16,8 +16,8 @@ amaz = Company.create!(company_name: "Amazontour", user: clerk1)
 sant = Company.create!(company_name: "Santanense", user: clerk2)
 amap = Company.create!(company_name: "Amapatour", user: clerk3)
 
-amaz_100 = TravelLine.create!(identification_number: "100", origin: "Macapá", destination: "Laranjal do jari", departure_at: "08:00", arrival_at: "12:30", company: amaz)
-amaz_110 = TravelLine.create!(identification_number: "110", origin: "Laranjal do jari", destination: "Macapá", departure_at: "14:00", arrival_at: "18:30", company: amaz)
+amaz_100 = TravelLine.create!(identification_number: "100", origin: "Macapá", destination: "Laranjal do Jari", departure_at: "08:00", arrival_at: "12:30", company: amaz)
+amaz_110 = TravelLine.create!(identification_number: "110", origin: "Laranjal do Jari", destination: "Macapá", departure_at: "14:00", arrival_at: "18:30", company: amaz)
 amaz_120 = TravelLine.create!(identification_number: "120", origin: "Macapá", destination: "Oiapoque", departure_at: "00:01" , arrival_at: "08:00", company: amaz)
 amaz_130 = TravelLine.create!(identification_number: "130", origin: "Oiapoque", destination: "Macapá", departure_at: "10:00", arrival_at: "18:00", company: amaz)
 

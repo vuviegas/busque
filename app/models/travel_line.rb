@@ -11,4 +11,8 @@ class TravelLine < ApplicationRecord
             :arrival_at,
             :company_id,
             presence: true
+
+  def self.by_identification_number
+    order('identification_number DESC')
+  end
 end
