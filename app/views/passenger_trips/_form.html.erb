@@ -1,0 +1,50 @@
+<div class="container">
+
+    <p> <%#= @bus_travel.travel_line.identification_number %> </p>
+
+    <p> <%#= @bus_travel.departure_on %> </p>
+
+  <%= simple_form_for [@bus_travel, @passenger_trip] do |f| %>
+    <!-- <div> -->
+      <%#= f.association :travel_line, collection: TravelLine.all.map {|d| d.identification_number}, label: "Linha" %>
+    <!-- </div> -->
+
+
+    <div class="form-inputs">
+      <%= f.input :travel_line, collection: TravelLine.all.map {|u| "#{u.identification_number} (#{u.origin} - #{u.destination})" }, label: "Linha" %>
+    </div>
+
+    <!-- <div> -->
+      <%#= f.collection_select(:travel_line, TravelLine.by_identification_number, :origin, :destination) %>
+    <!-- </div> -->
+
+    <!-- <div> -->
+      <%#= f.collection_select(:bus_travel, BusTravel.by_departure, :departure_on, :arrival_on) %>
+    <!-- </div> -->
+
+    <div>
+      <%= f.input :bus_travel, collection: BusTravel.all.map {|u| "#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}" }, label: "Viagem" %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :seat, label: "Poltrona" %>
+    </div>
+    <div class="form-inputs">
+      <%= f.input :arrival_spot, label: "Local de Desembarque" %>
+    </div>
+    <div>
+      <%= f.fields_for :passenger do |passenger_form| %>
+        <%= passenger_form.input :full_name, label: "Nome Completo" %>
+        <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
+        <%= passenger_form.input :gender, label: "Sexo" %>
+        <%= passenger_form.input :cpf, label: "CPF" %>
+        <%= passenger_form.input :identification_number, label: "RG" %>
+        <%= passenger_form.input :identification_state, label: "UF" %>
+
+      <% end %>
+    </div>
+
+    <div class="form-actions text-right">
+       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

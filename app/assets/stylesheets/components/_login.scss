@@ -44,7 +44,7 @@
 		color: #fff;
 		padding-left: 18px;
     padding-top: 19px;
-    font-size: larger;
+    font-size: 25px;
     text-align: center;
 	}
 }
@@ -67,6 +67,7 @@
 	margin:0px;
 	font-family:inherit;
 	font-size:14px;
+
 }
 .log-content .custom{
 	border-bottom:1px solid #000;
@@ -96,7 +97,7 @@
 
 .fa-bus-alt {
 	color: $yellow;
-	padding-left: 80px;
+	padding-left: 130px;
   padding-top: 150px;
 }
 
@@ -108,12 +109,31 @@
 
 .search-nav {
 	vertical-align: -11%;
+<<<<<<< HEAD
 	margin-right: -9px;
 	font-size: 17px;
 	color: $gray;
+=======
+	margin-right: 4px;
+	font-size: xx-large;
+>>>>>>> master
 }
 
 .logo-sign {
 	font-weight: bolder;
+<<<<<<< HEAD
 	color: $gray;
+=======
+}
+
+.logo-navbar {
+	font-weight: bolder;
+	font-size: 25px;
+	i {
+		font-size: 19px;
+    vertical-align: -17%;
+		margin-right: -5px;
+		margin-left: -2px;
+	}
+>>>>>>> master
 }

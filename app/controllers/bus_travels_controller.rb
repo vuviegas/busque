@@ -1,7 +1,12 @@
 class BusTravelsController < ApplicationController
-
   def index
-    @bus_travels = BusTravel.all
+    if current_user.admin? || current_user.police?
+      @bus_travels = BusTravel.where(departure_on: Date.today)
+    else
+      company = Company.where(user_id: current_user.id)
+      travel_lines = TravelLine.where(company_id: company.ids)
+      @bus_travels = BusTravel.where(departure_on: Date.today, travel_line_id: travel_lines.ids)
+    end
   end
 
   def new
@@ -21,12 +26,10 @@ class BusTravelsController < ApplicationController
   end
 
   def destroy
-    @bus_travel = BusTravel.find(params[:id])
-    @travel_line = @bus_travel.travel_line
-    # @company = @travel_line.company
-    @bus_travel.destroy
+    bus_travel = BusTravel.find(params[:id])
+    bus_travel.destroy
 
-    redirect_to travel_line_bus_travels_path (@travel_line)
+    redirect_to authenticated_root_path
   end
 
   private
