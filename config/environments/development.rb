@@ -10,6 +10,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # para colocar os alertas em português
+  config.i18n.default_locale = :'pt-BR'
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

@@ -14,6 +14,9 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <div class="page-content p-5" id="content">
+    <%= render 'shared/menu' %>
     <%= yield %>
+    </div>
   </body>
 </html>

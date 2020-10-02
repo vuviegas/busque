@@ -31,4 +31,14 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+
 });
+
+// Esta função abaixo veio junto com o Menu lateral, mas ainda não sei por para funcionar
+
+  // Sidebar toggle behavior
+ $('#sidebarCollapse').on('mouseover', function() {
+   $('#sidebar, #content').toggleClass('active');
+ });
+
+ 
