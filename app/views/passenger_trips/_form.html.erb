@@ -9,11 +9,21 @@
       <%#= f.association :travel_line, collection: TravelLine.all.map {|d| d.identification_number}, label: "Linha" %>
     <!-- </div> -->
 
-    <%#= f.fields_for :travel_line do |travel_line_form| %>
-        <%#= travel_line_form.input :departure_on, label: "Partida" %>
-    <%# end %>
+
+    <div class="form-inputs">
+      <%= f.input :travel_line, collection: TravelLine.all.map {|u| "#{u.identification_number} (#{u.origin} - #{u.destination})" }, label: "Linha" %>
+    </div>
+
+    <!-- <div> -->
+      <%#= f.collection_select(:travel_line, TravelLine.by_identification_number, :origin, :destination) %>
+    <!-- </div> -->
+
+    <!-- <div> -->
+      <%#= f.collection_select(:bus_travel, BusTravel.by_departure, :departure_on, :arrival_on) %>
+    <!-- </div> -->
+
     <div>
-      <%= f.association :bus_travel, collection: BusTravel.all.map {|u| u.departure_on}, label: "Data de Saída" %>
+      <%= f.input :bus_travel, collection: BusTravel.all.map {|u| "#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}" }, label: "Viagem" %>
     </div>
     <div class="form-inputs">
       <%= f.input :seat, label: "Poltrona" %>
