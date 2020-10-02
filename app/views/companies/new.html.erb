@@ -1,4 +1,6 @@
-<div class="container">
-  <h1>Criar Empresa</h1>
-  <%= render 'form', company: @company %>
-</div>
+<% if current_user.admin? %>
+  <div class="container">
+    <h1>Criar Empresa</h1>
+    <%= render 'form', company: @company %>
+  </div>
+<% end %>
