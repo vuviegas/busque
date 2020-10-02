@@ -1,0 +1,27 @@
+<div class="container">
+  <table style="width:100%">
+    <tr>
+      <th>Nome</th>
+      <th>Data de Nascimento</th>
+      <th>Gênero</th>
+      <th>CPF</th>
+      <th>RG</th>
+      <th>Estado</th>
+      <th>Poltrona</th>
+      <th>Local de Desembarque</th>
+    </tr>
+    <% @bus_travel.passenger_trips.each do |passenger| %>
+      <tr>
+          <td><%= passenger.passenger.full_name %></td>
+          <td><%= passenger.passenger.date_of_birth %></td>
+          <td><%= passenger.passenger.gender %></td>
+          <td><%= passenger.passenger.cpf %></td>
+          <td><%= passenger.passenger.identification_number %></td>
+          <td><%= passenger.passenger.identification_state %></td>
+          <td><%= passenger.seat %></td>
+          <td><%= passenger.arrival_spot %></td>
+          <td>
+      </tr>
+    <% end %>
+  </table>
+</div>
