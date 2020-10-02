@@ -21,9 +21,9 @@
               <%= link_to "Criar usuário", new_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Empresas", companies_path, class: "dropdown-item" %>
               <%= link_to "Criar empresa", new_company_path, class: "dropdown-item" %>
-              <%#= link_to "Linhas", company_travel_lines_path, class: "dropdown-item" %>
-              <%#= link_to "Criar linha", new_company_travel_line_path, class: "dropdown-item" %>
-              <%#= link_to "Viagens", company_travel_line_bus_travels_path(@travel_line), class: "dropdown-item" %>
+              <%= link_to "Linhas", company_travel_lines_path(:company_id), class: "dropdown-item" %>
+              <%= link_to "Criar linha", new_company_travel_line_path(:company_id, @travel_line), class: "dropdown-item" %>
+              <%= link_to "Viagens", company_travel_line_bus_travels_path(:company_id, :travel_line_id), class: "dropdown-item" %>
             <% end %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
