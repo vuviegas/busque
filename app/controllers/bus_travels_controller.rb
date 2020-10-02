@@ -9,6 +9,10 @@ class BusTravelsController < ApplicationController
     end
   end
 
+  def show
+    @bus_travel = BusTravel.find(params[:id])
+  end
+
   def new
     @company = Company.find(params[:company_id])
     @travel_line = TravelLine.find(params[:travel_line_id])

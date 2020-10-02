@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:destroy]
   resources :travel_lines, only: [:destroy]
-  resources :bus_travels, only: [:destroy]
+  resources :bus_travels, only: [:destroy, :show]
 
   # CÓDIGO ORIGINAL ANTES DE TENTAR CORRIGIR FORMULÁRIO DE PASSENGER_TRIPS
   resources :bus_travels do
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :passengers, only: [:show, :new, :create, :destroy]
+  resources :passengers, only: [:index, :show, :new, :create, :destroy]
 end

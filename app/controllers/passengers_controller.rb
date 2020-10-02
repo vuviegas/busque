@@ -1,5 +1,10 @@
 class PassengersController < ApplicationController
 
+  def index
+    @passenger_trips = PassengerTrip.all
+    # @passengers = Passenger.where(passenger_trip: passenger_trips_ids)
+
+  end
   # def show
   #   @passenger = passenger.find(params[:id])
   # end
