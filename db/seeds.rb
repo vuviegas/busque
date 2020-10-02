@@ -56,4 +56,4 @@ end
     identification_number: Faker::IDNumber.brazilian_id(formatted: false),
     identification_state: %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF].sample)
 end
-# AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF
+
