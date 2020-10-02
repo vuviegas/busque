@@ -13,9 +13,7 @@ Rails.application.routes.draw do
   resources :bus_travels, only: [:destroy, :show]
 
   # CÓDIGO ORIGINAL ANTES DE TENTAR CORRIGIR FORMULÁRIO DE PASSENGER_TRIPS
-  resources :bus_travels do
-    resources :passenger_trips, only: [:show, :new, :create]
-  end
+  resources :passenger_trips, only: [:show, :new, :create]
 
   #CÓDIGO SECUNDÁRIO PARA TENTAR NESTING EM TRAVEL_LINES E SUBSEQUENTES
   # resources :travel_lines do
@@ -24,5 +22,8 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  resources :passengers, only: [:index, :show, :new, :create, :destroy]
+  resources :bus_travels do
+    resources :passengers, only: [:new, :create]
+  end
+  resources :passengers, only: [:show, :destroy]
 end

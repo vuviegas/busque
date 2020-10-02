@@ -1,19 +1,30 @@
 class PassengerTripsController < ApplicationController
-  before_action :set_bus_travel, only: [:new, :create]
+  # before_action :set_bus_travel, only: [:new, :create]
 
   def new
     @passenger_trip = PassengerTrip.new
-    # company = Company.where(user_id: current_user.id)
-    # @travel_line = TravelLine.where(company_id: company.ids)
+
+    if params[:travel_line].present?
+      @travel_line = TravelLine.find(params[:travel_line])
+      @bus_travels = BusTravel.where(travel_line: @travel_line).map {|u| ["#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}", u.id]}
+    end
   end
 
-  # def create
-  #   @passenger_trip = PassengerTrip.new(passenger_trip_params)
-  #   @passenger_trip.bus_travel = @bus_travel
-  #   @passenger_trip.save
+  def create
+    if params[:travel_line]
+      redirect_to new_passenger_trip_path(@bus_travel, travel_line: params[:travel_line])
+    else
+      @passenger = Passenger.new(passenger_params['passenger'])
+      @passenger.save
 
-  #   redirect_to bus_travel_path(@bus_travel)
-  # end
+      @passenger_trip = PassengerTrip.new(passenger_trip_params)
+      @passenger_trip.passenger = @passenger
+      @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
+      @passenger_trip.save
+
+      redirect_to bus_travel_path(@passenger_trip.bus_travel)
+    end
+  end
 
   private
 
@@ -22,6 +33,17 @@ class PassengerTripsController < ApplicationController
   end
 
   def passenger_trip_params
-    params.require(:passenger_trip).permit(:seat, :bus_travel_id, :pasenger_id)
+    params.require(:passenger_trip).permit(:seat, :arrival_spot)
+  end
+
+  def passenger_params
+    params.require(:passenger_trip).permit(passenger: [
+                                              :full_name,
+                                              :date_of_birth,
+                                              :gender,
+                                              :cpf,
+                                              :identification_number,
+                                              :identification_state
+                                            ])
   end
 end

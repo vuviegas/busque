@@ -21,11 +21,6 @@
           <td><%= passenger.seat %></td>
           <td><%= passenger.arrival_spot %></td>
           <td>
-            <%= link_to "Excluir",
-                            passenger_path(passenger),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } %>
-          </td>
       </tr>
     <% end %>
   </table>

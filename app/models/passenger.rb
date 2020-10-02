@@ -5,6 +5,8 @@ class Passenger < ApplicationRecord
   has_many :passenger_trips
   has_many :bus_travel, through: :passenger_trips
 
+  # accepts_nested_attributes_for :passenger_trips
+
   validates :full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state, presence: true
   validates :date_of_birth, timeliness: { on_or_before: lambda { Date.current }, type: :date }
   validates :gender, inclusion: { in: ["feminino", "masculino", "não informado"],

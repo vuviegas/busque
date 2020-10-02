@@ -62,7 +62,6 @@ end
 
 passengers = Passenger.all
 
-
 passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[1 - 1], passenger: passengers[1 - 1], arrival_spot: 'Serra do Navio', seat: rand(1..50))
 passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[2 - 1], passenger: passengers[2 - 1], arrival_spot: 'Macapá', seat: rand(1..50))
 passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[3 - 1], passenger: passengers[3 - 1], arrival_spot: 'Santana', seat: rand(1..50))
@@ -74,4 +73,3 @@ passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[8 - 1], passenger
 passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[9 - 1], passenger: passengers[9 - 1], arrival_spot: 'Porto Grande', seat: rand(1..50))
 passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[10 - 1], passenger: passengers[10 - 1], arrival_spot: 'Itaubal', seat: rand(1..50))
 passenger_trip = PassengerTrip.create!(bus_travel: bus_travels[11 - 1], passenger: passengers[11 - 1], arrival_spot: 'Macapá', seat: rand(1..50))
-
