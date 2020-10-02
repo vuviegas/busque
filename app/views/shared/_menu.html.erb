@@ -28,43 +28,49 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <a href="devise/registrations" class="nav-link text-dark">
-                <i class="fas fa-user-circle mr-3 text-primary fa-fw"></i>
-                Criar Usuário
-            </a>
+      <%= link_to companies_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-bus mr-3 text-primary fa-fw"></i>Listar Empresas
+      <% end %>
     </li>
     <li class="nav-item">
-      <a href="/bus_travels" class="nav-link text-dark">
-                <i class="fa fa-bus mr-3 text-primary fa-fw"></i>
-                Linhas de ônibus
-            </a>
+      <%= link_to company_travel_lines_path(:company_id), class: "nav-link text-dark" do %>
+        <i class="fas fa-road mr-3 text-primary fa-fw"></i>Listar linhas de Ônibus
+      <% end %>
+    <li class="nav-item">
+      <%= link_to company_travel_line_bus_travels_path(:company_id, :travel_line_id), class: "nav-link text-dark" do %>
+        <i class="fas fa-route mr-3 text-primary fa-fw"></i>Ver Viagens
+      <% end %>
     </li>
     <li class="nav-item">
-      <a href="/passenger_trips" class="nav-link text-dark">
-                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                Lista de Passageiros
-            </a>
+      <%= link_to new_user_registration_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-address-card mr-3 text-primary fa-fw"></i>Cadastrar Usuário
+      <% end %>
     </li>
     <li class="nav-item">
-      <a href="/companies" class="nav-link text-dark">
-                <i class="fa fa-city mr-3 text-primary fa-fw"></i>
-                Empresas Cadastradas
-            </a>
+      <%= link_to new_company_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-city mr-3 text-primary fa-fw"></i>Cadastrar Empresa
+      <% end %>
+    </li>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_company_travel_line_path(:company_id, @travel_line), class: "nav-link text-dark" do %>
+        <i class="fas fa-project-diagram mr-3 text-primary fa-fw"></i>Criar nova linha
+      <% end %>
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link text-dark">
-                <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
-                Alertas
-            </a>
+        <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
+        Alertas
+      </a>
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link text-dark">
-                <i class="fa fa-book mr-3 text-primary fa-fw"></i>
-                Diário
-            </a>
+        <i class="fa fa-book mr-3 text-primary fa-fw"></i>
+        Diário
+      </a>
     </li>
     <li class="nav-item">
-      <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark bg-light" do %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
         <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>Sair
       <% end %>
     </li>
