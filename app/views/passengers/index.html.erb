@@ -1,12 +1,13 @@
 <div class="container">
   <table style="width:100%">
     <tr>
-      <th>Nome</th>
-      <th>Data de Nascimento</th>
-      <th>Gênero</th>
-      <th>CPF</th>
-      <th>RG</th>
-      <th>Estado</th>
+      <th><i class="fas fa-user"></i>Nome</th>
+      <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
+      <th><i class="fas fa-venus-mars"></i>Gênero</th>
+      <th><i class="fas fa-fingerprint"></i>CPF</th>
+      <th><i class="far fa-id-card"></i>RG</th>
+      <th><i class="fas fa-globe-americas"></i>Estado</th>
+      <th><i class="fas fa-tools"></i>Opções</th>
       <!-- <th>Poltrona</th> -->
       <!-- <th>Local de Desembarque</th> -->
     </tr>
@@ -18,9 +19,9 @@
             <td><%= passenger.cpf %></td>
             <td><%= passenger.identification_number %></td>
             <td><%= passenger.identification_state %></td>
-            <td><%#= passenger_trip.seat %></td>
-            <td><%#= passenger_trip.arrival_spot %></td>
-            <td>
+            <%# <td>= passenger_trip.seat</td> %>
+            <%# <td>= passenger_trip.arrival_spot</td> %>
+            <td class="text-primary"><i class="fas fa-trash-alt"></i>
               <%= link_to "Excluir",
                               passenger_path(passenger),
                               method: :delete,

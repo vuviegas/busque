@@ -1,10 +1,10 @@
 <div class="container">
   <table style="width:100%">
-    <tr>
-      <th>Nome da Empresa</th>
-      <th>Balconista</th>
+    <tr class="text-primary">
+      <th><i class="fas fa-bus"></i>Nome da Empresa</th>
+      <th><i class="far fa-id-badge"></i>Balconista</th>
       <% if current_user.admin? %>
-        <th>Opção</th>
+        <th><i class="fas fa-tools"></i>Opção</th>
       <% end %>
     </tr>
     <% @companies.each do |company| %>
@@ -13,7 +13,7 @@
           <td><%= company.company_name %></td>
           <td><%= company.user.email %></td>
           <% if current_user.admin? %>
-            <td>
+            <td class="text-primary"><i class="fas fa-trash-alt"></i>
               <%= link_to "Excluir",
                               company_path(company),
                               method: :delete,
@@ -25,5 +25,3 @@
     <% end %>
   </table>
 </div>
-
-
