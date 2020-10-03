@@ -9,7 +9,6 @@ class TravelLinesController < ApplicationController
 
   def new
     if current_user.admin?
-      @company = Company.find(params[:company_id])
       @travel_line = TravelLine.new
     else
       forbidden
@@ -20,7 +19,7 @@ class TravelLinesController < ApplicationController
     if current_user.admin?
       @travel_line = TravelLine.new(travel_line_params)
       if @travel_line.save
-        redirect_to company_travel_lines_path, notice: "A linha de ônibus foi criada com sucesso!"
+        redirect_to travel_lines_path, notice: "A linha de ônibus foi criada com sucesso!"
       else
         render :new
       end
@@ -31,11 +30,10 @@ class TravelLinesController < ApplicationController
 
   def destroy
     if current_user.admin?
-      travel_line = TravelLine.find(params[:id])
-      travel_line.destroy
-      @company = travel_line.company
+      @travel_line = TravelLine.find(params[:id])
+      @travel_line.destroy
 
-      redirect_to company_travel_lines_path(@company)
+      redirect_to travel_lines_path
     else
       forbidden
     end

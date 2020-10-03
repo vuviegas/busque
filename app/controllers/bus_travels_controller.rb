@@ -14,8 +14,6 @@ class BusTravelsController < ApplicationController
   end
 
   def new
-    @company = Company.find(params[:company_id])
-    @travel_line = TravelLine.find(params[:travel_line_id])
     @bus_travel = BusTravel.new
   end
 
@@ -23,7 +21,7 @@ class BusTravelsController < ApplicationController
     @bus_travel = BusTravel.new(bus_travel_params)
     if @bus_travel.save
 
-      redirect_to new_company_travel_line_bus_travel_path, notice: "A viagem foi criada com sucesso!"
+      redirect_to bus_travels_path, notice: "A viagem foi cadastrada com sucesso!"
     else
       render :new
     end
@@ -33,7 +31,7 @@ class BusTravelsController < ApplicationController
     bus_travel = BusTravel.find(params[:id])
     bus_travel.destroy
 
-    redirect_to authenticated_root_path
+    redirect_to bus_travels_path
   end
 
   private
