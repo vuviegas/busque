@@ -1,0 +1,56 @@
+<div class="container">
+  <h3>Dados do Passageiro</h3>
+  <table style="width:100%">
+    <tr>
+      <th>Nome</th>
+      <th>Data de Nascimento</th>
+      <th>Gênero</th>
+      <th>CPF</th>
+      <th>RG</th>
+      <th>Estado</th>
+    </tr>
+      <td><%= @passenger.full_name %></td>
+      <td><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+      <td><%= @passenger.gender %></td>
+      <td><%= @passenger.cpf %></td>
+      <td><%= @passenger.identification_number %></td>
+      <td><%= @passenger.identification_state %></td>
+    </tr>
+  </table>
+    <h3>Últimas Viagens</h3>
+  <table>
+    <tr>
+      <th>Empresa</th>
+      <th>Linha</th>
+      <th>Origem</th>
+      <th>Data de Saída</th>
+      <th>Horário de Saída</th>
+      <th>Destino</th>
+      <th>Data de Chegada</th>
+      <th>Horário de Chegada</th>
+      <th>Poltrona</th>
+      <th>Local de Desembarque</th>
+    </tr>
+    <tr>
+      <% @passenger_trips.each do |passenger_trip| %>
+        <td><%= passenger_trip.bus_travel.travel_line.company.company_name %></td>
+        <td><%= passenger_trip.bus_travel.travel_line.identification_number %></td>
+        <td><%= passenger_trip.bus_travel.travel_line.origin %></td>
+        <td><%= passenger_trip.bus_travel.departure_on.strftime("%d/%m/%Y") %></td>
+        <td><%= passenger_trip.bus_travel.travel_line.departure_at %></td>
+        <td><%= passenger_trip.bus_travel.travel_line.destination %></td>
+        <td><%= passenger_trip.bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+        <td><%= passenger_trip.bus_travel.travel_line.arrival_at %></td>
+        <td><%= passenger_trip.seat %></td>
+        <td><%= passenger_trip.arrival_spot %></td>
+      <% end %>
+    </tr>
+  </table>
+
+  <% if current_user.police? %>
+
+  <h3>Ocorrências</h3>
+
+
+  <% end %>
+</div>

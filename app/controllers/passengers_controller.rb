@@ -1,13 +1,14 @@
 class PassengersController < ApplicationController
 
   def index
-    @passenger_trips = PassengerTrip.all
+    @passengers = Passenger.all
     # @passengers = Passenger.where(passenger_trip: passenger_trips_ids)
-
   end
-  # def show
-  #   @passenger = passenger.find(params[:id])
-  # end
+
+  def show
+    @passenger = Passenger.find(params[:id])
+    @passenger_trips = PassengerTrip.where(passenger: @passenger)
+  end
 
   def new
     # @travel_line = TravelLine.find(travel_line_id: bus_travel.travel_line.travel_line_id)
