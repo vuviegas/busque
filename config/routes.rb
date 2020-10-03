@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'pages#home'
   devise_for :users
-  root to: 'bus_travels#index'
 
   resources :companies, only: [:index, :new, :create, :destroy]
   resources :travel_lines, only: [:index, :new, :create, :destroy]
