@@ -1,3 +1,4 @@
+require 'faker'
 
 admin1 = User.create!(email: "vinicius@busque.com", password: "123456", role: "admin")
 admin2 = User.create!(email: "ricardo@busque.com", password: "123456", role: "admin")
