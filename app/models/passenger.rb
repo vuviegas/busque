@@ -6,6 +6,9 @@ class Passenger < ApplicationRecord
   has_many :bus_travel, through: :passenger_trips
   has_many :alerts
 
+  # has_many :bus_travel, through: :passenger_trips
+
+
   # accepts_nested_attributes_for :passenger_trips
 
   validates :full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state, presence: true
