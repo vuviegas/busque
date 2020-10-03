@@ -3,7 +3,7 @@ class Passenger < ApplicationRecord
   # REGEX_2 = /[0-9]+#$/
 
   has_many :passenger_trips
-  has_many :bus_travel, through: :passenger_trips
+  # has_many :bus_travel, through: :passenger_trips
 
   # accepts_nested_attributes_for :passenger_trips
 

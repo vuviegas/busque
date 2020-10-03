@@ -29,21 +29,28 @@
     </li>
     <li class="nav-item">
       <%= link_to companies_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-bus mr-3 text-primary fa-fw"></i>Listar Empresas
+        <i class="fas fa-bus mr-3 text-primary fa-fw"></i>Empresas
+      <% end %>
+    </li>
+    <!-- Mudei de company_travel_lines_path(:company_id) para travel_lines_path -->
+    <li class="nav-item">
+      <%= link_to travel_lines_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-road mr-3 text-primary fa-fw"></i>Linhas de Ônibus
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to company_travel_lines_path(:company_id), class: "nav-link text-dark" do %>
-        <i class="fas fa-road mr-3 text-primary fa-fw"></i>Listar linhas de Ônibus
-      <% end %>
-    <li class="nav-item">
-      <%= link_to company_travel_line_bus_travels_path(:company_id, :travel_line_id), class: "nav-link text-dark" do %>
-        <i class="fas fa-route mr-3 text-primary fa-fw"></i>Ver Viagens
+      <%= link_to bus_travels_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-route mr-3 text-primary fa-fw"></i>Viagens
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to new_user_registration_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-address-card mr-3 text-primary fa-fw"></i>Cadastrar Usuário
+      <%= link_to passengers_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-users mr-3 text-primary fa-fw"></i>Passageiros
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to new_passenger_trip_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-address-card mr-3 text-primary fa-fw"></i>Cadastrar Passageiro
       <% end %>
     </li>
     <li class="nav-item">
@@ -51,10 +58,19 @@
         <i class="fas fa-city mr-3 text-primary fa-fw"></i>Cadastrar Empresa
       <% end %>
     </li>
+    <li class="nav-item">
+      <%= link_to new_travel_line_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-project-diagram mr-3 text-primary fa-fw"></i>Cadastrar Linha
+      <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to new_company_travel_line_path(:company_id, @travel_line), class: "nav-link text-dark" do %>
-        <i class="fas fa-project-diagram mr-3 text-primary fa-fw"></i>Criar nova linha
+      <%= link_to new_bus_travel_path, class: "nav-link text-dark" do %>
+        <i class="fas fa-suitcase mr-3 text-primary fa-fw"></i>Cadastrar Viagem
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#", class: "nav-link text-dark" do %>
+        <i class="fas fa-exclamation-triangle mr-3 text-primary fa-fw"></i>Cadastrar Suspeita
       <% end %>
     </li>
     <li class="nav-item">
