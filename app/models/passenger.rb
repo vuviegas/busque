@@ -4,6 +4,7 @@ class Passenger < ApplicationRecord
 
   has_many :passenger_trips
   has_many :bus_travel, through: :passenger_trips
+  has_many :alerts
 
   # accepts_nested_attributes_for :passenger_trips
 
