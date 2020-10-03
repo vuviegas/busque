@@ -7,26 +7,26 @@
       <th>CPF</th>
       <th>RG</th>
       <th>Estado</th>
-      <th>Poltrona</th>
-      <th>Local de Desembarque</th>
+      <!-- <th>Poltrona</th> -->
+      <!-- <th>Local de Desembarque</th> -->
     </tr>
-    <% @bus_travel.passenger_trips.each do |passenger_trip| %>
-      <tr>
-          <td><%= passenger_trip.passenger.full_name %></td>
-          <td><%= passenger_trip.passenger.date_of_birth %></td>
-          <td><%= passenger_trip.passenger.gender %></td>
-          <td><%= passenger_trip.passenger.cpf %></td>
-          <td><%= passenger_trip.passenger.identification_number %></td>
-          <td><%= passenger_trip.passenger.identification_state %></td>
-          <td><%= passenger_trip.seat %></td>
-          <td><%= passenger_trip.arrival_spot %></td>
-          <td>
-            <%= link_to "Excluir",
-                            passenger_path(passenger),
-                            method: :delete,
-                            data: { confirm: "Are you sure?" } %>
-          </td>
-      </tr>
+    <% @passengers.each do |passenger| %>
+         <tr>
+            <td><%= link_to passenger.full_name, passenger_path(passenger) %></td>
+            <td><%= passenger.date_of_birth %></td>
+            <td><%= passenger.gender %></td>
+            <td><%= passenger.cpf %></td>
+            <td><%= passenger.identification_number %></td>
+            <td><%= passenger.identification_state %></td>
+            <td><%#= passenger_trip.seat %></td>
+            <td><%#= passenger_trip.arrival_spot %></td>
+            <td>
+              <%= link_to "Excluir",
+                              passenger_path(passenger),
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %>
+            </td>
+        </tr>
     <% end %>
   </table>
 </div>
