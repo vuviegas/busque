@@ -1,4 +1,15 @@
 <div class="container">
+  <h3>
+    <%= "#{@bus_travel.travel_line.company.company_name} - \n
+     Linha #{@bus_travel.travel_line.identification_number}\n
+     (#{@bus_travel.departure_on.strftime("%d/%m/%Y")})" %>
+  </h3>
+  <h5>
+    <%= "Origem: #{@bus_travel.travel_line.origin} (#{@bus_travel.travel_line.departure_at}) - \n" %>
+    <%= "Destino: #{@bus_travel.travel_line.destination} (#{@bus_travel.travel_line.arrival_at})" %>
+  </h5>
+
+
   <table style="width:100%">
     <tr>
       <th>Nome</th>
@@ -13,7 +24,7 @@
     <% @bus_travel.passenger_trips.each do |passenger| %>
       <tr>
           <td><%= passenger.passenger.full_name %></td>
-          <td><%= passenger.passenger.date_of_birth %></td>
+          <td><%= passenger.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
           <td><%= passenger.passenger.gender %></td>
           <td><%= passenger.passenger.cpf %></td>
           <td><%= passenger.passenger.identification_number %></td>
