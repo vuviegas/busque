@@ -1,6 +1,6 @@
 <div class="container">
   <table style="width:100%">
-    <tr>
+    <tr class="text-primary">
       <th><i class="fas fa-user"></i>Nome</th>
       <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
       <th><i class="fas fa-venus-mars"></i>Gênero</th>
@@ -12,8 +12,8 @@
       <!-- <th>Local de Desembarque</th> -->
     </tr>
     <% @passengers.each do |passenger| %>
-         <tr>
-            <td><%= link_to passenger.full_name, passenger_path(passenger) %></td>
+         <tr class="text-primary">
+            <td><%= link_to passenger_path(passenger), class: "nav-link text-dark" do %> <%= passenger.full_name %><i class="far fa-plus-square text-secondary ml-1"></i><% end %></td>
             <td><%= passenger.date_of_birth %></td>
             <td><%= passenger.gender %></td>
             <td><%= passenger.cpf %></td>
@@ -31,4 +31,4 @@
     <% end %>
   </table>
 </div>
-
+      
