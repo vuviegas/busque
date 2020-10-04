@@ -23,7 +23,7 @@
       <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger| %>
-      <tr>
+      <tr data-link="<%= passenger_path(passenger) %>">
           <td><%= passenger.passenger.full_name %></td>
           <td><%= passenger.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
           <td><%= passenger.passenger.gender %></td>

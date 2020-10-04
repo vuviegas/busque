@@ -31,8 +31,8 @@
       <th><i class="fas fa-couch"></i>Poltrona</th>
       <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
     </tr>
-    <tr>
-      <% @passenger_trips.each do |passenger_trip| %>
+    <% @passenger_trips.each do |passenger_trip| %>
+      <tr data-link="<%= bus_travel_path(passenger_trip.bus_travel) %>">
         <td><%= passenger_trip.bus_travel.travel_line.company.company_name %></td>
         <td><%= passenger_trip.bus_travel.travel_line.identification_number %></td>
         <td><%= passenger_trip.bus_travel.travel_line.origin %></td>
@@ -43,16 +43,14 @@
         <td><%= passenger_trip.bus_travel.travel_line.arrival_at %></td>
         <td><%= passenger_trip.seat %></td>
         <td><%= passenger_trip.arrival_spot %></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </table>
 
   <% if current_user.police? %>
-
-  <h3>Ocorrências</h3>
-
-
+    <h3>Ocorrências</h3>
   <% end %>
+
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
   </div>
