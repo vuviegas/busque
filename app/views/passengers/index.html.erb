@@ -1,4 +1,15 @@
 <div class="container">
+  <div class="d-flex">
+    <%= form_tag passengers_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Procurar.."
+      %>
+    <% end %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
+
   <table style="width:100%">
     <tr class="text-primary">
       <th><i class="fas fa-user"></i>Nome</th>

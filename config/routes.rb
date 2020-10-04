@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :bus_travels, only: [:index, :show, :new, :create, :destroy]
   resources :passenger_trips, only: [:show, :new, :create]
   resources :passengers, only: [:index, :show, :new, :create, :destroy]
+  resources :alerts
 end
 
 # CÓDIGO ORIGINAL ANTES DE SER REFATORADO

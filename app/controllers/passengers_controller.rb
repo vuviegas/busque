@@ -1,11 +1,12 @@
 class PassengersController < ApplicationController
 
   def index
-    @passengers = Passenger.all
-    #@passengers = Passenger.paginate :all, :page => params[:page], :per_page => 10
-    @passengers = Passenger.paginate(:page => params[:page], :per_page => 8)
-    #@posts = Post.all.order(created_at: :desc).paginate(page:  params[:page], per_page: 2)
-    # @passengers = Passenger.where(passenger_trip: passenger_trips_ids)
+    if params[:query].present?
+      @passengers = Passenger.search_global(params[:query])
+    else
+      @passengers = Passenger.all
+      @passengers = Passenger.paginate(:page => params[:page], :per_page => 8)
+    end
   end
 
   def show
