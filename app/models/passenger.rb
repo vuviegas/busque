@@ -21,4 +21,11 @@ class Passenger < ApplicationRecord
   validates :identification_state, length: { is: 2 }
                   # message: "%{value} deve ser a sigla do estado" }
   # validates :identification_state, format: { with: REGEX, message: "%{value} deve ter apenas letras" }
+
+  include PgSearch::Model
+  pg_search_scope :search_global,
+    against: [ :full_name, :cpf, :date_of_birth, :gender, :identification_number, :identification_state ],
+      using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

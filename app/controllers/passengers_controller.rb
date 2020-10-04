@@ -1,8 +1,12 @@
 class PassengersController < ApplicationController
 
   def index
-    @passengers = Passenger.all
+    if params[:query].present?
+      @passengers = Passenger.search_global(params[:query])
+    else
+      @passengers = Passenger.all
     # @passengers = Passenger.where(passenger_trip: passenger_trips_ids)
+    end
   end
 
   def show

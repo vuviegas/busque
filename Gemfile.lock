@@ -64,6 +64,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
+    bootstrap-select-rails (1.13.8)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.33.0)
@@ -123,6 +124,9 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
+    pg_search (2.3.3)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -241,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.4.2)
+  bootstrap-select-rails
   byebug
   capybara (>= 2.15)
   cpf_cnpj
@@ -251,6 +256,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
+  pg_search (~> 2.3.0)
   pry-byebug
   pry-rails
   puma (~> 4.1)

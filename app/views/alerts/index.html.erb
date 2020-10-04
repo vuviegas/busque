@@ -1,0 +1,29 @@
+<div class="container">
+  <table style="width:100%">
+    <tr>
+      <th>Nome</th>
+      <th>Data de Nascimento</th>
+      <th>CPF</th>
+      <th>Natureza do Alerta</th>
+      <th>Descrição</th>
+    </tr>
+    <% @alerts.each do |alert| %>
+         <tr>
+            <td><%= link_to alert.passenger.full_name, passenger_path(passenger) %></td>
+            <td><%= alert.passenger.date_of_birth %></td>
+            <td><%= alert.passenger.cpf %></td>
+            <td><%= alert.passenger.identification_number %></td>
+            <td><%= alert.passenger.identification_state %></td>
+            <td><%= alert.felony %></td>
+            <td><%= alert.description %></td>
+            <td>
+              <%= link_to "Excluir",
+                              alerts_path,
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %>
+            </td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
