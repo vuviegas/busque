@@ -12,14 +12,15 @@
 
   <table style="width:100%">
     <tr>
-      <th>Nome</th>
-      <th>Data de Nascimento</th>
-      <th>Gênero</th>
-      <th>CPF</th>
-      <th>RG</th>
-      <th>Estado</th>
-      <th>Poltrona</th>
-      <th>Local de Desembarque</th>
+    <tr class="text-primary">
+      <th><i class="fas fa-user"></i>Nome</th>
+      <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
+      <th><i class="fas fa-venus-mars"></i>Gênero</th>
+      <th><i class="fas fa-fingerprint"></i>CPF</th>
+      <th><i class="far fa-id-card"></i>RG</th>
+      <th><i class="fas fa-globe-americas"></i>Estado</th>
+      <th><i class="fas fa-couch"></i>Poltrona</th>
+      <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger| %>
       <tr data-link="<%= passenger_path(passenger) %>">
@@ -35,4 +36,7 @@
       </tr>
     <% end %>
   </table>
+  <div class="btn-voltar mt-2">
+    <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
+  </div>
 </div>
