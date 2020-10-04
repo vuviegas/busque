@@ -27,11 +27,12 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { clickTableRow } from '../components/table';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-
+  clickTableRow();
 });
 
 // Esta função abaixo veio junto com o Menu lateral, mas ainda não sei por para funcionar
@@ -41,4 +42,3 @@ document.addEventListener('turbolinks:load', () => {
    $('#sidebar, #content').toggleClass('active');
  });
 
- 

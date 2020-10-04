@@ -64,7 +64,13 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.8)
       msgpack (~> 1.0)
+<<<<<<< HEAD
     bootstrap-select-rails (1.13.8)
+=======
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
+>>>>>>> 65eca006e8de7d0bee310976d9113468367a8a3d
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.33.0)
@@ -235,6 +241,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    will_paginate (3.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.0)
@@ -245,7 +252,11 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.4.2)
+<<<<<<< HEAD
   bootstrap-select-rails
+=======
+  bootstrap-sass
+>>>>>>> 65eca006e8de7d0bee310976d9113468367a8a3d
   byebug
   capybara (>= 2.15)
   cpf_cnpj
@@ -273,6 +284,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  will_paginate (~> 3.1)
 
 RUBY VERSION
    ruby 2.6.6p146

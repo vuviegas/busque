@@ -5,7 +5,7 @@ class PassengersController < ApplicationController
       @passengers = Passenger.search_global(params[:query])
     else
       @passengers = Passenger.all
-    # @passengers = Passenger.where(passenger_trip: passenger_trips_ids)
+      @passengers = Passenger.paginate(:page => params[:page], :per_page => 8)
     end
   end
 
