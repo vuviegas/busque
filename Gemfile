@@ -37,6 +37,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 
 gem 'cpf_cnpj'
+gem "validators"
 gem 'validates_timeliness', '~> 5.0.0.beta1'
 gem 'faker'
 gem 'bootstrap-select-rails'

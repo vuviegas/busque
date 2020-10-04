@@ -22,12 +22,12 @@
     </tr>
     <% @passengers.each do |passenger| %>
       <tr data-link="<%= passenger_path(passenger) %>">
-        <td><%= passenger.full_name %></td>
+        <td><%= passenger.full_name.capitalize %></td>
         <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
         <td><%= passenger.gender %></td>
         <td><%= passenger.cpf %></td>
         <td><%= passenger.identification_number %></td>
-        <td><%= passenger.identification_state %></td>
+        <td><%= passenger.identification_state.upcase %></td>
         <td class="text-primary"><i class="fas fa-trash-alt"></i>
           <%= link_to "Excluir",
                           passenger_path(passenger),

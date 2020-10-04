@@ -23,10 +23,15 @@
         <%= f.simple_fields_for :passenger do |passenger_form| %>
           <%= passenger_form.input :full_name, label: "Nome Completo" %>
           <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
-          <%= passenger_form.input :gender, label: "Sexo" %>
-          <%= passenger_form.input :cpf, label: "CPF" %>
+          <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não informado"],
+                  :input_html => {:class => 'selectpicker'},
+                  :label => 'Gênero' %>
+          <%= passenger_form.input :cpf, input_html: { maxlength: 11 }, label: "CPF" %>
           <%= passenger_form.input :identification_number, label: "RG" %>
-          <%= passenger_form.input :identification_state, label: "UF" %>
+          <%= passenger_form.input :identification_state,
+            :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
+            :input_html => {:class => 'selectpicker'},
+            label: "UF" %>
         <% end %>
       </div>
     <% end %>

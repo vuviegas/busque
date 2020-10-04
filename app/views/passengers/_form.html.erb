@@ -11,7 +11,10 @@
       <%= f.input :date_of_birth, label: "Data de Nascimento" %>
     </div>
     <div class="form-inputs">
-      <%= f.input :gender, label: "Sexo" %>
+      <%= f.input :gender, :collection => ["Feminino", "Masculino", "Não informado"],
+                  :input_html => {:class => 'selectpicker'},
+                  :label => 'Gênero',
+                  prompt: "escolha uma opção" %>
     </div>
     <div class="form-inputs">
       <%= f.input :cpf, label: "CPF" %>

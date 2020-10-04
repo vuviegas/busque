@@ -24,12 +24,12 @@
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger| %>
       <tr data-link="<%= passenger_path(passenger) %>">
-          <td><%= passenger.passenger.full_name %></td>
+          <td><%= passenger.passenger.full_name.capitalize %></td>
           <td><%= passenger.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
           <td><%= passenger.passenger.gender %></td>
           <td><%= passenger.passenger.cpf %></td>
           <td><%= passenger.passenger.identification_number %></td>
-          <td><%= passenger.passenger.identification_state %></td>
+          <td><%= passenger.passenger.identification_state.upcase %></td>
           <td><%= passenger.seat %></td>
           <td><%= passenger.arrival_spot %></td>
           <td>
