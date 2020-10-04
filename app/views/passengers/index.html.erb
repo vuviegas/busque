@@ -28,7 +28,16 @@
                               data: { confirm: "Você tem certeza?" } %>
             </td>
         </tr>
-    <% end %>
+      <% end %>
   </table>
+</div >
+<div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @passengers %>
+    </div>
+    <%= will_paginate @passengers, :container => false %>
 </div>
+
+
       
+
