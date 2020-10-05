@@ -24,13 +24,12 @@
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger_trip| %>
       <% if passenger_trip.passenger.alerts.exists? %>
-        <% passenger_trip.passenger.alerts.each do |alert| %>
-          <% if alert.level == 'red' %>
+        <%# passenger_trip.passenger.alerts.each do |alert| %>
+          <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
             <tr class="table-danger" data-link="<%= passenger_path(passenger_trip) %>">
-          <% elsif alert.level == 'yellow' %>
+          <% else %>
             <tr class="table-warning" data-link="<%= passenger_path(passenger_trip) %>">
           <% end %>
-        <% end %>
       <% else %>
         <tr data-link="<%= passenger_path(passenger_trip) %>">
       <% end %>
