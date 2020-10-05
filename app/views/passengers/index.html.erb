@@ -12,7 +12,7 @@
         %>
     </div>
     <div>
-      <%= button_tag do %>
+      <%= button_tag 'Add', type: 'button', class: 'btn-search' do %>
       <i class="fas fa-search"></i>
       <% end %>
       <% end %>
@@ -36,7 +36,7 @@
         <td><%= passenger.gender %></td>
         <td><%= passenger.cpf %></td>
         <td><%= passenger.identification_number %></td>
-        <td><%= passenger.identification_state %></td>
+        <td class="text-center"><%= passenger.identification_state %></td>
         <td class="text-primary"><i class="fas fa-trash-alt"></i>
           <%= link_to "Excluir",
                           passenger_path(passenger),
