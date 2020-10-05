@@ -1,4 +1,5 @@
 <div class="container">
+<h3 class="titulo-page">Cadastrar Linhas de Ônibus</h3>
   <%= simple_form_for [@company, @travel_line] do |f| %>
     <div class="form-inputs">
       <%= f.association :company, collection: Company.all, label_method: :company_name %>

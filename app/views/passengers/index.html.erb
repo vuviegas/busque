@@ -1,5 +1,8 @@
 <div class="container">
-  <div class="d-flex align-items-center justify-content-center">
+  <div class="d-flex align-items-center">
+    <div>
+      <h3 class="titulo-page mr-4">Lista de Passageiros</h3>
+    </div>
     <div>
       <%= form_tag passengers_path, method: :get do %>
         <%= text_field_tag :query,
@@ -9,7 +12,7 @@
         %>
     </div>
     <div>
-      <%= button_tag do %>
+      <%= button_tag 'Add', type: 'button', class: 'btn-search' do %>
       <i class="fas fa-search"></i>
       <% end %>
       <% end %>
@@ -33,7 +36,7 @@
         <td><%= passenger.gender %></td>
         <td><%= passenger.cpf %></td>
         <td><%= passenger.identification_number %></td>
-        <td><%= passenger.identification_state %></td>
+        <td class="text-center"><%= passenger.identification_state %></td>
         <!-- <td class="text-primary"> -->
                <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                           passenger_path(passenger),

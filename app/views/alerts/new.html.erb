@@ -1,6 +1,5 @@
 <% if current_user.admin? || current_user.police? %>
   <div class="container">
-    <h1>Cadastrar Suspeita</h1>
     <%= render 'form', alert: @alert %>
   </div>
 <% end %>
