@@ -28,6 +28,17 @@ class PassengerTripsController < ApplicationController
     end
   end
 
+  def delete
+    raise
+    @bus_travel = BusTravel.find(parmas[:id])
+    @passenger_trip = PassengerTrip.where(passenger_trip_passenger: @passenger)
+    if current_user == @passenger_trip.user || current_user.admin?
+      @passenger_trip.destroy
+
+      redirect_to bus_travel_path(@bus_travel)
+    end
+  end
+
   private
 
   def set_bus_travel
