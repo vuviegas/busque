@@ -1,6 +1,8 @@
 <div class="container">
-<h3 class="titulo-page">Lista de Passageiros</h3>
-  <div class="d-flex align-items-center justify-content-center">
+  <div class="d-flex align-items-center">
+    <div>
+      <h3 class="titulo-page mr-4">Lista de Passageiros</h3>
+    </div>
     <div>
       <%= form_tag passengers_path, method: :get do %>
         <%= text_field_tag :query,
