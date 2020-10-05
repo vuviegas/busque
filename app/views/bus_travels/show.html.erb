@@ -22,17 +22,23 @@
       <th><i class="fas fa-couch"></i>Poltrona</th>
       <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
     </tr>
-    <% @bus_travel.passenger_trips.each do |passenger| %>
-      <tr data-link="<%= passenger_path(passenger) %>">
-          <td><%= passenger.passenger.full_name %></td>
-          <td><%= passenger.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
-          <td><%= passenger.passenger.gender %></td>
-          <td><%= passenger.passenger.cpf %></td>
-          <td><%= passenger.passenger.identification_number %></td>
-          <td><%= passenger.passenger.identification_state %></td>
-          <td><%= passenger.seat %></td>
-          <td><%= passenger.arrival_spot %></td>
-          <td>
+    <% @bus_travel.passenger_trips.each do |passenger_trip| %>
+      <tr data-link="<%= passenger_path(passenger_trip) %>">
+          <td><%= passenger_trip.passenger.full_name %></td>
+          <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+          <td><%= passenger_trip.passenger.gender %></td>
+          <td><%= passenger_trip.passenger.cpf %></td>
+          <td><%= passenger_trip.passenger.identification_number %></td>
+          <td><%= passenger_trip.passenger.identification_state %></td>
+          <td><%= passenger_trip.seat %></td>
+          <td><%= passenger_trip.arrival_spot %></td>
+          <%# if current_user == passenger_trip.user || current_user.admin? %>
+            <td class="text-primary"><i class="fas fa-trash-alt"></i>
+              <%= link_to "Excluir",
+                              passenger_trips_path,
+                              method: :delete,
+                              data: { confirm: "Você tem certeza?" } %>
+          <%#end %>
       </tr>
     <% end %>
   </table>
