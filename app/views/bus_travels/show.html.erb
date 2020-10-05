@@ -42,14 +42,13 @@
         <td><%= passenger_trip.passenger.identification_state %></td>
         <td><%= passenger_trip.seat %></td>
         <td><%= passenger_trip.arrival_spot %></td>
-        <td class="text-primary"><i class="fas fa-trash-alt"></i>
-          <%= link_to "Excluir",
-                          passenger_trips_path,
+        <td class="text-primary">
+          <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                          passenger_trip_path(passenger_trip),
                           method: :delete,
-                          data: { confirm: "Você tem certeza?" } %>
-        </td>
-      </tr>
-    <% end %>
+                          data: { confirm: "Você tem certeza?" } %></td>
+        </tr>
+      <% end %>
   </table>
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
