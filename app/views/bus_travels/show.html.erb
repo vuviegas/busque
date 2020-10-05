@@ -26,13 +26,13 @@
       <% if passenger_trip.passenger.alerts.exists? %>
         <% passenger_trip.passenger.alerts.each do |alert| %>
           <% if alert.level == 'red' %>
-            <tr class="table-danger" data-link="<%= passenger_path(passenger_trip) %>">
+            <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
           <% elsif alert.level == 'yellow' %>
-            <tr class="table-warning" data-link="<%= passenger_path(passenger_trip) %>">
+            <tr class="table-warning" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
           <% end %>
         <% end %>
       <% else %>
-        <tr data-link="<%= passenger_path(passenger_trip) %>">
+        <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
       <% end %>
         <td><%= passenger_trip.passenger.full_name %></td>
         <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>

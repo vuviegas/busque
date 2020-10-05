@@ -18,16 +18,9 @@ class AlertsController < ApplicationController
   end
 
   def create
-    # raise
     if current_user.admin? || current_user.police?
-      @passenger = Passenger.where(
-        full_name: params[:alert][:passenger][:full_name],
-        date_of_birth: params[:alert][:passenger][:date_of_birth],
-        gender: params[:alert][:passenger][:gender],
-        cpf: params[:alert][:passenger][:cpf],
-        identification_number: params[:alert][:passenger][:identification_number],
-        identification_state: params[:alert][:passenger][:identification_state]
-        )
+
+      @passenger = Passenger.where(passenger_params)
 
       if @passenger.exists?
         @alert = Alert.new(alert_params)
@@ -40,7 +33,7 @@ class AlertsController < ApplicationController
           render :new
         end
       else
-        @new_passenger = Passenger.new(passenger_params[:passenger])
+        @new_passenger = Passenger.new(passenger_params)
         @alert = Alert.new(alert_params)
         @alert.passenger = @new_passenger
         @alert.user = current_user
@@ -57,7 +50,6 @@ class AlertsController < ApplicationController
   end
 
   def destroy
-
     @alert = Alert.find(params[:id])
     if current_user == @alert.user || current_user.admin?
       @alert.destroy
@@ -77,13 +69,33 @@ class AlertsController < ApplicationController
   end
 
   def passenger_params
-    params.require(:alert).permit(passenger: [
-                                    :full_name,
-                                    :date_of_birth,
-                                    :gender,
-                                    :cpf,
-                                    :identification_number,
-                                    :identification_state
-                                    ])
+    params.require(:alert).require(:passenger).permit(:full_name,
+                                                      :date_of_birth,
+                                                      :gender,
+                                                      :cpf,
+                                                      :identification_number,
+                                                      :identification_state)
   end
 end
+
+# => Forma de params.require indicada pelo Prof. Roberto (passenger_params):
+# params.require(:alert).permit(passenger: [
+#                                 :full_name,
+#                                 :date_of_birth,
+#                                 :gender,
+#                                 :cpf,
+#                                 :identification_number,
+#                                 :identification_state
+#                                 ])
+
+
+# => Código anteriormente implementado no CREATE para
+# => para encontrar o passageiro pelos params de :alert
+# @passenger = Passenger.where(
+#   full_name: params[:alert][:passenger][:full_name],
+#   date_of_birth: params[:alert][:passenger][:date_of_birth],
+#   gender: params[:alert][:passenger][:gender],
+#   cpf: params[:alert][:passenger][:cpf],
+#   identification_number: params[:alert][:passenger][:identification_number],
+#   identification_state: params[:alert][:passenger][:identification_state]
+#   )

@@ -34,3 +34,9 @@ end
 #     end
 #   end
 # end
+
+# <div class="digg_pagination mt-3 d-flex justify-content-center ">
+# <%#= will_paginate @bus_travels, :container => false %>
+# </div>
+
+# .paginate(:page => params[:page], :per_page => 10)
