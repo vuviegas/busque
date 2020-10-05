@@ -26,6 +26,13 @@ class PassengerTripsController < ApplicationController
     end
   end
 
+  def delete
+    @passenger_trip = PassengerTrip.find(params[:id])
+    @passenger_trip.destroy
+
+    redirect_to
+  end
+
   private
 
   def set_bus_travel
