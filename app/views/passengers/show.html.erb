@@ -48,7 +48,7 @@
   </table>
 
   <% if current_user.admin? || current_user.police? %>
-    <h3>Ocorrências</h3>
+    <h3>Alertas</h3>
     <table>
       <tr class="text-primary">
         <th><i class="fas fa-bus"></i>Natureza</th>
@@ -62,6 +62,11 @@
           <td><%= alert.description %></td>
           <td><%= alert.level %></td>
           <td><%= alert.solved %></td>
+          <td class="text-primary"><i class="fas fa-trash-alt"></i>
+              <%= link_to "Excluir",
+                              alert_path(alert),
+                              method: :delete,
+                              data: { confirm: "Você tem certeza?" } %>
         </tr>
       <% end %>
     </table>
