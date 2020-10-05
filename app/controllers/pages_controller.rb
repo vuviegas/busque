@@ -1,10 +1,12 @@
+require 'will_paginate/array'
+
 class PagesController < ApplicationController
   def home
     if current_user.admin? || current_user.police?
-      @bus_travels = BusTravel.where(departure_on: Date.today).paginate(:page => params[:page], :per_page => 10)
       @bus_travels = BusTravel.includes(
         travel_line: :company, passenger_trips: { passenger: :alerts }
-        ).where(departure_on: Date.today).sort_by(&:alerts).reverse
+        ).where(departure_on: Date.today).sort_by(&:alerts).reverse.paginate(
+        :page => params[:page], :per_page => 10)
     else
       company = Company.where(user_id: current_user.id)
       travel_lines = TravelLine.where(company_id: company.ids)
@@ -35,3 +37,9 @@ end
 #     end
 #   end
 # end
+
+# <div class="digg_pagination mt-3 d-flex justify-content-center ">
+# <%#= will_paginate @bus_travels, :container => false %>
+# </div>
+
+# .paginate(:page => params[:page], :per_page => 10)

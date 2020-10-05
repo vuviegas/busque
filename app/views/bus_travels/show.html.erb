@@ -24,14 +24,13 @@
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger_trip| %>
       <% if passenger_trip.passenger.alerts.exists? %>
-        <%# passenger_trip.passenger.alerts.each do |alert| %>
-          <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
-            <tr class="table-danger" data-link="<%= passenger_path(passenger_trip) %>">
-          <% else %>
-            <tr class="table-warning" data-link="<%= passenger_path(passenger_trip) %>">
-          <% end %>
+        <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
+          <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+        <% else %>
+          <tr class="table-warning" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+        <% end %>
       <% else %>
-        <tr data-link="<%= passenger_path(passenger_trip) %>">
+        <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
       <% end %>
         <td><%= passenger_trip.passenger.full_name %></td>
         <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
@@ -47,7 +46,7 @@
                           method: :delete,
                           data: { confirm: "Você tem certeza?" } %></td>
         </tr>
-      <% end %>
+    <% end %>
   </table>
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>

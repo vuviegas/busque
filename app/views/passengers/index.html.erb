@@ -46,7 +46,7 @@
       </tr>
     <% end %>
   </table>
+  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+    <%= will_paginate @passengers, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+  </div>
 </div >
-<div class="digg_pagination mt-3 d-flex justify-content-center  ">
-    <%= will_paginate @passengers, :container => false %>
-</div>

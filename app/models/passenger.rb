@@ -4,7 +4,7 @@ class Passenger < ApplicationRecord
 
   has_many :passenger_trips, dependent: :destroy
   has_many :alerts, dependent: :destroy
-  # has_many :bus_travel, through: :passenger_trips
+  has_many :bus_travels, through: :passenger_trips
 
   # accepts_nested_attributes_for :passenger_trips
 
