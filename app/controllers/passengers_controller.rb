@@ -27,11 +27,11 @@ class PassengersController < ApplicationController
   #   end
   # end
 
-  # def destroy
-  #   @passenger = passenger.find(params[:id])
-  #   @passenger.destroy
-  #   redirect_to companies_path
-  # end
+  def destroy
+    @passenger = Passenger.find(params[:id])
+    @passenger.destroy
+    redirect_to passenger_path
+  end
 
   private
 

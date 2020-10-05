@@ -5,6 +5,11 @@ class TravelLinesController < ApplicationController
     elsif current_user.clerk?
       @travel_lines = TravelLine.where(company_id: params[:company_id])
     end
+    if params[:query].present?
+      @travel_lines = TravelLine.search_global(params[:query]).paginate(:page => params[:page], :per_page => 8)
+    else
+      @travel_lines = TravelLine.all.paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def new
