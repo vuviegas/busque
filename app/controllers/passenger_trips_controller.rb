@@ -20,9 +20,22 @@ class PassengerTripsController < ApplicationController
       @passenger_trip = PassengerTrip.new(passenger_trip_params)
       @passenger_trip.passenger = @passenger
       @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
-      @passenger_trip.save
+      if @passenger_trip.save
+        redirect_to bus_travel_path(@passenger_trip.bus_travel)
+      else
+        render :new
+      end
+    end
+  end
 
-      redirect_to bus_travel_path(@passenger_trip.bus_travel)
+  def delete
+    raise
+    @bus_travel = BusTravel.find(parmas[:id])
+    @passenger_trip = PassengerTrip.where(passenger_trip_passenger: @passenger)
+    if current_user == @passenger_trip.user || current_user.admin?
+      @passenger_trip.destroy
+
+      redirect_to bus_travel_path(@bus_travel)
     end
   end
 

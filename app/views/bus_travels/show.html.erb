@@ -8,6 +8,7 @@
     <%= "Origem: #{@bus_travel.travel_line.origin} (#{@bus_travel.travel_line.departure_at}) - \n" %>
     <%= "Destino: #{@bus_travel.travel_line.destination} (#{@bus_travel.travel_line.arrival_at})" %>
   </h5>
+
   <table style="width:100%">
     <tr>
     <tr class="text-primary">
@@ -19,6 +20,7 @@
       <th><i class="fas fa-globe-americas"></i>Estado</th>
       <th><i class="fas fa-couch"></i>Poltrona</th>
       <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
+      <th><i class="fas fa-tools"></i>Opções</th>
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger_trip| %>
       <% if passenger_trip.passenger.alerts.exists? %>
@@ -45,8 +47,8 @@
                           passenger_trip_path(passenger_trip),
                           method: :delete,
                           data: { confirm: "Você tem certeza?" } %></td>
-      </tr>
-    <% end %>
+        </tr>
+      <% end %>
   </table>
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>

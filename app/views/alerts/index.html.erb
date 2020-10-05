@@ -8,12 +8,10 @@
       <th>Descrição</th>
     </tr>
     <% @alerts.each do |alert| %>
-         <tr>
-            <td><%= link_to alert.passenger.full_name, passenger_path(passenger) %></td>
+         <tr data-link="<%= passenger_path(alert.passenger) %>">
+            <td><%= alert.passenger.full_name %></td>
             <td><%= alert.passenger.date_of_birth %></td>
             <td><%= alert.passenger.cpf %></td>
-            <td><%= alert.passenger.identification_number %></td>
-            <td><%= alert.passenger.identification_state %></td>
             <td><%= alert.felony %></td>
             <td><%= alert.description %></td>
             <td>
