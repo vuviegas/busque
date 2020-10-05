@@ -2,10 +2,9 @@ class PassengersController < ApplicationController
 
   def index
     if params[:query].present?
-      @passengers = Passenger.search_global(params[:query])
+      @passengers = Passenger.search_global(params[:query]).paginate(:page => params[:page], :per_page => 8)
     else
-      @passengers = Passenger.all
-      @passengers = Passenger.paginate(:page => params[:page], :per_page => 8)
+      @passengers = Passenger.all.paginate(:page => params[:page], :per_page => 10)
     end
   end
 
