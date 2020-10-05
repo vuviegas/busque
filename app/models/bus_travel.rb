@@ -1,4 +1,5 @@
 class BusTravel < ApplicationRecord
+  # attr_accessor :alert
   belongs_to :travel_line
   has_many :passenger_trips, dependent: :destroy
   # has_many :passengers, through: :passenger_trips # <= Silenciar para resolver problema do destroy de travel line
@@ -8,4 +9,12 @@ class BusTravel < ApplicationRecord
   def self.by_departure
     order('departure_on DESC')
   end
+
+  def alerts
+    passenger_trips.count { |t| t.passenger.alerts.any? }
+    # self.alert = true if warning
+    # warning
+  end
 end
+
+# alerts.where(level: 'yellow')

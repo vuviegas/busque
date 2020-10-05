@@ -1,5 +1,17 @@
 .table-danger {
-  background-color: rgba(255, 198, 194, 0.3);
+  background-color: rgb(255, 198, 194);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.table-warning {
+  background-color: rgb(254, 209, 72);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .br-table {
