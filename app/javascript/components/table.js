@@ -12,7 +12,9 @@ const clickTableRow = () => {
   // });
 
   $("tr[data-link]").click(function() {
-    window.location = $(this).data("link")
+    if (!event.target.classList.contains("fa-trash-alt")) {
+      window.location = $(this).data("link")
+    };
   });
 
   $("tr[data-link]").css('cursor', 'pointer');

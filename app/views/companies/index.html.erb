@@ -1,4 +1,5 @@
 <div class="container">
+<h3 class="titulo-page">Empresas Rodoviárias Cadastradas</h3>
   <table style="width:100%">
     <tr class="text-primary">
       <th><i class="fas fa-bus"></i>Nome da Empresa</th>
@@ -13,8 +14,8 @@
           <td><%= company.company_name %></td>
           <td><%= company.user.email %></td>
           <% if current_user.admin? %>
-            <td class="text-primary"><i class="fas fa-trash-alt"></i>
-              <%= link_to "Excluir",
+            <td class="text-primary">
+               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                               company_path(company),
                               method: :delete,
                               data: { confirm: "Você tem certeza?" } %>

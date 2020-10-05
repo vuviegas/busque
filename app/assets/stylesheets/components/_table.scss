@@ -1,3 +1,19 @@
+.table-danger {
+  background-color: rgb(255, 198, 194);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.table-warning {
+  background-color: rgb(254, 209, 72);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .br-table {
   display: block;
 }
@@ -564,4 +580,10 @@
   .br-table .responsive table tbody tr {
     height: 100%;
   }
+}
+
+.titulo-page{
+  margin-left: 10px;
+  font-family: Raleway;
+  font-weight: 300;
 }

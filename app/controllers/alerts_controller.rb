@@ -19,14 +19,42 @@ class AlertsController < ApplicationController
 
   def create
     if current_user.admin? || current_user.police?
-      @alert = Alert.new(alert_params)
-      if @alert.save
-        redirect_to alerts_path, notice: "Alerta criado com sucesso!"
+
+      @passenger = Passenger.where(passenger_params)
+
+      if @passenger.exists?
+        @alert = Alert.new(alert_params)
+        @alert.passenger_id = @passenger.ids.first
+        @alert.user_id = current_user.id
+        @alert.solved = false
+        if @alert.save
+          redirect_to passenger_path(@alert.passenger), notice: "Alerta criado com sucesso!"
+        else
+          render :new
+        end
       else
-        render :new
+        @new_passenger = Passenger.new(passenger_params)
+        @alert = Alert.new(alert_params)
+        @alert.passenger = @new_passenger
+        @alert.user = current_user
+        if @new_passenger.save
+          @alert.save
+          redirect_to passenger_path(@new_passenger), notice: "Passageiro e alerta criados com sucesso!"
+        else
+          render :new
+        end
       end
     else
       forbidden
+    end
+  end
+
+  def destroy
+    @alert = Alert.find(params[:id])
+    if current_user == @alert.user || current_user.admin?
+      @alert.destroy
+
+      redirect_to passenger_path(@alert.passenger)
     end
   end
 
@@ -37,6 +65,37 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:felony, :description, :level, :solved, :passenger_id, :user_id)
+    params.require(:alert).permit(:felony, :description, :level)
+  end
+
+  def passenger_params
+    params.require(:alert).require(:passenger).permit(:full_name,
+                                                      :date_of_birth,
+                                                      :gender,
+                                                      :cpf,
+                                                      :identification_number,
+                                                      :identification_state)
   end
 end
+
+# => Forma de params.require indicada pelo Prof. Roberto (passenger_params):
+# params.require(:alert).permit(passenger: [
+#                                 :full_name,
+#                                 :date_of_birth,
+#                                 :gender,
+#                                 :cpf,
+#                                 :identification_number,
+#                                 :identification_state
+#                                 ])
+
+
+# => Código anteriormente implementado no CREATE para
+# => para encontrar o passageiro pelos params de :alert
+# @passenger = Passenger.where(
+#   full_name: params[:alert][:passenger][:full_name],
+#   date_of_birth: params[:alert][:passenger][:date_of_birth],
+#   gender: params[:alert][:passenger][:gender],
+#   cpf: params[:alert][:passenger][:cpf],
+#   identification_number: params[:alert][:passenger][:identification_number],
+#   identification_state: params[:alert][:passenger][:identification_state]
+#   )

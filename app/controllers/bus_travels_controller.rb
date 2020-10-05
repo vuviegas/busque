@@ -7,6 +7,11 @@ class BusTravelsController < ApplicationController
       travel_lines = TravelLine.where(company_id: company.ids)
       @bus_travels = BusTravel.where(travel_line_id: travel_lines.ids)
     end
+    if params[:query].present?
+      @bus_travels = BusTravel.search_global(params[:query]).paginate(:page => params[:page], :per_page => 8)
+    else
+      @bus_travels = BusTravel.all.paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def show
@@ -25,13 +30,6 @@ class BusTravelsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def destroy
-    bus_travel = BusTravel.find(params[:id])
-    bus_travel.destroy
-
-    redirect_to bus_travels_path
   end
 
   private

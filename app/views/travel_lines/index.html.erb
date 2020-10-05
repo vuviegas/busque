@@ -1,4 +1,5 @@
 <div class="container">
+<h3 class="titulo-page">Linhas de Ônibus</h3>
   <table style="width:100%">
     <tr class="text-primary">
       <th><i class="fas fa-bus"></i>Empresa</th>
@@ -21,8 +22,8 @@
           <td><%= travel_line.departure_at %></td>
           <td><%= travel_line.arrival_at %></td>
           <% if current_user.admin? %>
-            <td class="text-primary"><i class="fas fa-trash-alt"></i>
-              <%= link_to "Excluir",
+            <td class="text-primary">
+               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                               travel_line_path(travel_line),
                               method: :delete,
                               data: { confirm: "Você tem certeza?" } %>
@@ -32,4 +33,7 @@
       <% end %>
     <% end %>
   </table>
+  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+    <%= will_paginate @travel_lines, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+</div>
 </div>

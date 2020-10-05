@@ -8,20 +8,18 @@
       <th>Descrição</th>
     </tr>
     <% @alerts.each do |alert| %>
-         <tr>
-            <td><%= link_to alert.passenger.full_name, passenger_path(passenger) %></td>
+         <tr data-link="<%= passenger_path(alert.passenger) %>">
+            <td><%= alert.passenger.full_name %></td>
             <td><%= alert.passenger.date_of_birth %></td>
             <td><%= alert.passenger.cpf %></td>
-            <td><%= alert.passenger.identification_number %></td>
-            <td><%= alert.passenger.identification_state %></td>
             <td><%= alert.felony %></td>
             <td><%= alert.description %></td>
-            <td>
-              <%= link_to "Excluir",
-                              alerts_path,
-                              method: :delete,
-                              data: { confirm: "Are you sure?" } %>
-            </td>
+            <!-- <td class="text-primary"> -->
+              <%#=# link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                              # alert_path(alert),
+                              # method: :destroy,
+                              # data: { confirm: "Are you sure?" } %>
+            <!-- </td> -->
         </tr>
     <% end %>
   </table>

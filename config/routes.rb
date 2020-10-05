@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :companies, only: [:index, :new, :create, :destroy]
   resources :travel_lines, only: [:index, :new, :create, :destroy]
   resources :bus_travels, only: [:index, :show, :new, :create, :destroy]
-  resources :passenger_trips, only: [:show, :new, :create]
+  resources :passenger_trips, only: [:show, :new, :create, :destroy]
   resources :passengers, only: [:index, :show, :new, :create, :destroy]
   resources :alerts
 end

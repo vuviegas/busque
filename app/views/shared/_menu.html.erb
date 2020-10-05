@@ -13,8 +13,8 @@
       </div> %>
       <img src="https://kitt.lewagon.com/placeholder/users/Maykhodr" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
       <div class="media-body">
-        <h4 class="m-0">Sabrina</h4>
-        <p class="font-weight-light text-muted mb-0">Admin</p>
+        <p class="m-0"><%= current_user.name %></p>
+        <p class="font-weight-light text-muted mb-0"><%= current_user.role.capitalize %></p>
       </div>
     </div>
   </div>
@@ -69,15 +69,15 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to "#", class: "nav-link text-dark" do %>
+      <%= link_to new_alert_path, class: "nav-link text-dark" do %>
         <i class="fas fa-exclamation-triangle mr-3 text-primary fa-fw"></i>Cadastrar Suspeita
       <% end %>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link text-dark">
+      <%= link_to alerts_path, class: "nav-link text-dark" do %>
         <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
         Alertas
-      </a>
+      <% end %>
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link text-dark">
