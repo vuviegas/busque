@@ -13,19 +13,19 @@ class PassengersController < ApplicationController
     @passenger_trips = PassengerTrip.where(passenger: @passenger)
   end
 
-  def new
-    # @travel_line = TravelLine.find(travel_line_id: bus_travel.travel_line.travel_line_id)
-    @passenger = Passenger.new
-  end
+  # def new
+  #   # @travel_line = TravelLine.find(travel_line_id: bus_travel.travel_line.travel_line_id)
+  #   @passenger = Passenger.new
+  # end
 
-  def create
-    @passenger = Passenger.new(passenger_params)
-    if @passenger.save
-      redirect_to passenger_path, notice: "Passageiro cadastrado com sucesso!"
-    else
-      render :new
-    end
-  end
+  # def create
+  #   @passenger = Passenger.new(passenger_params)
+  #   if @passenger.save
+  #     redirect_to passenger_path, notice: "Passageiro cadastrado com sucesso!"
+  #   else
+  #     render :new
+  #   end
+  # end
 
   # def destroy
   #   @passenger = passenger.find(params[:id])
