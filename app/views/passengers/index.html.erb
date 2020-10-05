@@ -27,7 +27,7 @@
       <th><i class="fas fa-fingerprint"></i>CPF</th>
       <th><i class="far fa-id-card"></i>RG</th>
       <th><i class="fas fa-globe-americas"></i>Estado</th>
-      <th><i class="fas fa-tools"></i>Opções</th>
+      <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
     </tr>
     <% @passengers.each do |passenger| %>
       <tr data-link="<%= passenger_path(passenger) %>">
@@ -37,12 +37,12 @@
         <td><%= passenger.cpf %></td>
         <td><%= passenger.identification_number %></td>
         <td class="text-center"><%= passenger.identification_state %></td>
-        <td class="text-primary"><i class="fas fa-trash-alt"></i>
-          <%= link_to "Excluir",
+        <!-- <td class="text-primary"> -->
+               <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                           passenger_path(passenger),
                           method: :delete,
                           data: { confirm: "Você tem certeza?" } %>
-        </td>
+        <!-- </td> -->
       </tr>
     <% end %>
   </table>
@@ -50,7 +50,3 @@
 <div class="digg_pagination mt-3 d-flex justify-content-center  ">
     <%= will_paginate @passengers, :container => false %>
 </div>
-
-
-
-
