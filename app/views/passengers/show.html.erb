@@ -62,11 +62,13 @@
           <td><%= alert.description %></td>
           <td><%= alert.level %></td>
           <td><%= alert.solved %></td>
+         <% if current_user == alert.user || current_user.admin? %>
           <td class="text-primary"><i class="fas fa-trash-alt"></i>
               <%= link_to "Excluir",
                               alert_path(alert),
                               method: :delete,
                               data: { confirm: "Você tem certeza?" } %>
+          <% end %>
         </tr>
       <% end %>
     </table>

@@ -57,10 +57,13 @@ class AlertsController < ApplicationController
   end
 
   def destroy
-    @alert = Alert.find(params[:id])
-    @alert.destroy
 
-    redirect_to passenger_path(@alert.passenger)
+    @alert = Alert.find(params[:id])
+    if current_user == @alert.user || current_user.admin?
+      @alert.destroy
+
+      redirect_to passenger_path(@alert.passenger)
+    end
   end
 
   private
