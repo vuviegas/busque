@@ -9,7 +9,7 @@
       <th><i class="fas fa-clock"></i>Horário Partida</th>
       <th><i class="far fa-calendar-alt"></i>Data Chegada</th>
       <th><i class="far fa-clock"></i>Horário Chegada</th>
-      <th><i class="fas fa-tools"></i>Opções</th>
+      <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
     </tr>
     <% @bus_travels.each do |bus_travel| %>
       <tr class="<%= 'table-danger' if bus_travel.alerts > 0 %>" data-link="<%= bus_travel_path(bus_travel) %>">
@@ -21,16 +21,16 @@
           <td><%= bus_travel.travel_line.departure_at %></td>
           <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
           <td><%= bus_travel.travel_line.arrival_at %></td>
-          <td class="text-primary"><i class="fas fa-trash-alt"></i>
-            <%= link_to "Excluir",
+          <!-- <td class="text-primary"> -->
+               <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                             bus_travel_path(bus_travel),
                             method: :delete,
                             data: { confirm: "Você tem certeza?" } %>
-          </td>
+          <!-- </td> -->
       </tr>
     <% end %>
   </table>
-  <!-- <div class="digg_pagination mt-3 d-flex justify-content-center "> -->
-    <%#= will_paginate @bus_travels, :container => false %>
-  <!-- </div> -->
+  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+    <%= will_paginate @bus_travels, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+  </div>
 </div>

@@ -24,12 +24,10 @@
     </tr>
     <% @bus_travel.passenger_trips.each do |passenger_trip| %>
       <% if passenger_trip.passenger.alerts.exists? %>
-        <% passenger_trip.passenger.alerts.each do |alert| %>
-          <% if alert.level == 'red' %>
-            <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
-          <% elsif alert.level == 'yellow' %>
-            <tr class="table-warning" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
-          <% end %>
+        <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
+          <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+        <% else %>
+          <tr class="table-warning" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
         <% end %>
       <% else %>
         <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
@@ -48,9 +46,12 @@
                           method: :delete,
                           data: { confirm: "Você tem certeza?" } %></td>
         </tr>
-      <% end %>
+    <% end %>
   </table>
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
+  </div>
+  <div>
+    <button class="btn btn-primary btn-lg no-print" id="printPageButton" onClick="window.print();">Imprimir</button>
   </div>
 </div>

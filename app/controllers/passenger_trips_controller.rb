@@ -74,7 +74,6 @@ class PassengerTripsController < ApplicationController
   end
 
   def passenger_params
-    # => Antigo código de passenger_params
     params.require(:passenger_trip).require(:passenger).permit(
                                                            :full_name,
                                                            :date_of_birth,
@@ -85,6 +84,7 @@ class PassengerTripsController < ApplicationController
   end
 end
 
+# => Antigo código de passenger_params
 # params.require(:passenger_trip).permit(passenger: [
 #                                           :full_name,
 #                                           :date_of_birth,

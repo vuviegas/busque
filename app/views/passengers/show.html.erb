@@ -15,6 +15,7 @@
       <td><%= @passenger.cpf %></td>
       <td><%= @passenger.identification_number %></td>
       <td><%= @passenger.identification_state %></td>
+     #<td><%= @passenger.id %></td>
     </tr>
   </table>
     <h3>Últimas Viagens</h3>
@@ -62,13 +63,13 @@
           <td><%= alert.description %></td>
           <td><%= alert.level %></td>
           <td><%= alert.solved %></td>
-         <% if current_user == alert.user || current_user.admin? %>
-          <td class="text-primary"><i class="fas fa-trash-alt"></i>
-              <%= link_to "Excluir",
+        <% if current_user == alert.user || current_user.admin? %>
+          <td class="text-primary">
+               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                               alert_path(alert),
                               method: :delete,
                               data: { confirm: "Você tem certeza?" } %>
-          <% end %>
+        <% end %>
         </tr>
       <% end %>
     </table>
