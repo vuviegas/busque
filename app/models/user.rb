@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :companies, dependent: :destroy
   has_many :alerts
 
-  validates :email, :role, presence: true
+  validates :email, :role, :name, presence: true
   validates :role, inclusion: { in: %w(admin clerk police),
                   message: "%{value} não é uma opção válida" }
   validates :email,

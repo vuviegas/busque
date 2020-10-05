@@ -32,13 +32,6 @@ class BusTravelsController < ApplicationController
     end
   end
 
-  def destroy
-    bus_travel = BusTravel.find(params[:id])
-    bus_travel.destroy
-
-    redirect_to bus_travels_path
-  end
-
   private
 
   def bus_travel_params

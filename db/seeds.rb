@@ -1,17 +1,17 @@
 require 'faker'
 
-admin1 = User.create!(email: "vinicius@busque.com", password: "123456", role: "admin")
-admin2 = User.create!(email: "ricardo@busque.com", password: "123456", role: "admin")
-admin3 = User.create!(email: "umberto@busque.com", password: "123456", role: "admin")
+admin1 = User.create!(name: "Vinicius", email: "vinicius@busque.com", password: "123456", role: "admin")
+admin2 = User.create!(name: "Ricardo", email: "ricardo@busque.com", password: "123456", role: "admin")
+admin3 = User.create!(name: "Umberto", email: "umberto@busque.com", password: "123456", role: "admin")
 
 
-clerk1 = User.create!(email: "pedro@busque.com", password: "123456", role: "clerk")
-clerk2 = User.create!(email: "paulo@busque.com", password: "123456", role: "clerk")
-clerk3 = User.create!(email: "tiago@busque.com", password: "123456", role: "clerk")
+clerk1 = User.create!(name: "Pedro", email: "pedro@busque.com", password: "123456", role: "clerk")
+clerk2 = User.create!(name: "Paulo", email: "paulo@busque.com", password: "123456", role: "clerk")
+clerk3 = User.create!(name: "Tiago", email: "tiago@busque.com", password: "123456", role: "clerk")
 
-police1 = User.create!(email: "mayssaa@busque.com", password: "123456", role: "police")
-police2 = User.create!(email: "mariana@busque.com", password: "123456", role: "police")
-police3 = User.create!(email: "sabrina@busque.com", password: "123456", role: "police")
+police1 = User.create!(name: "Mayssaa", email: "mayssaa@busque.com", password: "123456", role: "police")
+police2 = User.create!(name: "Mariana", email: "mariana@busque.com", password: "123456", role: "police")
+police3 = User.create!(name: "Sabrina", email: "sabrina@busque.com", password: "123456", role: "police")
 
 amaz = Company.create!(company_name: "Amazontour", user: clerk1)
 oiap = Company.create!(company_name: "Viação Oiapoque", user: clerk1)
