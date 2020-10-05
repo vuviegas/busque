@@ -25,15 +25,15 @@ amaz_110 = TravelLine.create!(identification_number: "110", origin: "Laranjal do
 amaz_120 = TravelLine.create!(identification_number: "120", origin: "Macapá", destination: "Oiapoque", departure_at: "00:01" , arrival_at: "08:00", company: amaz)
 amaz_130 = TravelLine.create!(identification_number: "130", origin: "Oiapoque", destination: "Macapá", departure_at: "10:00", arrival_at: "18:00", company: amaz)
 
-sant_200 = TravelLine.create!(identification_number: "200", origin: "Macapá", destination: "Pedra Branca", departure_at: "09:00", arrival_at: "13:00", company: sant)
-sant_210 = TravelLine.create!(identification_number: "210", origin: "Pedra Branca", destination: "Macapá", departure_at: "15:00", arrival_at: "19:00", company: sant)
-sant_220 = TravelLine.create!(identification_number: "220", origin: "Macapá", destination: "Santana", departure_at: "07:00", arrival_at: "07:30", company: sant)
-sant_230 = TravelLine.create!(identification_number: "230", origin: "Santana", destination: "Macapá", departure_at: "16:00", arrival_at: "16:30", company: sant)
+sant_200 = TravelLine.create!(identification_number: "200", origin: "Macapá", destination: "Serra do Navio", departure_at: "09:00", arrival_at: "13:00", company: sant)
+sant_210  = TravelLine.create!(identification_number: "210", origin: "Serra do Navio", destination: "Macapá", departure_at: "15:00", arrival_at: "19:00", company: sant)
+sant_220  = TravelLine.create!(identification_number: "220", origin: "Macapá", destination: "Tartarugalzinho", departure_at: "07:00", arrival_at: "07:30", company: sant)
+sant_230  = TravelLine.create!(identification_number: "230", origin: "Tartarugalzinho", destination: "Macapá", departure_at: "16:00", arrival_at: "16:30", company: sant)
 
 amap_300 = TravelLine.create!(identification_number: "300", origin: "Macapá", destination: "Serra do Navio", departure_at: "10:30", arrival_at: "15:30", company: amap)
 amap_310 = TravelLine.create!(identification_number: "310", origin: "Serra do Navio", destination: "Macapá", departure_at: "18:30", arrival_at: "23:30", company: amap)
-amap_320 = TravelLine.create!(identification_number: "320", origin: "Macapá", destination: "Porto Grande", departure_at: "07:30", arrival_at: "09:00", company: amap)
-amap_330 = TravelLine.create!(identification_number: "330", origin: "Porto Grande", destination: "Macapá", departure_at: "11:00", arrival_at: "13:30", company: amap)
+amap_320 = TravelLine.create!(identification_number: "320", origin: "Macapá", destination: "Calçoene", departure_at: "07:30", arrival_at: "09:00", company: amap)
+amap_330 = TravelLine.create!(identification_number: "330", origin: "Calçoene", destination: "Macapá", departure_at: "11:00", arrival_at: "13:30", company: amap)
 
 oiap_400 = TravelLine.create!(identification_number: "400", origin: "Macapá", destination: "Laranjal do Jari", departure_at: "08:00", arrival_at: "12:30", company: oiap)
 oiap_410 = TravelLine.create!(identification_number: "410", origin: "Laranjal do Jari", destination: "Macapá", departure_at: "14:00", arrival_at: "18:30", company: oiap)
