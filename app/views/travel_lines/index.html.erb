@@ -21,8 +21,8 @@
           <td><%= travel_line.departure_at %></td>
           <td><%= travel_line.arrival_at %></td>
           <% if current_user.admin? %>
-            <td class="text-primary"><i class="fas fa-trash-alt"></i>
-              <%= link_to "Excluir",
+            <td class="text-primary">
+               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                               travel_line_path(travel_line),
                               method: :delete,
                               data: { confirm: "Você tem certeza?" } %>
