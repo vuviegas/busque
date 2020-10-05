@@ -1,10 +1,19 @@
-
-
 <div class="container">
   <%= simple_form_for(@alert) do |f| %>
     <!-- <div class="form-inputs"> -->
       <%#= f.association :passenger, collection: Passenger.where(role: 'clerk'), label_method: :email %>
     <!-- </div> -->
+    <div>
+      <%= f.simple_fields_for :passenger do |passenger_form| %>
+        <%= passenger_form.input :full_name, label: "Nome Completo" %>
+        <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
+        <%= passenger_form.input :gender, label: "Sexo" %>
+        <%= passenger_form.input :cpf, label: "CPF" %>
+        <%= passenger_form.input :identification_number, label: "RG" %>
+        <%= passenger_form.input :identification_state, label: "UF" %>
+      <% end %>
+    </div>
+
     <div class="form-inputs">
       <%= f.input :felony, :collection => ["Tráfico de Drogas",
                                        "Tráfico de Pessoas",
@@ -15,21 +24,23 @@
                                        "Outros"],
                   :input_html => {:class => 'selectpicker'},
                   :label => 'Natureza',
-                  prompt: "escolha uma opção" %>
+                  prompt: "Escolha uma opção" %>
     </div>
     <div class="form-inputs">
       <%= f.input :description, label: "Descrição" %>
     </div>
     <div class="form-inputs">
-      <h6>nível de alerta</h6>
-      <div>
-        <%= f.check_box :level %>
-        <%= f.label :amarelo %>
-      </div>
-      <div>
-        <%= f.check_box :level %>
-        <%= f.label :vermelho %>
-      </div>
+      <h6>Nível de alerta</h6>
+      <%= f.collection_radio_buttons :level, [['yellow', 'Amarelo'] ,['red', 'Vermelho']], :first, :last %>
+      <!-- <div> -->
+        <%#= f.check_box :level, value: 'yellow' %>
+        <%#= f.label :amarelo %>
+      <!-- </div> -->
+      <!-- <div> -->
+        <%#= f.check_box :level, value: 'red' %>
+        <%#= f.label :vermelho %>
+      <!-- </div> -->
+
     </div>
     <div class="form-actions text-right">
        <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>

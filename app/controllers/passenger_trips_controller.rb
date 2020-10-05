@@ -20,9 +20,11 @@ class PassengerTripsController < ApplicationController
       @passenger_trip = PassengerTrip.new(passenger_trip_params)
       @passenger_trip.passenger = @passenger
       @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
-      @passenger_trip.save
-
-      redirect_to bus_travel_path(@passenger_trip.bus_travel)
+      if @passenger_trip.save
+        redirect_to bus_travel_path(@passenger_trip.bus_travel)
+      else
+        render :new
+      end
     end
   end
 
