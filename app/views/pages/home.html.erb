@@ -1,83 +1,89 @@
 <div class="container">
-<h3 class="titulo-page">Lista de Viagens do dia</h3>
-  <table style="width:100%">
-    <tr class="text-primary">
-      <th><i class="fas fa-bus"></i>Empresa</th>
-      <th><i class="fas fa-road"></i>Linha</th>
-      <th><i class="fas fa-map-marked"></i>Origem</th>
-      <th><i class="fas fa-map-marked-alt"></i>Destino</th>
-      <th><i class="fas fa-calendar-alt"></i>Data Partida</th>
-      <th><i class="fas fa-clock"></i>Horário Partida</th>
-      <th><i class="far fa-calendar-alt"></i>Data Chegada</th>
-      <th><i class="far fa-clock"></i>Horário Chegada</th>
-      <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
-    </tr>
-
-    <% if current_user.police? || current_user.admin? %>
-      <% @bus_travels.each do |bus_travel| %>
-        <% if bus_travel.red_alerts > 0 %>
-          <tr class="<%= 'table-danger' %>" data-link="<%= bus_travel_path(bus_travel) %>">
-            <td><%= bus_travel.travel_line.company.company_name %></td>
-            <td><%= bus_travel.travel_line.identification_number %></td>
-            <td><%= bus_travel.travel_line.origin %></td>
-            <td><%= bus_travel.travel_line.destination %></td>
-            <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-            <td><%= bus_travel.travel_line.departure_at %></td>
-            <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-            <td><%= bus_travel.travel_line.arrival_at %></td>
-          </tr>
-        <% end %>
-      <% end %>
-      <% @bus_travels.each do |bus_travel| %>
-        <% if bus_travel.yellow_alerts > 0 && bus_travel.red_alerts == 0 %>
-          <tr class="<%= 'table-warning' %>" data-link="<%= bus_travel_path(bus_travel) %>">
-            <td><%= bus_travel.travel_line.company.company_name %></td>
-            <td><%= bus_travel.travel_line.identification_number %></td>
-            <td><%= bus_travel.travel_line.origin %></td>
-            <td><%= bus_travel.travel_line.destination %></td>
-            <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-            <td><%= bus_travel.travel_line.departure_at %></td>
-            <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-            <td><%= bus_travel.travel_line.arrival_at %></td>
-          </tr>
-        <% end %>
-      <% end %>
-      <% @bus_travels.each do |bus_travel| %>
-        <% if bus_travel.alerts == 0 %>
-          <tr data-link="<%= bus_travel_path(bus_travel) %>">
-            <td><%= bus_travel.travel_line.company.company_name %></td>
-            <td><%= bus_travel.travel_line.identification_number %></td>
-            <td><%= bus_travel.travel_line.origin %></td>
-            <td><%= bus_travel.travel_line.destination %></td>
-            <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-            <td><%= bus_travel.travel_line.departure_at %></td>
-            <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-            <td><%= bus_travel.travel_line.arrival_at %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    <% else %>
-      <% @bus_travels.each do |bus_travel| %>
-        <tr data-link="<%= bus_travel_path(bus_travel) %>">
-          <td><%= bus_travel.travel_line.company.company_name %></td>
-          <td><%= bus_travel.travel_line.identification_number %></td>
-          <td><%= bus_travel.travel_line.origin %></td>
-          <td><%= bus_travel.travel_line.destination %></td>
-          <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-          <td><%= bus_travel.travel_line.departure_at %></td>
-          <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-          <td><%= bus_travel.travel_line.arrival_at %></td>
+  <% if current_user.admin? || current_user.clerk? %>
+    <h4 class="mt-3 ml-1"> Lista de Viagens do dia</h4>
+  <% end %>
+  <div class="card shadow-sm bg-white rounded">
+    <div class="card-body">
+      <table style="width:100%">
+        <tr class="text-primary">
+          <th><i class="fas fa-bus"></i>Empresa</th>
+          <th><i class="fas fa-road"></i>Linha</th>
+          <th><i class="fas fa-map-marked"></i>Origem</th>
+          <th><i class="fas fa-map-marked-alt"></i>Destino</th>
+          <th class="text-center"><i class="fas fa-calendar-alt"></i>Data Partida</th>
+          <th class="text-center"><i class="fas fa-clock"></i>Horário Partida</th>
+          <th class="text-center"><i class="far fa-calendar-alt"></i>Data Chegada</th>
+          <th class="text-center"><i class="far fa-clock"></i>Horário Chegada</th>
+          <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
         </tr>
-      <% end %>
-    <% end %>
-        <!-- <td class="text-primary"> -->
-             <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                          bus_travel_path(bus_travel),
-                          method: :delete,
-                          data: { confirm: "Você tem certeza?" } %>
-        <!-- </td> -->
-  </table>
-  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
-    <%= will_paginate @bus_travels, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+
+        <% if current_user.police? || current_user.admin? %>
+          <% @bus_travels.each do |bus_travel| %>
+            <% if bus_travel.red_alerts > 0 %>
+              <tr class="<%= 'table-danger' %>" data-link="<%= bus_travel_path(bus_travel) %>">
+                <td><%= bus_travel.travel_line.company.company_name %></td>
+                <td><%= bus_travel.travel_line.identification_number %></td>
+                <td><%= bus_travel.travel_line.origin %></td>
+                <td><%= bus_travel.travel_line.destination %></td>
+                <td class="text-center"><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
+                <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+                <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+                <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <% @bus_travels.each do |bus_travel| %>
+            <% if bus_travel.yellow_alerts > 0 && bus_travel.red_alerts == 0 %>
+              <tr class="<%= 'table-warning' %>" data-link="<%= bus_travel_path(bus_travel) %>">
+                <td><%= bus_travel.travel_line.company.company_name %></td>
+                <td><%= bus_travel.travel_line.identification_number %></td>
+                <td><%= bus_travel.travel_line.origin %></td>
+                <td><%= bus_travel.travel_line.destination %></td>
+                <td class="text-center"><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
+                <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+                <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+                <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          <% @bus_travels.each do |bus_travel| %>
+            <% if bus_travel.alerts == 0 %>
+              <tr data-link="<%= bus_travel_path(bus_travel) %>">
+                <td><%= bus_travel.travel_line.company.company_name %></td>
+                <td><%= bus_travel.travel_line.identification_number %></td>
+                <td><%= bus_travel.travel_line.origin %></td>
+                <td><%= bus_travel.travel_line.destination %></td>
+                <td class="text-center"><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
+                <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+                <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+                <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% @bus_travels.each do |bus_travel| %>
+            <tr data-link="<%= bus_travel_path(bus_travel) %>">
+              <td><%= bus_travel.travel_line.company.company_name %></td>
+              <td><%= bus_travel.travel_line.identification_number %></td>
+              <td><%= bus_travel.travel_line.origin %></td>
+              <td><%= bus_travel.travel_line.destination %></td>
+              <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
+              <td><%= bus_travel.travel_line.departure_at %></td>
+              <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+              <td><%= bus_travel.travel_line.arrival_at %></td>
+            </tr>
+          <% end %>
+        <% end %>
+            <!-- <td class="text-primary"> -->
+                <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                              bus_travel_path(bus_travel),
+                              method: :delete,
+                              data: { confirm: "Você tem certeza?" } %>
+            <!-- </td> -->
+      </table>
+      <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+        <%= will_paginate @bus_travels, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+      </div>
+    </div>
   </div>
 </div>
