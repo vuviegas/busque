@@ -1,18 +1,18 @@
 require "cpf_cnpj"
+require 'will_paginate/array'
 
 class BusTravelsController < ApplicationController
   def index
     if current_user.admin? || current_user.police?
-      @bus_travels = BusTravel.all
+      @bus_travels = BusTravel.includes(travel_line: :company, passenger_trips: {passenger: :alerts}
+        ).where('departure_on >= ?', Date.today).sort_by(&:alerts).reverse.paginate(
+        :page => params[:page], :per_page => 10)
     else
       company = Company.where(user_id: current_user.id)
       travel_lines = TravelLine.where(company_id: company.ids)
-      @bus_travels = BusTravel.where(travel_line_id: travel_lines.ids)
-    end
-    if params[:query].present?
-      @bus_travels = BusTravel.search_global(params[:query]).paginate(:page => params[:page], :per_page => 8)
-    else
-      @bus_travels = BusTravel.all.paginate(:page => params[:page], :per_page => 10)
+      @bus_travels = BusTravel.where(travel_line_id: travel_lines.ids).where(
+        'departure_on >= ?', Date.today).paginate(:page => params[:page],
+        :per_page => 10)
     end
   end
 
@@ -39,4 +39,5 @@ class BusTravelsController < ApplicationController
   def bus_travel_params
     params.require(:bus_travel).permit(:departure_on, :arrival_on, :travel_line_id)
   end
+
 end
