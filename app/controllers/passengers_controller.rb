@@ -1,4 +1,5 @@
 class PassengersController < ApplicationController
+  before_action :set_passenger, only: [:show, :edit, :update, :destroy]
 
   def index
     if params[:query].present?
@@ -9,26 +10,44 @@ class PassengersController < ApplicationController
   end
 
   def show
-    @passenger = Passenger.find(params[:id])
     @passenger_trips = PassengerTrip.where(passenger: @passenger)
   end
 
-  # def new
-  #   # @travel_line = TravelLine.find(travel_line_id: bus_travel.travel_line.travel_line_id)
-  #   @passenger = Passenger.new
-  # end
+  def new
+    @passenger = Passenger.new
+  end
 
-  # def create
-  #   @passenger = Passenger.new(passenger_params)
-  #   if @passenger.save
-  #     redirect_to passenger_path, notice: "Passageiro cadastrado com sucesso!"
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @passenger = Passenger.new(passenger_params)
+    @alert = Alert.new(alert_params)
+    @alert.passenger = @passenger
+    @alert.user = current_user
+
+    if @passenger.save
+      @alert.save
+      redirect_to passenger_path(@passenger), notice: "Passageiro e alerta criados com sucesso!"
+    else
+      render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    @passenger.update(passenger_params)
+    @alert = Alert.new(alert_params)
+    @alert.passenger_id = @passenger.id
+    @alert.user_id = current_user.id
+    @alert.solved = false
+    if @alert.save
+      redirect_to passenger_path(@passenger), notice: "Alerta criado com sucesso!"
+    else
+      render :new
+    end
+  end
 
   def destroy
-    @passenger = Passenger.find(params[:id])
     @passenger.destroy
     redirect_to passenger_path
   end
@@ -37,5 +56,13 @@ class PassengersController < ApplicationController
 
   def passenger_params
     params.require(:passenger).permit(:full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state)
+  end
+
+  def alert_params
+    params.require(:passenger).require(:alert).permit(:felony, :description, :level)
+  end
+
+  def set_passenger
+    @passenger = Passenger.find(params[:id])
   end
 end

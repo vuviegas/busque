@@ -1,50 +1,52 @@
 <div class="container">
   <div class="d-flex align-items-center">
     <div>
-      <h3 class="titulo-page mr-4">Lista de Passageiros</h3>
+      <h4 class="mt-3 ml-1 mr-2"> Lista de Passageiros</h4></h3>
     </div>
     <div>
       <%= form_tag passengers_path, class: "d-flex", method: :get do %>
         <%= text_field_tag :query,
-                           params[:query],
-                           class: "form-control",
-                           placeholder: "Pesquisar"
+                          params[:query],
+                          class: "form-control",
+                          placeholder: "Pesquisar"
         %>
         <%= button_tag( :class => "btn-search") do %>
-         <i class="fas fa-search"></i>
+        <i class="fas fa-search"></i>
         <% end %>
       <% end %>
      </div>
   </div>
+  <div class="card shadow-sm bg-white rounded">
+    <div class="card-body">
+        <table style="width:100%">
+          <tr class="text-primary">
+            <th><i class="fas fa-user"></i>Nome</th>
+            <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
+            <th><i class="fas fa-venus-mars"></i>Gênero</th>
+            <th><i class="fas fa-fingerprint"></i>CPF</th>
+            <th><i class="far fa-id-card"></i>RG</th>
+            <th><i class="fas fa-globe-americas"></i>Estado</th>
+            <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
+          </tr>
+          <% @passengers.each do |passenger| %>
+            <tr data-link="<%= passenger_path(passenger) %>">
+              <td><%= passenger.full_name %></td>
+              <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+              <td><%= passenger.gender %></td>
+              <td><%= passenger.formatted_cpf %></td>
+              <td><%= passenger.identification_number %></td>
+              <td class="text-center"><%= passenger.identification_state %></td>
+              <!-- <td class="text-primary"> -->
+                    <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                                passenger_path(passenger),
+                                method: :delete,
+                                data: { confirm: "Você tem certeza?" } %>
+              <!-- </td> -->
+            </tr>
+          <% end %>
+        </table>
+        <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+          <%= will_paginate @passengers, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+        </div>
 
-  <table style="width:100%">
-    <tr class="text-primary">
-      <th><i class="fas fa-user"></i>Nome</th>
-      <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
-      <th><i class="fas fa-venus-mars"></i>Gênero</th>
-      <th><i class="fas fa-fingerprint"></i>CPF</th>
-      <th><i class="far fa-id-card"></i>RG</th>
-      <th><i class="fas fa-globe-americas"></i>Estado</th>
-      <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
-    </tr>
-    <% @passengers.each do |passenger| %>
-      <tr data-link="<%= passenger_path(passenger) %>">
-        <td><%= passenger.full_name %></td>
-        <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
-        <td><%= passenger.gender %></td>
-        <td><%= passenger.formatted_cpf %></td>
-        <td><%= passenger.identification_number %></td>
-        <td class="text-center"><%= passenger.identification_state %></td>
-        <!-- <td class="text-primary"> -->
-               <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                          passenger_path(passenger),
-                          method: :delete,
-                          data: { confirm: "Você tem certeza?" } %>
-        <!-- </td> -->
-      </tr>
-    <% end %>
-  </table>
-  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
-    <%= will_paginate @passengers, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
-  </div>
-</div >
+</div>

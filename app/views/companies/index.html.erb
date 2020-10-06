@@ -1,28 +1,33 @@
 <div class="container">
-<h3 class="titulo-page">Empresas Rodoviárias Cadastradas</h3>
-  <table style="width:100%">
-    <tr class="text-primary">
-      <th><i class="fas fa-bus"></i>Nome da Empresa</th>
-      <th><i class="far fa-id-badge"></i>Balconista</th>
-      <% if current_user.admin? %>
-        <th><i class="fas fa-tools"></i>Opção</th>
-      <% end %>
-    </tr>
-    <% @companies.each do |company| %>
-      <% if current_user.admin? || current_user.police? || company.user == current_user %>
-        <tr>
-          <td><%= company.company_name %></td>
-          <td><%= company.user.email %></td>
+  <h4 class="mt-3 ml-1"> Empresas Rodoviárias Cadastradas</h4>
+  <div class="card shadow-sm bg-white rounded">
+    <div class="card-body">
+      <table style="width:100%">
+        <tr class="text-primary">
+          <th><i class="fas fa-bus"></i>Nome da Empresa</th>
+          <th><i class="far fa-id-badge"></i>Balconista</th>
           <% if current_user.admin? %>
-            <td class="text-primary">
-               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                              company_path(company),
-                              method: :delete,
-                              data: { confirm: "Você tem certeza?" } %>
-            </td>
+            <th class="text-center"><i class="fas fa-tools"></i>Opção</th>
           <% end %>
         </tr>
-      <% end %>
-    <% end %>
-  </table>
+        <% @companies.each do |company| %>
+          <% if current_user.admin? || current_user.police? || company.user == current_user %>
+            <tr>
+              <td><%= company.company_name %></td>
+              <td><%= company.user.email %></td>
+              <% if current_user.admin? %>
+                <td class="text-primary text-center">
+                  <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                                  company_path(company),
+                                  method: :delete,
+                                  data: { confirm: "Você tem certeza?" } %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+  
+    </div>
+  </div>
 </div>

@@ -22,36 +22,56 @@
       <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
       <th><i class="fas fa-tools"></i>Opções</th>
     </tr>
-    <% @bus_travel.passenger_trips.each do |passenger_trip| %>
-      <% if passenger_trip.passenger.alerts.exists? %>
-        <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
-          <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+    <% if current_user.police? || current_user.admin? %>
+      <% @bus_travel.passenger_trips.each do |passenger_trip| %>
+        <% if passenger_trip.passenger.alerts.exists? %>
+          <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
+            <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+          <% else %>
+            <tr class="table-warning" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+          <% end %>
         <% else %>
-          <tr class="table-warning" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+          <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
         <% end %>
-      <% else %>
-        <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
+          <td><%= passenger_trip.passenger.full_name %></td>
+          <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+          <td><%= passenger_trip.passenger.gender %></td>
+          <td><%= passenger_trip.passenger.formatted_cpf %></td>
+          <td><%= passenger_trip.passenger.identification_number %></td>
+          <td><%= passenger_trip.passenger.identification_state %></td>
+          <td><%= passenger_trip.seat %></td>
+          <td><%= passenger_trip.arrival_spot %></td>
+          <td class="text-primary">
+            <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                            passenger_trip_path(passenger_trip),
+                            method: :delete,
+                            data: { confirm: "Você tem certeza?" } %></td>
+          </tr>
       <% end %>
-        <td><%= passenger_trip.passenger.full_name %></td>
-        <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
-        <td><%= passenger_trip.passenger.gender %></td>
-        <td><%= passenger_trip.passenger.formatted_cpf %></td>
-        <td><%= passenger_trip.passenger.identification_number %></td>
-        <td><%= passenger_trip.passenger.identification_state %></td>
-        <td><%= passenger_trip.seat %></td>
-        <td><%= passenger_trip.arrival_spot %></td>
-        <td class="text-primary">
-          <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                          passenger_trip_path(passenger_trip),
-                          method: :delete,
-                          data: { confirm: "Você tem certeza?" } %></td>
+    <% else %>
+      <% @bus_travel.passenger_trips.each do |passenger_trip| %>
+        <tr>
+          <td><%= passenger_trip.passenger.full_name %></td>
+          <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+          <td><%= passenger_trip.passenger.gender %></td>
+          <td><%= passenger_trip.passenger.formatted_cpf %></td>
+          <td><%= passenger_trip.passenger.identification_number %></td>
+          <td><%= passenger_trip.passenger.identification_state %></td>
+          <td><%= passenger_trip.seat %></td>
+          <td><%= passenger_trip.arrival_spot %></td>
+          <td class="text-primary">
+            <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                            passenger_trip_path(passenger_trip),
+                            method: :delete,
+                            data: { confirm: "Você tem certeza?" } %></td>
         </tr>
+        <% end %>
     <% end %>
   </table>
-  <div class="btn-voltar mt-2">
+  <div class="btn-voltar mt-2 mr-4">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
   </div>
-  <div>
-    <button class="btn btn-primary btn-lg no-print" id="printPageButton" onClick="window.print();">Imprimir</button>
+  <div class="text-center">
+    <button class="btn btn-primary btn-sm no-print" id="printPageButton" onClick="window.print();">Imprimir</button>
   </div>
 </div>

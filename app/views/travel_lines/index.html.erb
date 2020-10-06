@@ -1,39 +1,44 @@
 <div class="container">
-<h3 class="titulo-page">Linhas de Ônibus</h3>
-  <table style="width:100%">
-    <tr class="text-primary">
-      <th><i class="fas fa-bus"></i>Empresa</th>
-      <th><i class="fas fa-road"></i>Linha</th>
-      <th><i class="fas fa-map-marked"></i>Origem</th>
-      <th><i class="fas fa-map-marked-alt"></i>Destino</th>
-      <th><i class="fas fa-clock"></i>Horário de Saída</th>
-      <th><i class="far fa-clock"></i>Horário de Chegada</th>
-      <% if current_user.admin? %>
-        <th><i class="fas fa-tools"></i>Opções</th>
-      <% end %>
-    </tr>
-    <% @travel_lines.each do |travel_line| %>
-      <% if current_user.admin? || current_user.police? || travel_line.company.user == current_user %>
-        <tr>
-          <td><%= travel_line.company.company_name %></td>
-          <td><%= travel_line.identification_number %></td>
-          <td><%= travel_line.origin %></td>
-          <td><%= travel_line.destination %></td>
-          <td><%= travel_line.departure_at %></td>
-          <td><%= travel_line.arrival_at %></td>
-          <% if current_user.admin? %>
-            <td class="text-primary">
-               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                              travel_line_path(travel_line),
-                              method: :delete,
-                              data: { confirm: "Você tem certeza?" } %>
-            </td>
+  <h4 class="mt-3 ml-1"> Linhas de Ônibus</h4>
+  <div class="card shadow-sm bg-white rounded">
+    <div class="card-body">
+
+        <table style="width:100%">
+          <tr class="text-primary">
+            <th><i class="fas fa-bus"></i>Empresa</th>
+            <th class="text-center"><i class="fas fa-road"></i>Linha</th>
+            <th><i class="fas fa-map-marked"></i>Origem</th>
+            <th><i class="fas fa-map-marked-alt"></i>Destino</th>
+            <th class="text-center"><i class="fas fa-clock"></i>Horário de Saída</th>
+            <th class="text-center"><i class="far fa-clock"></i>Horário de Chegada</th>
+            <% if current_user.admin? %>
+              <th class="text-center"><i class="fas fa-tools"></i>Opções</th>
+            <% end %>
+          </tr>
+          <% @travel_lines.each do |travel_line| %>
+            <% if current_user.admin? || current_user.police? || travel_line.company.user == current_user %>
+              <tr>
+                <td><%= travel_line.company.company_name %></td>
+                <td class="text-center"><%= travel_line.identification_number %></td>
+                <td><%= travel_line.origin %></td>
+                <td><%= travel_line.destination %></td>
+                <td class="text-center"><%= travel_line.departure_at %></td>
+                <td class="text-center"><%= travel_line.arrival_at %></td>
+                <% if current_user.admin? %>
+                  <td class="text-primary text-center">
+                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                                    travel_line_path(travel_line),
+                                    method: :delete,
+                                    data: { confirm: "Você tem certeza?" } %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
           <% end %>
-        </tr>
-      <% end %>
-    <% end %>
-  </table>
-  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
-    <%= will_paginate @travel_lines, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
-</div>
+        </table>
+        <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+          <%= will_paginate @travel_lines, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
+      </div>
+    </div>
+  </div>
 </div>
