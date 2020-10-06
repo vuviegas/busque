@@ -20,8 +20,12 @@ class BusTravel < ApplicationRecord
     passenger_trips.count { |t| t.passenger.alerts.where(level: 'red').exists? }
   end
 
+  def yellow_alerts
+    passenger_trips.count { |t| t.passenger.alerts.where(level: 'yellow').exists? }
+  end
+
   def no_alerts
-    passenger_trips.count { |t| t.passenger.alerts.blank? }
+    passenger_trips.count { |t| t.passenger.alerts.empty? }
   end
 end
 

@@ -13,21 +13,27 @@
       <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
     </tr>
     <% @bus_travels.each do |bus_travel| %>
-      <tr class="<%= 'table-danger' if bus_travel.alerts > 0 %>" data-link="<%= bus_travel_path(bus_travel) %>">
-          <td><%= bus_travel.travel_line.company.company_name %></td>
-          <td><%= bus_travel.travel_line.identification_number %></td>
-          <td><%= bus_travel.travel_line.origin %></td>
-          <td><%= bus_travel.travel_line.destination %></td>
-          <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-          <td><%= bus_travel.travel_line.departure_at %></td>
-          <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-          <td><%= bus_travel.travel_line.arrival_at %></td>
-          <!-- <td class="text-primary"> -->
-               <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                            bus_travel_path(bus_travel),
-                            method: :delete,
-                            data: { confirm: "Você tem certeza?" } %>
-          <!-- </td> -->
+      <% if bus_travel.red_alerts > 0 %>
+        <tr class="<%= 'table-danger' if current_user.police? || current_user.admin? %>" data-link="<%= bus_travel_path(bus_travel) %>">
+      <% elsif bus_travel.alerts > 0 %>
+        <tr class="<%= 'table-warning' if current_user.police? || current_user.admin? %>" data-link="<%= bus_travel_path(bus_travel) %>">
+      <% else %>
+        <tr data-link="<%= bus_travel_path(bus_travel) %>">
+      <% end %>
+        <td><%= bus_travel.travel_line.company.company_name %></td>
+        <td><%= bus_travel.travel_line.identification_number %></td>
+        <td><%= bus_travel.travel_line.origin %></td>
+        <td><%= bus_travel.travel_line.destination %></td>
+        <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
+        <td><%= bus_travel.travel_line.departure_at %></td>
+        <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+        <td><%= bus_travel.travel_line.arrival_at %></td>
+        <!-- <td class="text-primary"> -->
+             <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                          bus_travel_path(bus_travel),
+                          method: :delete,
+                          data: { confirm: "Você tem certeza?" } %>
+        <!-- </td> -->
       </tr>
     <% end %>
   </table>
