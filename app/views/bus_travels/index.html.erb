@@ -29,8 +29,8 @@
         <% end %>
       <% end %>
       <% @bus_travels.each do |bus_travel| %>
-        <% if bus_travel.yellow_alerts > 0 || !bus_travel.red_alerts %>
-          <tr class="<%= 'table-warning' if current_user.police? || current_user.admin? %>" data-link="<%= bus_travel_path(bus_travel) %>">
+        <% if bus_travel.yellow_alerts > 0 && bus_travel.red_alerts == 0 %>
+          <tr class="<%= 'table-warning' %>" data-link="<%= bus_travel_path(bus_travel) %>">
             <td><%= bus_travel.travel_line.company.company_name %></td>
             <td><%= bus_travel.travel_line.identification_number %></td>
             <td><%= bus_travel.travel_line.origin %></td>
