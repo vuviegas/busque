@@ -1,5 +1,14 @@
 require 'faker'
 require "cpf_cnpj"
+
+User.destroy_all
+Company.destroy_all
+TravelLine.destroy_all
+BusTravel.destroy_all
+PassengerTrip.destroy_all
+Passenger.destroy_all
+Alert.destroy_all
+
 admin1 = User.create!(name: "Vinicius", email: "vinicius@busque.com", password: "123456", role: "admin")
 admin2 = User.create!(name: "Ricardo", email: "ricardo@busque.com", password: "123456", role: "admin")
 admin3 = User.create!(name: "Umberto", email: "umberto@busque.com", password: "123456", role: "admin")
