@@ -2,6 +2,7 @@
   <h3>Dados do Passageiro</h3>
   <table style="width:100%">
     <tr class="text-primary">
+      <th></th>
       <th><i class="fas fa-user"></i>Nome</th>
       <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
       <th><i class="fas fa-venus-mars"></i>Gênero</th>
@@ -9,13 +10,15 @@
       <th><i class="far fa-id-card"></i>RG</th>
       <th><i class="fas fa-globe-americas"></i>Estado</th>
     </tr>
+      <% unless @passenger.photo.nil? %>
+      <td><%= cl_image_tag @passenger.photo.key, height: 48, width: 48, crop: :fill %></td>
+      <% end %>
       <td><%= @passenger.full_name %></td>
       <td><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
       <td><%= @passenger.gender %></td>
       <td><%= @passenger.formatted_cpf %></td>
       <td><%= @passenger.identification_number %></td>
       <td><%= @passenger.identification_state %></td>
-     #<td><%= @passenger.id %></td>
     </tr>
   </table>
     <h3>Últimas Viagens</h3>
