@@ -1,86 +1,97 @@
 <div class="container">
-  <h3>Dados do Passageiro</h3>
-  <table style="width:100%">
-    <tr class="text-primary">
-      <th><i class="fas fa-user"></i>Nome</th>
-      <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
-      <th><i class="fas fa-venus-mars"></i>Gênero</th>
-      <th><i class="fas fa-fingerprint"></i>CPF</th>
-      <th><i class="far fa-id-card"></i>RG</th>
-      <th><i class="fas fa-globe-americas"></i>Estado</th>
-    </tr>
-      <td><%= @passenger.full_name %></td>
-      <td><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
-      <td><%= @passenger.gender %></td>
-      <td><%= @passenger.formatted_cpf %></td>
-      <td><%= @passenger.identification_number %></td>
-      <td><%= @passenger.identification_state %></td>
-     #<td><%= @passenger.id %></td>
-    </tr>
-  </table>
-    <h3>Últimas Viagens</h3>
-  <table>
-    <tr class="text-primary">
-      <th><i class="fas fa-bus"></i>Empresa</th>
-      <th><i class="fas fa-road"></i>Linha</th>
-      <th><i class="fas fa-map-marked"></i>Origem</th>
-      <th><i class="fas fa-calendar-alt"></i>Data Partida</th>
-      <th><i class="fas fa-clock"></i>Horário Partida</th>
-      <th><i class="fas fa-map-marked-alt"></i>Destino</th>
-      <th><i class="far fa-calendar-alt"></i>Data Chegada</th>
-      <th><i class="far fa-clock"></i>Horário Chegada</th>
-      <th><i class="fas fa-couch"></i>Poltrona</th>
-      <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
-    </tr>
-    <% @passenger_trips.each do |passenger_trip| %>
-      <tr data-link="<%= bus_travel_path(passenger_trip.bus_travel) %>">
-        <td><%= passenger_trip.bus_travel.travel_line.company.company_name %></td>
-        <td><%= passenger_trip.bus_travel.travel_line.identification_number %></td>
-        <td><%= passenger_trip.bus_travel.travel_line.origin %></td>
-        <td><%= passenger_trip.bus_travel.departure_on.strftime("%d/%m/%Y") %></td>
-        <td><%= passenger_trip.bus_travel.travel_line.departure_at %></td>
-        <td><%= passenger_trip.bus_travel.travel_line.destination %></td>
-        <td><%= passenger_trip.bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-        <td><%= passenger_trip.bus_travel.travel_line.arrival_at %></td>
-        <td><%= passenger_trip.seat %></td>
-        <td><%= passenger_trip.arrival_spot %></td>
-      </tr>
-    <% end %>
-  </table>
-
-  <% if current_user.admin? || current_user.police? %>
-    <h3>Alertas</h3>
-    <table>
-      <tr class="text-primary">
-        <th><i class="fas fa-bus"></i>Natureza</th>
-        <th><i class="fas fa-road"></i>Descrição</th>
-        <th><i class="fas fa-calendar-alt"></i>Solucionado</th>
-      </tr>
-      <% @passenger.alerts.each do |alert| %>
-        <% if alert.level == 'red' %>
-          <tr class="table-danger">
-        <% else %>
-          <tr class="table-warning">
-        <% end %>
-            <td><%= alert.felony %></td>
-            <td><%= alert.description %></td>
-            <td><%= alert.solved %></td>
-
-        <% if current_user == alert.user || current_user.admin? %>
-          <td class="text-primary">
-               <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                              alert_path(alert),
-                              method: :delete,
-                              data: { confirm: "Você tem certeza?" } %>
-        <% end %>
+  <h4 class="mt-2 ml-1"> Dados do Cadastrado</h4>
+  <div class="card shadow-sm pb-3 bg-white rounded">
+    <div class="card-body">
+        <table style="width:100%">
+          <tr class="text-primary">
+            <th> Nome</th>
+            <th class="text-center"><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
+            <th class="text-center"><i class="fas fa-venus-mars"></i>Gênero</th>
+            <th class="text-center"><i class="fas fa-fingerprint"></i>CPF</th>
+            <th class="text-center"><i class="far fa-id-card"></i>RG</th>
+            <th class="text-center"><i class="fas fa-globe-americas"></i>Estado</th>
           </tr>
+            <td><%= @passenger.full_name %></td>
+            <td class="text-center"><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+            <td class="text-center"><%= @passenger.gender %></td>
+            <td class="text-center"><%= @passenger.formatted_cpf %></td>
+            <td class="text-center"><%= @passenger.identification_number %></td>
+            <td class="text-center"><%= @passenger.identification_state %></td>
+          </tr>
+        </table>
+    </div>
+  </div>
 
+  <h4 class="mt-5 ml-1"> Alertas</h4>
+  <div class="card text-primary shadow-sm pb-3 bg-white rounded">
+    <div class="card-body">
+        <% if current_user.admin? || current_user.police? %>
+          <table>
+            <tr class="text-primary">
+              <th><i class="fas fa-bus"></i>Natureza</th>
+              <th><i class="fas fa-road"></i>Descrição</th>
+              <th><i class="fas fa-calendar-alt"></i>Solucionado</th>
+             </tr>
+              <% @passenger.alerts.each do |alert| %>
+                <% if alert.level == 'red' %>
+                  <tr class="table-danger">
+                <% else %>
+                  <tr class="table-warning">
+                <% end %>
+                    <td><%= alert.felony %></td>
+                    <td><%= alert.description %></td>
+                    <td><%= alert.solved %></td>
+
+                <% if current_user == alert.user || current_user.admin? %>
+                  <td class="text-primary">
+                      <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                                      alert_path(alert),
+                                      method: :delete,
+                                      data: { confirm: "Você tem certeza?" } %>
+                <% end %>
+               </tr>
+
+          <% end %>
+        </table>
       <% end %>
-    </table>
-  <% end %>
+    </div>
+  </div>
 
-
+  <h4 class="mt-5 ml-1"> Histórico de Viagens</h4>
+  <div class="card shadow-sm pb-3 bg-white rounded">
+    <div class="card-body">
+        <table>
+          <tr class="text-primary">
+            <th><i class="fas fa-bus"></i>Empresa</th>
+            <th><i class="fas fa-road"></i>Linha</th>
+            <th><i class="fas fa-map-marked"></i>Origem</th>
+            <th><i class="fas fa-calendar-alt"></i>Data Partida</th>
+            <th><i class="fas fa-clock"></i>Horário Partida</th>
+            <th><i class="fas fa-map-marked-alt"></i>Destino</th>
+            <th><i class="far fa-calendar-alt"></i>Data Chegada</th>
+            <th><i class="far fa-clock"></i>Horário Chegada</th>
+            <th><i class="fas fa-couch"></i>Poltrona</th>
+            <th><i class="fas fa-suitcase-rolling"></i>Local de Desembarque</th>
+          </tr>
+          <% @passenger_trips.each do |passenger_trip| %>
+            <tr data-link="<%= bus_travel_path(passenger_trip.bus_travel) %>">
+              <td><%= passenger_trip.bus_travel.travel_line.company.company_name %></td>
+              <td><%= passenger_trip.bus_travel.travel_line.identification_number %></td>
+              <td><%= passenger_trip.bus_travel.travel_line.origin %></td>
+              <td class="text-center"><%= passenger_trip.bus_travel.departure_on.strftime("%d/%m/%Y") %></td>
+              <td class="text-center"><%= passenger_trip.bus_travel.travel_line.departure_at %></td>
+              <td><%= passenger_trip.bus_travel.travel_line.destination %></td>
+              <td class="text-center"><%= passenger_trip.bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+              <td class="text-center"><%= passenger_trip.bus_travel.travel_line.arrival_at %></td>
+              <td class="text-center"><%= passenger_trip.seat %></td>
+              <td><%= passenger_trip.arrival_spot %></td>
+            </tr>
+          <% end %>
+        </table>
+    </div>
+  </div>
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
   </div>
+
 </div>
