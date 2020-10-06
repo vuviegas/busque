@@ -15,6 +15,14 @@ class BusTravel < ApplicationRecord
     # self.alert = true if warning
     # warning
   end
+
+  def red_alerts
+    passenger_trips.count { |t| t.passenger.alerts.where(level: 'red').exists? }
+  end
+
+  def no_alerts
+    passenger_trips.count { |t| t.passenger.alerts.blank? }
+  end
 end
 
 # alerts.where(level: 'yellow')
