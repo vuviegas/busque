@@ -7,9 +7,9 @@
       <th><i class="fas fa-map-marked"></i>Origem</th>
       <th><i class="fas fa-map-marked-alt"></i>Destino</th>
       <th><i class="fas fa-calendar-alt"></i>Data Partida</th>
-      <th><i class="fas fa-clock"></i>Horário Partida</th>
-      <th><i class="far fa-calendar-alt"></i>Data Chegada</th>
-      <th><i class="far fa-clock"></i>Horário Chegada</th>
+      <th class="text-center"><i class="fas fa-clock"></i>Horário Partida</th>
+      <th class="text-center"><i class="far fa-calendar-alt"></i>Data Chegada</th>
+      <th class="text-center"><i class="far fa-clock"></i>Horário Chegada</th>
       <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
     </tr>
 
@@ -22,9 +22,9 @@
             <td><%= bus_travel.travel_line.origin %></td>
             <td><%= bus_travel.travel_line.destination %></td>
             <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-            <td><%= bus_travel.travel_line.departure_at %></td>
-            <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-            <td><%= bus_travel.travel_line.arrival_at %></td>
+            <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+            <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+            <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
           </tr>
         <% end %>
       <% end %>
@@ -36,9 +36,9 @@
             <td><%= bus_travel.travel_line.origin %></td>
             <td><%= bus_travel.travel_line.destination %></td>
             <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-            <td><%= bus_travel.travel_line.departure_at %></td>
-            <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-            <td><%= bus_travel.travel_line.arrival_at %></td>
+            <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+            <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+            <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
           </tr>
         <% end %>
       <% end %>
@@ -50,9 +50,9 @@
             <td><%= bus_travel.travel_line.origin %></td>
             <td><%= bus_travel.travel_line.destination %></td>
             <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-            <td><%= bus_travel.travel_line.departure_at %></td>
-            <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-            <td><%= bus_travel.travel_line.arrival_at %></td>
+            <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+            <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+            <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
           </tr>
         <% end %>
       <% end %>
@@ -64,9 +64,9 @@
           <td><%= bus_travel.travel_line.origin %></td>
           <td><%= bus_travel.travel_line.destination %></td>
           <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-          <td><%= bus_travel.travel_line.departure_at %></td>
-          <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-          <td><%= bus_travel.travel_line.arrival_at %></td>
+          <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+          <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+          <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
         </tr>
       <% end %>
     <% end %>
