@@ -39,6 +39,8 @@ gem 'devise'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+# Cloudinary
+gem 'cloudinary', '~> 1.16.0'
 
 gem 'cpf_cnpj'
 gem 'validates_timeliness', '~> 5.0.0.beta1'

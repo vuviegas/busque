@@ -2,6 +2,7 @@ class Passenger < ApplicationRecord
   has_many :passenger_trips, dependent: :destroy
   has_many :alerts, dependent: :destroy
   has_many :bus_travels, through: :passenger_trips
+  has_one_attached :photo
 
   # accepts_nested_attributes_for :passenger_trips
 
@@ -9,7 +10,7 @@ class Passenger < ApplicationRecord
   validates :date_of_birth, timeliness: { on_or_before: lambda { Date.current }, type: :date }
   validates :gender, inclusion: { in: ["Feminino", "Masculino", "Não Informado"],
                   message: "%{value} não é uma opção válida" }
-  # validates :cpf, length: { is: 11 }
+  validates :cpf, uniqueness: true
 
   validates :identification_state, length: { is: 2 }
 

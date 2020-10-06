@@ -15,11 +15,11 @@ class PassengerTripsController < ApplicationController
     if params[:travel_line]
       redirect_to new_passenger_trip_path(@bus_travel, travel_line: params[:travel_line])
     else
-      @passenger = Passenger.where(passenger_params)
+      @passenger = Passenger.find_by(cpf: params[:passenger_trip][:passenger][:cpf])
 
-      if @passenger.exists?
+      if @passenger
         @passenger_trip = PassengerTrip.new(passenger_trip_params)
-        @passenger_trip.passenger_id = @passenger.ids.first
+        @passenger_trip.passenger_id = @passenger.id
         @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
         if @passenger_trip.save
           redirect_to bus_travel_path(@passenger_trip.bus_travel)
@@ -81,7 +81,8 @@ class PassengerTripsController < ApplicationController
                                                            :gender,
                                                            :cpf,
                                                            :identification_number,
-                                                           :identification_state)
+                                                           :identification_state,
+                                                           :photo)
   end
 end
 
