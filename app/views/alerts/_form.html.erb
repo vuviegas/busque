@@ -16,13 +16,13 @@
     </div>
 
     <div class="form-inputs">
-      <%= f.input :felony, :collection => ["Tráfico de Drogas",
-                                       "Tráfico de Pessoas",
-                                       "Tráfico de Armas",
-                                       "Contrabando",
-                                       "Descaminho",
-                                       "Crime Ambiental",
-                                       "Outros"],
+      <%= f.input :felony, :collection => ["Contrabando",
+                                          "Descaminho",
+                                          "Crime Ambiental",
+                                          "Tráfico de Drogas",
+                                          "Tráfico de Armas",
+                                          "Tráfico de Pessoas",
+                                          "Outros"],
                   :input_html => {:class => 'selectpicker'},
                   :label => 'Natureza',
                   prompt: "Escolha uma opção" %>
