@@ -6,11 +6,6 @@
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center">
-      <%# <div>
-      <a class="navbar-brand" href="#">
-        <p class="logo-sign">BUS<i class="fas fa-search search-nav"></i>ue</p>
-      </a>
-      </div> %>
       <img src="https://kitt.lewagon.com/placeholder/users/Maykhodr" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
       <div class="media-body">
         <p class="m-0"><%= current_user.name %></p>
@@ -19,77 +14,113 @@
     </div>
   </div>
 
-  <%# <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Principal</p> %>
 
-  <ul class="nav flex-column bg-white mb-0">
+  <ul class="nav flex-column bg-white mb-0" style="margin-top: -20px;">
     <li class="nav-item">
-      <%= link_to root_path, class: "nav-link text-dark bg-light" do %>
+      <%= link_to root_path, class: "nav-link text-dark", id: "inicio" do %>
         <i class="fas fa-home mr-3 text-primary fa-fw"></i>Início
       <% end %>
     </li>
+    <% if current_user.admin? || current_user.clerk? %>
+          <li class="nav-item">
+            <%= link_to companies_path, class: "nav-link text-dark", id: "empresa" do %>
+              <i class="fas fa-bus mr-3 text-primary fa-fw"></i>Empresas
+            <% end %>
+          </li>
+          <!-- Mudei de company_travel_lines_path(:company_id) para travel_lines_path -->
+          <li class="nav-item">
+            <%= link_to travel_lines_path, class: "nav-link text-dark", id: "onibus" do %>
+              <i class="fas fa-road mr-3 text-primary fa-fw"></i>Linhas de Ônibus
+            <% end %>
+          </li>
+    <% end %>
     <li class="nav-item">
-      <%= link_to companies_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-bus mr-3 text-primary fa-fw"></i>Empresas
-      <% end %>
-    </li>
-    <!-- Mudei de company_travel_lines_path(:company_id) para travel_lines_path -->
-    <li class="nav-item">
-      <%= link_to travel_lines_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-road mr-3 text-primary fa-fw"></i>Linhas de Ônibus
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to bus_travels_path, class: "nav-link text-dark" do %>
+      <%= link_to bus_travels_path, class: "nav-link text-dark", id: "viagem" do %>
         <i class="fas fa-route mr-3 text-primary fa-fw"></i>Viagens
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to passengers_path, class: "nav-link text-dark" do %>
+      <%= link_to passengers_path, class: "nav-link text-dark", id: "passageiro" do %>
         <i class="fas fa-users mr-3 text-primary fa-fw"></i>Passageiros
       <% end %>
     </li>
-    <li class="nav-item">
-      <%= link_to new_passenger_trip_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-address-card mr-3 text-primary fa-fw"></i>Cadastrar Passageiro
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to new_company_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-city mr-3 text-primary fa-fw"></i>Cadastrar Empresa
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to new_travel_line_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-project-diagram mr-3 text-primary fa-fw"></i>Cadastrar Linha
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to new_bus_travel_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-suitcase mr-3 text-primary fa-fw"></i>Cadastrar Viagem
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to new_alert_path, class: "nav-link text-dark" do %>
-        <i class="fas fa-exclamation-triangle mr-3 text-primary fa-fw"></i>Cadastrar Suspeita
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to alerts_path, class: "nav-link text-dark" do %>
-        <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
-        Alertas
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark">
-        <i class="fa fa-book mr-3 text-primary fa-fw"></i>
-        Diário
-      </a>
-    </li>
+    <% if current_user.admin? || current_user.clerk? %>
+          <li class="nav-item">
+            <%= link_to new_passenger_trip_path, class: "nav-link text-dark", id: "cpassageiro" do %>
+              <i class="fas fa-address-card mr-3 text-primary fa-fw"></i>Cadastrar Passageiro
+            <% end %>
+          </li>
+    <% end %>
+    <% if current_user.admin? %>
+          <li class="nav-item">
+            <%= link_to new_company_path, class: "nav-link text-dark", id: "cempresa" do %>
+              <i class="fas fa-city mr-3 text-primary fa-fw"></i>Cadastrar Empresa
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_travel_line_path, class: "nav-link text-dark", id: "clinha" do %>
+              <i class="fas fa-project-diagram mr-3 text-primary fa-fw"></i>Cadastrar Linha
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to new_bus_travel_path, class: "nav-link text-dark", id: "cviagem" do %>
+              <i class="fas fa-suitcase mr-3 text-primary fa-fw"></i>Cadastrar Viagem
+            <% end %>
+          </li>
+    <% end %>
+    <% if current_user.admin? || current_user.police? %>
+          <li class="nav-item">
+            <%= link_to new_alert_path, class: "nav-link text-dark", id: "suspeita" do %>
+              <i class="fas fa-exclamation-triangle mr-3 text-primary fa-fw"></i>Cadastrar Suspeita
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to alerts_path, class: "nav-link text-dark", id: "alertas" do %>
+              <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
+              Alertas
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-dark" id="diario">
+              <i class="fa fa-book mr-3 text-primary fa-fw"></i>
+              Diário
+            </a>
+          </li>
+    <% end %>
     <li class="nav-item">
       <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
         <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>Sair
       <% end %>
     </li>
   </ul>
+
 </div>
 <% end %>
+
+<script>
+  if (inicio){ let inicio = document.getElementById("inicio"); }
+  if (empresa){ let empresa = document.getElementById("empresa"); }
+  if (onibus){ let onibus = document.getElementById("onibus"); }
+  if (viagem){ let viagem = document.getElementById("viagem"); }
+  if (passageiro){ let passageiro = document.getElementById("passageiro"); }
+  if (cpassageiro){ let cpassageiro = document.getElementById("cpassageiro"); }
+  if (cempresa){ let cempresa = document.getElementById("cempresa"); }
+  if (clinha){ let clinha = document.getElementById("clinha"); }
+  if (cviagem){ let cviagem = document.getElementById("cviagem"); }
+  if (suspeita){ let suspeita = document.getElementById("suspeita"); }
+  if (alertas){ let alertas = document.getElementById("alertas"); }
+  if (diario){ let diario = document.getElementById("diario"); }
+
+  if (window.location.pathname === "/") { inicio.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/companies") { empresa.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/travel_lines") { onibus.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/bus_travels") { viagem.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/passengers") { passageiro.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/passenger_trips/new") { cpassageiro.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/companies/new") { cempresa.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/travel_lines/new") { clinha.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/bus_travels/new") { cviagem.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/alerts/new") { suspeita.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/alerts") { alertas.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/#") { empresa.classList.toggle("bg-item-menu") }
+</script>
