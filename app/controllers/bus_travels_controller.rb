@@ -1,3 +1,5 @@
+require "cpf_cnpj"
+
 class BusTravelsController < ApplicationController
   def index
     if current_user.admin? || current_user.police?
