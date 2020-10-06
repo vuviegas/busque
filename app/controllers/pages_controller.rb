@@ -3,7 +3,7 @@ require 'will_paginate/array'
 class PagesController < ApplicationController
   def home
     if current_user.admin? || current_user.police?
-      @bus_travels = BusTravel.includes(
+      @bus_travels = BusTravel.by_departure.includes(
         travel_line: :company, passenger_trips: { passenger: :alerts }
         ).where(departure_on: Date.today).sort_by(&:alerts).reverse.paginate(
         :page => params[:page], :per_page => 10)
