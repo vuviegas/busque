@@ -4,17 +4,15 @@
       <h3 class="titulo-page mr-4">Lista de Passageiros</h3>
     </div>
     <div>
-      <%= form_tag passengers_path, method: :get do %>
+      <%= form_tag passengers_path, class: "d-flex", method: :get do %>
         <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Pesquisar"
+                           params[:query],
+                           class: "form-control",
+                           placeholder: "Pesquisar"
         %>
-    </div>
-    <div>
-      <%= button_tag 'Add', type: 'button', class: 'btn-search' do %>
-      <i class="fas fa-search"></i>
-      <% end %>
+        <%= button_tag( :class => "btn-search") do %>
+         <i class="fas fa-search"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -34,7 +32,7 @@
         <td><%= passenger.full_name %></td>
         <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
         <td><%= passenger.gender %></td>
-        <td><%= passenger.cpf %></td>
+        <td><%= passenger.formatted_cpf %></td>
         <td><%= passenger.identification_number %></td>
         <td class="text-center"><%= passenger.identification_state %></td>
         <!-- <td class="text-primary"> -->
