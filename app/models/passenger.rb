@@ -12,7 +12,7 @@ class Passenger < ApplicationRecord
   validates :date_of_birth, timeliness: { on_or_before: lambda { Date.current }, type: :date }
   validates :gender, inclusion: { in: ["Feminino", "Masculino", "Não Informado"],
                   message: "%{value} não é uma opção válida" }
-  validates :cpf, length: { is: 11 }
+  # validates :cpf, length: { is: 11 }
                     # message: "%{value} deve ter 11 caracteres" }
   # validates :cpf, :identification_number, format: { with: REGEX_2, message: "%{value} deve ter apenas números" }
   validates :identification_state, length: { is: 2 }

@@ -30,7 +30,6 @@
                                        "Pedra Branca",
                                        "Laranjal do Jari",
                                        "Serra do Navio"].sort,
-                  :input_html => {:class => 'dropdown'},
                   :label => 'Local de Desembarque'%>
       </div>
 
@@ -39,12 +38,11 @@
           <%= passenger_form.input :full_name, label: "Nome Completo" %>
           <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
           <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
-                  :input_html => {:class => 'dropdown'},label: "Gênero" %>
+                  label: "Gênero" %>
           <%= passenger_form.input :cpf, label: "CPF" %>
           <%= passenger_form.input :identification_number, label: "RG" %>
           <%= passenger_form.input :identification_state,
               :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
-              :input_html => {:class => 'dropdown'},
               label: "UF" %>
         <% end %>
       </div>
