@@ -6,7 +6,15 @@
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center">
+    <% if current_user.admin? %>
+      <img src="https://kitt.lewagon.com/placeholder/users/vuviegas" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+    <% end %>
+    <% if current_user.police? %>
       <img src="https://kitt.lewagon.com/placeholder/users/Maykhodr" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+    <% end %>
+    <% if current_user.clerk? %>
+      <img src="https://kitt.lewagon.com/placeholder/users/albrechtcfn" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+    <% end %>
       <div class="media-body">
         <p class="m-0"><%= current_user.name %></p>
         <p class="font-weight-light text-muted mb-0"><%= current_user.role.capitalize %></p>
