@@ -1,3 +1,4 @@
+require "cpf_cnpj"
 class PassengerTripsController < ApplicationController
   # before_action :set_bus_travel, only: [:new, :create]
 
