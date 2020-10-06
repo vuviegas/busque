@@ -20,13 +20,17 @@ class AlertsController < ApplicationController
   def create
     if current_user.admin? || current_user.police?
       @passenger = Passenger.where(passenger_params)
-
       if @passenger.exists?
         passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf]).ids.first
         redirect_to edit_passenger_path(passenger_id)
       else
         redirect_to new_passenger_path
       end
+    else
+      forbidden
+    end
+      # => Antigo codigo, anterior a implementação da busca por CPF prévia ao
+      # => cadastro da suspeita:
 
       # if @passenger.exists?
       #   @alert = Alert.new(alert_params)
@@ -50,9 +54,6 @@ class AlertsController < ApplicationController
       #     render :new
       #   end
       # end
-    else
-      forbidden
-    end
   end
 
   def destroy
