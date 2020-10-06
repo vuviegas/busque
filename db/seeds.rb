@@ -84,7 +84,7 @@ bus_travels = BusTravel.all
 840.times do | passanger |
   passenger = Passenger.create!(full_name: Faker::Name.name_with_middle,
     date_of_birth: Faker::Date.birthday,
-    gender: ["feminino", "masculino", "não informado"].sample,
+    gender: ["Feminino", "Masculino", "Não Informado"].sample,
     cpf: CPF.generate(true),
     identification_number: Faker::IDNumber.brazilian_id(formatted: false),
     identification_state: %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF].sample)
