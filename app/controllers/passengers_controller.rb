@@ -35,6 +35,7 @@ class PassengersController < ApplicationController
   end
 
   def update
+    # raise
     @passenger.update(passenger_params)
     @alert = Alert.new(alert_params)
     @alert.passenger_id = @passenger.id

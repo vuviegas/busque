@@ -77,10 +77,14 @@
 
       <% end %>
     </table>
+    <div class="btn-voltar mt-2">
+    <%= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
+  </div>
   <% end %>
 
 
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
   </div>
+
 </div>
