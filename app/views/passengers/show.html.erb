@@ -54,15 +54,18 @@
       <tr class="text-primary">
         <th><i class="fas fa-bus"></i>Natureza</th>
         <th><i class="fas fa-road"></i>Descrição</th>
-        <th><i class="fas fa-map-marked"></i>Nível</th>
         <th><i class="fas fa-calendar-alt"></i>Solucionado</th>
       </tr>
       <% @passenger.alerts.each do |alert| %>
-        <tr>
-          <td><%= alert.felony %></td>
-          <td><%= alert.description %></td>
-          <td><%= alert.level %></td>
-          <td><%= alert.solved %></td>
+        <% if alert.level == 'red' %>
+          <tr class="table-danger">
+        <% else %>
+          <tr class="table-warning">
+        <% end %>
+            <td><%= alert.felony %></td>
+            <td><%= alert.description %></td>
+            <td><%= alert.solved %></td>
+
         <% if current_user == alert.user || current_user.admin? %>
           <td class="text-primary">
                <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
@@ -70,7 +73,8 @@
                               method: :delete,
                               data: { confirm: "Você tem certeza?" } %>
         <% end %>
-        </tr>
+          </tr>
+
       <% end %>
     </table>
   <% end %>
