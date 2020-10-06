@@ -78,13 +78,18 @@
                                       method: :delete,
                                       data: { confirm: "Você tem certeza?" } %>
                 <% end %>
-               </tr>
-
-          <% end %>
-        </table>
-      <% end %>
+              </tr>
+            <% end %>
+          </table>
+        <% end %>
+      </table>
+    </div>
+    <div class="btn-voltar mt-2">
+    <%= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
     </div>
   </div>
+
+
 
   <h4 class="mt-5 ml-1"> Histórico de Viagens</h4>
   <div class="card shadow-sm pb-3 bg-white rounded">
