@@ -1,10 +1,10 @@
 <div class="container">
-  <h4 class="mt-2 ml-1"><i class="fa fa-address-card mb-2" style="font-size: inherit;"></i> Dados do Passageiro</h4>
-  <div class="card shadow pr-3 pl-3 pb-3 bg-white rounded">
+  <h4 class="mt-2 ml-1"> Dados do Passageiro</h4>
+  <div class="card shadow pb-3 bg-white rounded">
     <div class="card-body">
         <table style="width:100%">
           <tr class="text-primary">
-            <th><i class="fas fa-user"></i> Nome</th>
+            <th> Nome</th>
             <th class="text-center"><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
             <th class="text-center"><i class="fas fa-venus-mars"></i>Gênero</th>
             <th class="text-center"><i class="fas fa-fingerprint"></i>CPF</th>
@@ -23,8 +23,8 @@
   </div>
 
 
-  <h4 class="mt-5 ml-1"><i class="fa fa-bell" style="font-size: inherit;"></i> Alertas</h4>
-  <div class="card text-primary shadow pr-3 pl-3 pb-3 bg-white rounded">
+  <h4 class="mt-5 ml-1"> Alertas</h4>
+  <div class="card text-primary shadow pb-3 bg-white rounded">
     <div class="card-body">
         <% if current_user.admin? || current_user.police? %>
           <table>
@@ -55,8 +55,8 @@
   </div>
 
 
-  <h4 class="mt-5 ml-1"><i class="fa fa-route" style="font-size: inherit;"></i> Histórico de Viagens</h4>
-  <div class="card shadow pr-3 pl-3 pb-3 bg-white rounded">
+  <h4 class="mt-5 ml-1"> Histórico de Viagens</h4>
+  <div class="card shadow pb-3 bg-white rounded">
     <div class="card-body">
         <table>
           <tr class="text-primary">
