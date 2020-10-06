@@ -8,7 +8,8 @@
       <%= f.simple_fields_for :passenger do |passenger_form| %>
         <%= passenger_form.input :full_name, label: "Nome Completo" %>
         <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
-        <%= passenger_form.input :gender, label: "Sexo" %>
+        <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
+                  label: "Gênero" %>
         <%= passenger_form.input :cpf, label: "CPF" %>
         <%= passenger_form.input :identification_number, label: "RG" %>
         <%= passenger_form.input :identification_state, label: "UF" %>

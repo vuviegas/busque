@@ -1,6 +1,4 @@
-require "cpf_cnpj"
 require 'will_paginate/array'
-
 class BusTravelsController < ApplicationController
   def index
     if current_user.admin? || current_user.police?
