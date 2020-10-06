@@ -22,38 +22,40 @@
     </div>
   </div>
 
-
   <h4 class="mt-5 ml-1"> Alertas</h4>
   <div class="card text-primary shadow-sm pb-3 bg-white rounded">
     <div class="card-body">
         <% if current_user.admin? || current_user.police? %>
           <table>
             <tr class="text-primary">
-              <th><i class="fas fa-thumbtack"></i></i>Natureza</th>
-              <th><i class="fas fa-file-signature"></i></i>Descrição</th>
-              <th><i class="fas fa-level-up-alt"></i></i>Nível</th>
-              <th><i class="fas fa-clipboard-check"></i></i>Solucionado</th>
-            </tr>
-            <% @passenger.alerts.each do |alert| %>
-              <tr>
-                <td><%= alert.felony %></td>
-                <td><%= alert.description %></td>
-                <td><%= alert.level %></td>
-                <td><%= alert.solved %></td>
-              <% if current_user == alert.user || current_user.admin? %>
-                <td class="text-primary">
-                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
-                                    alert_path(alert),
-                                    method: :delete,
-                                    data: { confirm: "Você tem certeza?" } %>
-              <% end %>
-              </tr>
-            <% end %>
-          </table>
-        <% end %>
+              <th><i class="fas fa-bus"></i>Natureza</th>
+              <th><i class="fas fa-road"></i>Descrição</th>
+              <th><i class="fas fa-calendar-alt"></i>Solucionado</th>
+             </tr>
+              <% @passenger.alerts.each do |alert| %>
+                <% if alert.level == 'red' %>
+                  <tr class="table-danger">
+                <% else %>
+                  <tr class="table-warning">
+                <% end %>
+                    <td><%= alert.felony %></td>
+                    <td><%= alert.description %></td>
+                    <td><%= alert.solved %></td>
+
+                <% if current_user == alert.user || current_user.admin? %>
+                  <td class="text-primary">
+                      <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                                      alert_path(alert),
+                                      method: :delete,
+                                      data: { confirm: "Você tem certeza?" } %>
+                <% end %>
+               </tr>
+
+          <% end %>
+        </table>
+      <% end %>
     </div>
   </div>
-
 
   <h4 class="mt-5 ml-1"> Histórico de Viagens</h4>
   <div class="card shadow-sm pb-3 bg-white rounded">

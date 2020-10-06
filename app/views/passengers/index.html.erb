@@ -49,6 +49,57 @@
           <%= will_paginate @passengers, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
         </div>
 
-    </div>
+  <table style="width:100%">
+    <tr class="text-primary">
+      <th><i class="fas fa-user"></i>Nome</th>
+      <th><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
+      <th><i class="fas fa-venus-mars"></i>Gênero</th>
+      <th><i class="fas fa-fingerprint"></i>CPF</th>
+      <th><i class="far fa-id-card"></i>RG</th>
+      <th><i class="fas fa-globe-americas"></i>Estado</th>
+      <!-- <th><i class="fas fa-tools"></i>Opções</th> -->
+    </tr>
+    <% if current_user.police? || current_user.admin? %>
+      <% @passengers.each do |passenger| %>
+        <% if passenger.alerts.exists? %>
+          <% if passenger.alerts.where(level: 'red').count > 0 %>
+            <tr class="<%= 'table-danger' %>" data-link="<%= passenger_path(passenger) %>">
+          <% else %>
+            <tr class="<%= 'table-warning' %>" data-link="<%= passenger_path(passenger) %>">
+
+            <!-- <td class="text-primary"> -->
+                   <%#= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+                              passenger_path(passenger),
+                              method: :delete,
+                              data: { confirm: "Você tem certeza?" } %>
+            <!-- </td> -->
+
+          <% end %>
+        <% else %>
+          <tr data-link="<%= passenger_path(passenger) %>">
+        <% end %>
+          <td><%= passenger.full_name %></td>
+          <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+          <td><%= passenger.gender %></td>
+          <td><%= passenger.formatted_cpf %></td>
+          <td><%= passenger.identification_number %></td>
+          <td class="text-center"><%= passenger.identification_state %></td>
+          </tr>
+      <% end %>
+    <% else %>
+      <% @passengers.each do |passenger| %>
+        <tr>
+          <td><%= passenger.full_name %></td>
+          <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+          <td><%= passenger.gender %></td>
+          <td><%= passenger.formatted_cpf %></td>
+          <td><%= passenger.identification_number %></td>
+          <td class="text-center"><%= passenger.identification_state %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+    <%= will_paginate @passengers, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
   </div>
 </div>

@@ -106,18 +106,18 @@
 <% end %>
 
 <script>
-  if (inicio){ let inicio = document.getElementById("inicio"); }
-  if (empresa){ let empresa = document.getElementById("empresa"); }
-  if (onibus){ let onibus = document.getElementById("onibus"); }
-  if (viagem){ let viagem = document.getElementById("viagem"); }
-  if (passageiro){ let passageiro = document.getElementById("passageiro"); }
-  if (cpassageiro){ let cpassageiro = document.getElementById("cpassageiro"); }
-  if (cempresa){ let cempresa = document.getElementById("cempresa"); }
-  if (clinha){ let clinha = document.getElementById("clinha"); }
-  if (cviagem){ let cviagem = document.getElementById("cviagem"); }
-  if (suspeita){ let suspeita = document.getElementById("suspeita"); }
-  if (alertas){ let alertas = document.getElementById("alertas"); }
-  if (diario){ let diario = document.getElementById("diario"); }
+  if (typeof inicio === "undefined"){ let inicio = document.getElementById("inicio"); }
+  if (typeof empresa === "undefined"){ let empresa = document.getElementById("empresa"); }
+  if (typeof onibus === "undefined"){ let onibus = document.getElementById("onibus"); }
+  if (typeof viagem === "undefined"){ let viagem = document.getElementById("viagem"); }
+  if (typeof passageiro === "undefined"){ let passageiro = document.getElementById("passageiro"); }
+  if (typeof cpassageiro === "undefined"){ let cpassageiro = document.getElementById("cpassageiro"); }
+  if (typeof cempresa === "undefined"){ let cempresa = document.getElementById("cempresa"); }
+  if (typeof clinha === "undefined"){ let clinha = document.getElementById("clinha"); }
+  if (typeof cviagem === "undefined"){ let cviagem = document.getElementById("cviagem"); }
+  if (typeof suspeita === "undefined"){ let suspeita = document.getElementById("suspeita"); }
+  if (typeof alertas === "undefined"){ let alertas = document.getElementById("alertas"); }
+  if (typeof diario === "undefined"){ let diario = document.getElementById("diario"); }
 
   if (window.location.pathname === "/") { inicio.classList.toggle("bg-item-menu") }
   if (window.location.pathname === "/companies") { empresa.classList.toggle("bg-item-menu") }
