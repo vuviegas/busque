@@ -19,31 +19,37 @@ class AlertsController < ApplicationController
 
   def create
     if current_user.admin? || current_user.police?
-
       @passenger = Passenger.where(passenger_params)
 
       if @passenger.exists?
-        @alert = Alert.new(alert_params)
-        @alert.passenger_id = @passenger.ids.first
-        @alert.user_id = current_user.id
-        @alert.solved = false
-        if @alert.save
-          redirect_to passenger_path(@alert.passenger), notice: "Alerta criado com sucesso!"
-        else
-          render :new
-        end
+        passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf]).ids.first
+        redirect_to edit_passenger_path(passenger_id)
       else
-        @new_passenger = Passenger.new(passenger_params)
-        @alert = Alert.new(alert_params)
-        @alert.passenger = @new_passenger
-        @alert.user = current_user
-        if @new_passenger.save
-          @alert.save
-          redirect_to passenger_path(@new_passenger), notice: "Passageiro e alerta criados com sucesso!"
-        else
-          render :new
-        end
+        redirect_to new_passenger_path
       end
+
+      # if @passenger.exists?
+      #   @alert = Alert.new(alert_params)
+      #   @alert.passenger_id = @passenger.ids.first
+      #   @alert.user_id = current_user.id
+      #   @alert.solved = false
+      #   if @alert.save
+      #     redirect_to passenger_path(@alert.passenger), notice: "Alerta criado com sucesso!"
+      #   else
+      #     render :new
+      #   end
+      # else
+      #   @new_passenger = Passenger.new(passenger_params)
+      #   @alert = Alert.new(alert_params)
+      #   @alert.passenger = @new_passenger
+      #   @alert.user = current_user
+      #   if @new_passenger.save
+      #     @alert.save
+      #     redirect_to passenger_path(@new_passenger), notice: "Passageiro e alerta criados com sucesso!"
+      #   else
+      #     render :new
+      #   end
+      # end
     else
       forbidden
     end
@@ -62,6 +68,10 @@ class AlertsController < ApplicationController
 
   def forbidden
     redirect_to root_path, alert: "Você não pode realizar esta ação."
+  end
+
+  def passenger_params
+    params.require(:alert).require(:passenger).permit(:cpf)
   end
 
   def alert_params

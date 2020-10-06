@@ -6,46 +6,11 @@
     <!-- </div> -->
     <div>
       <%= f.simple_fields_for :passenger do |passenger_form| %>
-        <%= passenger_form.input :full_name, label: "Nome Completo" %>
-        <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
-        <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
-                  label: "Gênero" %>
         <%= passenger_form.input :cpf, label: "CPF" %>
-        <%= passenger_form.input :identification_number, label: "RG" %>
-        <%= passenger_form.input :identification_state, label: "UF" %>
       <% end %>
     </div>
-
-    <div class="form-inputs">
-      <%= f.input :felony, :collection => ["Contrabando",
-                                          "Descaminho",
-                                          "Crime Ambiental",
-                                          "Tráfico de Drogas",
-                                          "Tráfico de Armas",
-                                          "Tráfico de Pessoas",
-                                          "Outros"],
-                  :input_html => {:class => 'selectpicker'},
-                  :label => 'Natureza',
-                  prompt: "Escolha uma opção" %>
-    </div>
-    <div class="form-inputs">
-      <%= f.input :description, label: "Descrição" %>
-    </div>
-    <div class="form-inputs">
-      <h6>Nível de alerta</h6>
-      <%= f.collection_radio_buttons :level, [['yellow', 'Amarelo'] ,['red', 'Vermelho']], :first, :last %>
-      <!-- <div> -->
-        <%#= f.check_box :level, value: 'yellow' %>
-        <%#= f.label :amarelo %>
-      <!-- </div> -->
-      <!-- <div> -->
-        <%#= f.check_box :level, value: 'red' %>
-        <%#= f.label :vermelho %>
-      <!-- </div> -->
-
-    </div>
     <div class="form-actions text-right">
-       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
+       <%= f.button :submit, value: "Buscar", :class => "btn btn-primary" %>
     </div>
   <% end %>
 </div>
