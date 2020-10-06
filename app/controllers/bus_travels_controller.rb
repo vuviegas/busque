@@ -1,8 +1,10 @@
 require 'will_paginate/array'
+require "cpf_cnpj"
 class BusTravelsController < ApplicationController
   def index
     if current_user.admin? || current_user.police?
-      @bus_travels = BusTravel.includes(travel_line: :company, passenger_trips: {passenger: :alerts}
+      @bus_travels = BusTravel.by_departure.includes(
+        travel_line: :company, passenger_trips: {passenger: :alerts}
         ).where('departure_on >= ?', Date.today).sort_by(&:alerts).reverse.paginate(
         :page => params[:page], :per_page => 10)
     else

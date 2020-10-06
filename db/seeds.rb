@@ -1,5 +1,14 @@
 require 'faker'
 require "cpf_cnpj"
+
+User.destroy_all
+Company.destroy_all
+TravelLine.destroy_all
+BusTravel.destroy_all
+PassengerTrip.destroy_all
+Passenger.destroy_all
+Alert.destroy_all
+
 admin1 = User.create!(name: "Vinicius", email: "vinicius@busque.com", password: "123456", role: "admin")
 admin2 = User.create!(name: "Ricardo", email: "ricardo@busque.com", password: "123456", role: "admin")
 admin3 = User.create!(name: "Umberto", email: "umberto@busque.com", password: "123456", role: "admin")
@@ -84,8 +93,8 @@ bus_travels = BusTravel.all
 840.times do | passanger |
   passenger = Passenger.create!(full_name: Faker::Name.name_with_middle,
     date_of_birth: Faker::Date.birthday,
-    gender: ["feminino", "masculino", "não informado"].sample,
-    cpf: CPF.generate(true),
+    gender: ["Feminino", "Masculino", "Não Informado"].sample,
+    cpf: CPF.generate,
     identification_number: Faker::IDNumber.brazilian_id(formatted: false),
     identification_state: %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF].sample)
 end
