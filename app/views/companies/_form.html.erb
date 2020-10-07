@@ -1,14 +1,18 @@
 <div class="container">
-<h3 class="titulo-page">Cadastrar Empresa</h3>
-  <%= simple_form_for(@company) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :company_name, label: "Nome da empresa" %>
+  <h3 class="titulo-page">Cadastrar Empresa</h3>
+  <div>
+    <div class="card-body">
+      <%= simple_form_for(@company) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :company_name, label: "Nome da empresa" %>
+      </div>
+      <div class="form-inputs">
+        <%= f.association :user, collection: User.where(role: 'clerk'), label_method: :email %>
+      </div>
+      <div class="form-actions text-right">
+        <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
+      </div>
+        <% end %>
     </div>
-    <div class="form-inputs">
-      <%= f.association :user, collection: User.where(role: 'clerk'), label_method: :email %>
-    </div>
-    <div class="form-actions text-right">
-       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>

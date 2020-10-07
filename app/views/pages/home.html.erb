@@ -1,8 +1,8 @@
 <div class="container">
+  <div>
   <% if current_user.admin? || current_user.clerk? %>
-    <h4 class="mt-3 ml-1"> Lista de Viagens do dia</h4>
+    <h4 class="titulo-page"> Lista de Viagens do dia</h4>
   <% end %>
-  <div class="card shadow-sm bg-white rounded">
     <div class="card-body">
       <table style="width:100%">
         <tr class="text-primary">
@@ -67,10 +67,10 @@
               <td><%= bus_travel.travel_line.identification_number %></td>
               <td><%= bus_travel.travel_line.origin %></td>
               <td><%= bus_travel.travel_line.destination %></td>
-              <td><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
-              <td><%= bus_travel.travel_line.departure_at %></td>
-              <td><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
-              <td><%= bus_travel.travel_line.arrival_at %></td>
+              <td class="text-center"><%= bus_travel.departure_on.strftime("%d/%m/%Y")%></td>
+              <td class="text-center"><%= bus_travel.travel_line.departure_at %></td>
+              <td class="text-center"><%= bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
+              <td class="text-center"><%= bus_travel.travel_line.arrival_at %></td>
             </tr>
           <% end %>
         <% end %>

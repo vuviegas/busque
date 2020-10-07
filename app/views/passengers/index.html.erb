@@ -1,10 +1,10 @@
 <div class="container">
   <div class="d-flex align-items-center">
     <div>
-      <h4 class="mt-3 ml-1 mr-2"> Lista de Passageiros</h4></h3>
+      <h4 class="titulo-page"> Lista de Passageiros</h4></h3>
     </div>
     <div>
-      <%= form_tag passengers_path, class: "d-flex", method: :get do %>
+      <%= form_tag passengers_path, class: "d-flex ml-3 mt-2", method: :get do %>
         <%= text_field_tag :query,
                           params[:query],
                           class: "form-control",
@@ -16,7 +16,7 @@
       <% end %>
      </div>
   </div>
-  <div class="card shadow-sm bg-white rounded">
+  <div>
     <div class="card-body">
         <table style="width:100%">
           <tr class="text-primary">
