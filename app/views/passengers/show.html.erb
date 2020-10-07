@@ -10,9 +10,14 @@
       <th><i class="far fa-id-card"></i>RG</th>
       <th><i class="fas fa-globe-americas"></i>Estado</th>
     </tr>
-      <% unless @passenger.photo.nil? %>
-      <td><%= cl_image_tag @passenger.photo.key, height: 48, width: 48, crop: :fill %></td>
+      <%# unless @passenger.photo.nil? %>
+      <% if @passenger.photo.attached? %>
+        <td><%= cl_image_tag @passenger.photo.key, height: 48, width: 48, crop: :fill %></td>
+      <% else %>
+        <td><%= image_tag "https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236_960_720.png", height: 48, width: 48, crop: :fill %></td>
       <% end %>
+
+
       <td><%= @passenger.full_name %></td>
       <td><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
       <td><%= @passenger.gender %></td>
