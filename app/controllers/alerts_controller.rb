@@ -53,8 +53,6 @@ class AlertsController < ApplicationController
     end
   end
 
-
-
     # if current_user.admin? || current_user.police?
     #   @passenger = Passenger.where(passenger_params)
     #   if @passenger.exists?

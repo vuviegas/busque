@@ -87,7 +87,7 @@ class PassengersController < ApplicationController
   end
 
   def passenger_params
-    params.require(:passenger).permit(:full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state)
+    params.require(:passenger).permit(:full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state, :photo)
   end
 
   def alert_params

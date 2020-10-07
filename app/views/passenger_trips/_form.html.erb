@@ -39,11 +39,12 @@
           <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
           <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
                   label: "Gênero" %>
-          <%= passenger_form.input :cpf, label: "CPF" %>
+          <%= passenger_form.input :cpf, input_html: { maxlength: 11 }, label: "CPF" %>
           <%= passenger_form.input :identification_number, label: "RG" %>
           <%= passenger_form.input :identification_state,
               :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
               label: "UF" %>
+          <%= passenger_form.input :photo, as: :file %>
         <% end %>
       </div>
     <% end %>
