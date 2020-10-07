@@ -25,6 +25,7 @@ class PassengerTripsController < ApplicationController
           @passenger_trip = PassengerTrip.new(passenger_trip_params)
           @passenger_trip.passenger_id = @passenger.ids.first
           @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
+
           if @passenger_trip.save
             redirect_to bus_travel_path(@passenger_trip.bus_travel)
           else
@@ -32,6 +33,12 @@ class PassengerTripsController < ApplicationController
           end
         else
           @new_passenger = Passenger.new(passenger_params)
+
+          require 'open-uri'
+
+          file = URI.open(photo_url)
+          @new_passenger.photo.attach(io: file, filename: 'profile_photo.jpg')
+
           if @new_passenger.save
             @passenger_trip = PassengerTrip.new(passenger_trip_params)
             @passenger_trip.passenger = @new_passenger
@@ -84,6 +91,10 @@ class PassengerTripsController < ApplicationController
       :identification_number,
       :identification_state
     )
+  end
+
+  def photo_url
+    params.require(:passenger_trip).require(:passenger).permit(:photo_url)[:photo_url]
   end
 end
 
