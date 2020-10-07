@@ -1,5 +1,7 @@
 <div class="container">
-  <h3 class="titulo-page">Cadastrar Passageiro</h3>
+  <h4 class="titulo-page"> Cadastrar Passageiro</h4>
+  <div class="ml-3">
+    <div class="card-body">
   <%= simple_form_for [@bus_travel, @passenger_trip] do |f| %>
 
     <% if params[:travel_line].blank? %>
@@ -53,4 +55,6 @@
        <%= f.button :submit, value: "Enviar", :class => "btn btn-primary" %>
     </div>
   <% end %>
+</div>
+</div>
 </div>
