@@ -17,7 +17,13 @@
     <% end %>
       <div class="media-body">
         <p class="m-0"><%= current_user.name %></p>
-        <p class="font-weight-light text-muted mb-0"><%= current_user.role.capitalize %></p>
+        <% if current_user.role == 'police' %>
+          <p class="font-weight-light text-muted mb-0"><%= 'Policial' %></p>
+        <% elsif current_user.role == 'admin' %>
+          <p class="font-weight-light text-muted mb-0"><%= 'Admin' %></p>
+        <% else %>
+          <p class="font-weight-light text-muted mb-0"><%= 'Atendente' %></p>
+        <% end %>
       </div>
     </div>
   </div>
