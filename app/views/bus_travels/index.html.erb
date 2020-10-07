@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-5">
   <h4 class="titulo-page"> Lista de Viagens Cadastradas</h4>
   <div>
-    <div class="card-body">
+    <div class="card-body mt-3">
         <table style="width:100%">
           <tr class="text-primary">
             <th><i class="fas fa-bus"></i>Empresa</th>
@@ -79,7 +79,7 @@
                                 data: { confirm: "Você tem certeza?" } %>
               <!-- </td> -->
         </table>
-        <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+        <div class="digg_pagination mt-5 d-flex justify-content-center  ">
           <%= will_paginate @bus_travels, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
         </div>
     </div>
