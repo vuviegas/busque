@@ -5,7 +5,7 @@
 <!-- Vertical navbar -->
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center">
+    <div class="media d-flex align-items-center ml-3">
     <% if current_user.admin? %>
       <img src="https://i.ibb.co/1GtNncH/admin.jpg" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
     <% end %>
@@ -29,81 +29,81 @@
   </div>
 
 
-  <ul class="nav flex-column bg-white mb-0" style="margin-top: -20px;">
+  <ul class="nav flex-column bg-white mb-0" style="margin-top: -10px;">
     <li class="nav-item">
       <%= link_to root_path, class: "nav-link text-dark", id: "inicio" do %>
-        <i class="fas fa-home mr-3 text-primary fa-fw"></i>Início
+        <i class="fas fa-home ml-3 mr-2 text-primary fa-fw"></i>Início
       <% end %>
     </li>
     <% if current_user.admin? || current_user.clerk? %>
           <li class="nav-item">
             <%= link_to companies_path, class: "nav-link text-dark", id: "empresa" do %>
-              <i class="fas fa-bus mr-3 text-primary fa-fw"></i>Empresas
+              <i class="fas fa-bus ml-3 mr-2 text-primary fa-fw"></i>Empresas
             <% end %>
           </li>
           <!-- Mudei de company_travel_lines_path(:company_id) para travel_lines_path -->
           <li class="nav-item">
             <%= link_to travel_lines_path, class: "nav-link text-dark", id: "onibus" do %>
-              <i class="fas fa-road mr-3 text-primary fa-fw"></i>Linhas de Ônibus
+              <i class="fas fa-road ml-3 mr-2 text-primary fa-fw"></i>Linhas de Ônibus
             <% end %>
           </li>
     <% end %>
     <li class="nav-item">
       <%= link_to bus_travels_path, class: "nav-link text-dark", id: "viagem" do %>
-        <i class="fas fa-route mr-3 text-primary fa-fw"></i>Viagens
+        <i class="fas fa-route ml-3 mr-2 text-primary fa-fw"></i>Viagens
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to passengers_path, class: "nav-link text-dark", id: "passageiro" do %>
-        <i class="fas fa-users mr-3 text-primary fa-fw"></i>Passageiros
+        <i class="fas fa-users ml-3 mr-2 text-primary fa-fw"></i>Passageiros
       <% end %>
     </li>
     <% if current_user.admin? || current_user.clerk? %>
           <li class="nav-item">
             <%= link_to new_passenger_trip_path, class: "nav-link text-dark", id: "cpassageiro" do %>
-              <i class="fas fa-address-card mr-3 text-primary fa-fw"></i>Cadastrar Passageiro
+              <i class="fas fa-address-card ml-3 mr-2 text-primary fa-fw"></i>Cadastrar Passageiro
             <% end %>
           </li>
     <% end %>
     <% if current_user.admin? %>
           <li class="nav-item">
             <%= link_to new_company_path, class: "nav-link text-dark", id: "cempresa" do %>
-              <i class="fas fa-city mr-3 text-primary fa-fw"></i>Cadastrar Empresa
+              <i class="fas fa-city ml-3 mr-2 text-primary fa-fw"></i>Cadastrar Empresa
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_travel_line_path, class: "nav-link text-dark", id: "clinha" do %>
-              <i class="fas fa-project-diagram mr-3 text-primary fa-fw"></i>Cadastrar Linha
+              <i class="fas fa-project-diagram ml-3 mr-2 text-primary fa-fw"></i>Cadastrar Linha
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_bus_travel_path, class: "nav-link text-dark", id: "cviagem" do %>
-              <i class="fas fa-suitcase mr-3 text-primary fa-fw"></i>Cadastrar Viagem
+              <i class="fas fa-suitcase ml-3 mr-2 text-primary fa-fw"></i>Cadastrar Viagem
             <% end %>
           </li>
     <% end %>
     <% if current_user.admin? || current_user.police? %>
           <li class="nav-item">
             <%= link_to cpf_check_path, class: "nav-link text-dark", id: "suspeita" do %>
-              <i class="fas fa-exclamation-triangle mr-3 text-primary fa-fw"></i>Cadastrar Suspeita
+              <i class="fas fa-exclamation-triangle ml-3 mr-2 text-primary fa-fw"></i>Cadastrar Suspeita
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to alerts_path, class: "nav-link text-dark", id: "alertas" do %>
-              <i class="fa fa-bell mr-3 text-primary fa-fw"></i>
+              <i class="fa fa-bell ml-3 mr-2 text-primary fa-fw"></i>
               Alertas
             <% end %>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link text-dark" id="diario">
-              <i class="fa fa-book mr-3 text-primary fa-fw"></i>
+              <i class="fa fa-book ml-3 mr-2 text-primary fa-fw"></i>
               Diário
             </a>
           </li>
     <% end %>
     <li class="nav-item">
       <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-dark" do %>
-        <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>Sair
+        <i class="fas fa-sign-out-alt ml-3 mr-2 text-primary fa-fw"></i>Sair
       <% end %>
     </li>
   </ul>
