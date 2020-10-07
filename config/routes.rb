@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   resources :travel_lines, only: [:index, :new, :create, :destroy]
   resources :bus_travels, only: [:index, :show, :new, :create, :destroy]
   resources :passenger_trips, only: [:show, :new, :create, :destroy]
-  resources :passengers
-  resources :alerts
+  resources :passengers do
+    resources :alerts, only: [:new, :create]
+  end
+  resources :alerts, only: [:index, :destroy]
+  # post 'cpf_check', to: 'passengers#cpf_check'
+  post 'cpf_check', to: 'alerts#cpf_check_post'
+  get 'cpf_check', to: 'alerts#cpf_check'
 end
 
 # CÓDIGO ORIGINAL ANTES DE SER REFATORADO

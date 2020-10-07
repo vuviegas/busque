@@ -1,16 +1,20 @@
 <div class="container">
-<h3 class="titulo-page">Cadastrar Suspeita</h3>
-  <%= simple_form_for(@alert) do |f| %>
-    <!-- <div class="form-inputs"> -->
-      <%#= f.association :passenger, collection: Passenger.where(role: 'clerk'), label_method: :email %>
-    <!-- </div> -->
-    <div>
-      <%= f.simple_fields_for :passenger do |passenger_form| %>
-        <%= passenger_form.input :cpf, label: "CPF" %>
-      <% end %>
-    </div>
-    <div class="form-actions text-right">
-       <%= f.button :submit, value: "Buscar", :class => "btn btn-primary" %>
+  <h3 class="titulo-page">Cadastrar Alerta</h3>
+  <%= simple_form_for [ @passenger, @alert ] do |f| %>
+    <%= f.input :felony, :collection => ["Contrabando",
+                                        "Descaminho",
+                                        "Crime Ambiental",
+                                        "Tráfico de Drogas",
+                                        "Tráfico de Armas",
+                                        "Tráfico de Pessoas",
+                                        "Outros"],
+                :input_html => {:class => 'selectpicker'},
+                :label => 'Natureza',
+                prompt: "Escolha uma opção" %>
+    <%= f.input :description, label: "Descrição" %>
+    <%= f.input :level, as: :radio_buttons, collection: [['yellow', 'Amarelo'] ,['red', 'Vermelho']], label_method: :second, value_method: :first, label: 'Nível de alerta', wrapper: :vertical_collection_inline %>
+    <div class="text-right">
+       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
     </div>
   <% end %>
 </div>

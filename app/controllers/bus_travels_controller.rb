@@ -1,5 +1,6 @@
 require 'will_paginate/array'
 require "cpf_cnpj"
+
 class BusTravelsController < ApplicationController
   def index
     if current_user.admin? || current_user.police?
@@ -21,16 +22,23 @@ class BusTravelsController < ApplicationController
   end
 
   def new
-    @bus_travel = BusTravel.new
+    if current_user.admin?
+      @bus_travel = BusTravel.new
+    else
+      forbidden
+    end
   end
 
   def create
-    @bus_travel = BusTravel.new(bus_travel_params)
-    if @bus_travel.save
-
-      redirect_to bus_travels_path, notice: "A viagem foi cadastrada com sucesso!"
+    if current_user.admin?
+      @bus_travel = BusTravel.new(bus_travel_params)
+      if @bus_travel.save
+        redirect_to bus_travels_path, notice: "A viagem foi cadastrada com sucesso!"
+      else
+        render :new
+      end
     else
-      render :new
+      forbidden
     end
   end
 
@@ -40,4 +48,7 @@ class BusTravelsController < ApplicationController
     params.require(:bus_travel).permit(:departure_on, :arrival_on, :travel_line_id)
   end
 
+  def forbidden
+    redirect_to root_path, alert: "Você não pode realizar esta ação."
+  end
 end

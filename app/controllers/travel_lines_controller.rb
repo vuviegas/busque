@@ -1,14 +1,12 @@
 class TravelLinesController < ApplicationController
   def index
     if current_user.admin? || current_user.police?
-      @travel_lines = TravelLine.all
+      @travel_lines = TravelLine.all.paginate(
+        :page => params[:page], :per_page => 10)
     elsif current_user.clerk?
-      @travel_lines = TravelLine.where(company_id: params[:company_id])
-    end
-    if params[:query].present?
-      @travel_lines = TravelLine.search_global(params[:query]).paginate(:page => params[:page], :per_page => 8)
-    else
-      @travel_lines = TravelLine.all.paginate(:page => params[:page], :per_page => 10)
+      @travel_lines = TravelLine.joins(:company).where(
+        'user_id = ?', current_user.id).paginate(
+        :page => params[:page], :per_page => 10)
     end
   end
 

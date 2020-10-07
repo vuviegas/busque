@@ -3,35 +3,27 @@ class PassengerTripsController < ApplicationController
   # before_action :set_bus_travel, only: [:new, :create]
 
   def new
-    @passenger_trip = PassengerTrip.new
+    if current_user.admin? || current_user.clerk?
+      @passenger_trip = PassengerTrip.new
 
-    if params[:travel_line].present?
-      @travel_line = TravelLine.find(params[:travel_line])
-      @bus_travels = BusTravel.where(travel_line: @travel_line).map {|u| ["#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}", u.id]}
+      if params[:travel_line].present?
+        @travel_line = TravelLine.find(params[:travel_line])
+        @bus_travels = BusTravel.where(travel_line: @travel_line).map {|u| ["#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}", u.id]}
+      end
+    else
+      forbidden
     end
   end
 
   def create
-    if params[:travel_line]
-      redirect_to new_passenger_trip_path(@bus_travel, travel_line: params[:travel_line])
-    else
-      @passenger = Passenger.find_by(cpf: params[:passenger_trip][:passenger][:cpf])
-
-      if @passenger
-        @passenger_trip = PassengerTrip.new(passenger_trip_params)
-        @passenger_trip.passenger_id = @passenger.id
-        @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
-        if @passenger_trip.save
-          redirect_to bus_travel_path(@passenger_trip.bus_travel)
-        else
-          render :new
-        end
+    if current_user.admin? || current_user.clerk?
+      if params[:travel_line]
+        redirect_to new_passenger_trip_path(@bus_travel, travel_line: params[:travel_line])
       else
-        @new_passenger = Passenger.new(passenger_params)
-
-        if @new_passenger.save
+        @passenger = Passenger.where(passenger_params)
+        if @passenger.exists?
           @passenger_trip = PassengerTrip.new(passenger_trip_params)
-          @passenger_trip.passenger = @new_passenger
+          @passenger_trip.passenger_id = @passenger.ids.first
           @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
           if @passenger_trip.save
             redirect_to bus_travel_path(@passenger_trip.bus_travel)
@@ -39,28 +31,33 @@ class PassengerTripsController < ApplicationController
             render :new
           end
         else
-          render :new
+          @new_passenger = Passenger.new(passenger_params)
+          if @new_passenger.save
+            @passenger_trip = PassengerTrip.new(passenger_trip_params)
+            @passenger_trip.passenger = @new_passenger
+            @passenger_trip.bus_travel_id = params[:passenger_trip][:bus_travel]
+            if @passenger_trip.save
+              redirect_to bus_travel_path(@passenger_trip.bus_travel)
+            else
+              render :new
+            end
+          else
+            render :new
+          end
         end
       end
+    else
+      forbidden
     end
   end
-
-  # def delete
-  #   raise
-  #   @bus_travel = BusTravel.find(parmas[:id])
-  #   @passenger_trip = PassengerTrip.where(passenger_trip_passenger: @passenger)
-  #   if current_user == @passenger_trip.user || current_user.admin?
-  #     @passenger_trip.destroy
-
-  #     redirect_to bus_travel_path(@bus_travel)
-  #   end
-  # end
 
   def destroy
     @passenger_trip = PassengerTrip.find(params[:id])
     if current_user == @passenger_trip.bus_travel.travel_line.company.user || current_user.admin?
       @passenger_trip.destroy
       redirect_to bus_travel_path(@passenger_trip.bus_travel)
+    else
+      forbidden
     end
   end
 
@@ -70,19 +67,23 @@ class PassengerTripsController < ApplicationController
     @bus_travel = BusTravel.find(params[:bus_travel_id])
   end
 
+  def forbidden
+    redirect_to root_path, alert: "Você não pode realizar esta ação."
+  end
+
   def passenger_trip_params
     params.require(:passenger_trip).permit(:seat, :arrival_spot)
   end
 
   def passenger_params
     params.require(:passenger_trip).require(:passenger).permit(
-                                                           :full_name,
-                                                           :date_of_birth,
-                                                           :gender,
-                                                           :cpf,
-                                                           :identification_number,
-                                                           :identification_state,
-                                                           :photo)
+      :full_name,
+      :date_of_birth,
+      :gender,
+      :cpf,
+      :identification_number,
+      :identification_state
+    )
   end
 end
 

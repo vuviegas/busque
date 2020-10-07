@@ -78,7 +78,7 @@
     <% end %>
     <% if current_user.admin? || current_user.police? %>
           <li class="nav-item">
-            <%= link_to new_alert_path, class: "nav-link text-dark", id: "suspeita" do %>
+            <%= link_to cpf_check_path, class: "nav-link text-dark", id: "suspeita" do %>
               <i class="fas fa-exclamation-triangle mr-3 text-primary fa-fw"></i>Cadastrar Suspeita
             <% end %>
           </li>

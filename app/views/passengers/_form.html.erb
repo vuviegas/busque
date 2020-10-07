@@ -1,7 +1,7 @@
 <div class="container">
 <h3 class="titulo-page">Cadastrar Suspeita</h3>
   <div>
-    <%= simple_form_for(@passenger) do |f| %>
+    <%= simple_form_for (@passenger) do |f| %>
       <%= f.input :full_name, label: "Nome Completo" %>
       <%= f.input :date_of_birth, label: "Data de Nascimento", order: [:day, :month, :year], include_blank: true, start_year: Date.today.year - 120, end_year: Date.today.year %>
       <%= f.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
