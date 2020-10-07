@@ -1,15 +1,19 @@
 <div class="container">
-<h3 class="titulo-page">Cadastrar Viagem</h3>
-  <%= simple_form_for [@company, @travel_line, @bus_travel] do |f| %>
-    <div class="form-inputs">
-      <%= f.association :travel_line, collection: TravelLine.all, label_method: :identification_number, label: "Linha de Ônibus" %>
+    <h4 class="titulo-page">Cadastrar Viagem</h4>
+    <div class="ml-2">
+        <div class="card-body">
+          <%= simple_form_for [@company, @travel_line, @bus_travel] do |f| %>
+        <div class="form-inputs">
+          <%= f.association :travel_line, collection: TravelLine.all, label_method: :identification_number, label: "Linha de Ônibus" %>
+        </div>
+        <div class="form-inputs">
+          <%= f.input :departure_on, label: "Data de Partida", order: [:day, :month, :year] %>
+          <%= f.input :arrival_on, label: "Data de Chegada" , order: [:day, :month, :year]%>
+        </div>
+        <div class="form-actions text-right">
+          <%= f.button :submit, value: "Salvar", :class => "btn btn-primary btn-sm" %>
+        </div>
+           <% end %>
     </div>
-    <div class="form-inputs">
-      <%= f.input :departure_on, label: "Data de Partida", order: [:day, :month, :year] %>
-      <%= f.input :arrival_on, label: "Data de Chegada" , order: [:day, :month, :year]%>
-    </div>
-    <div class="form-actions text-right">
-       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
-    </div>
-  <% end %>
+  </div>
 </div>
