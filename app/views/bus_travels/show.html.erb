@@ -50,7 +50,7 @@
       <% end %>
     <% else %>
       <% @bus_travel.passenger_trips.each do |passenger_trip| %>
-        <tr>
+        <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
           <td><%= passenger_trip.passenger.full_name %></td>
           <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
           <td><%= passenger_trip.passenger.gender %></td>
