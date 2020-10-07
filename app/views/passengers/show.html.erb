@@ -64,7 +64,7 @@
             <tr class="text-primary">
               <th><i class="fas fa-bus"></i>Natureza</th>
               <th><i class="fas fa-road"></i>Descrição</th>
-              <th><i class="fas fa-calendar-alt"></i>Solucionado</th>
+              <th><i class="fas fa-calendar-alt"></i>Status</th>
              </tr>
               <% @passenger.alerts.each do |alert| %>
                 <% if alert.level == 'red' %>
@@ -74,7 +74,11 @@
                 <% end %>
                     <td><%= alert.felony %></td>
                     <td><%= alert.description %></td>
-                    <td><%= alert.solved %></td>
+                    <% if alert.solved? %>
+                      <td><%= "Solucionado" %></td>
+                    <% else %>
+                      <td><%= "Não Solucionado" %></td>
+                    <% end %>
 
                 <% if current_user == alert.user || current_user.admin? %>
                   <td class="text-primary">
