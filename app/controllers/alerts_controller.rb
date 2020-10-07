@@ -1,9 +1,33 @@
 class AlertsController < ApplicationController
+  before_action :set_passenger, only: [:new, :create]
+
   def index
     if current_user.admin?
       @alerts = Alert.all
     elsif current_user.police?
       @alerts = Alert.where(user_id: current_user.id)
+    else
+      forbidden
+    end
+  end
+
+  def cpf_check
+    if current_user.admin? || current_user.police?
+      @alert = Alert.new
+    else
+      forbidden
+    end
+  end
+
+  def cpf_check_post
+    if current_user.admin? || current_user.police?
+      @passenger = Passenger.where(passenger_params)
+      if @passenger.exists?
+        passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf]).ids.first
+        redirect_to edit_passenger_path(passenger_id)
+      else
+        redirect_to new_passenger_path
+      end
     else
       forbidden
     end
@@ -18,17 +42,29 @@ class AlertsController < ApplicationController
   end
 
   def create
-    if current_user.admin? || current_user.police?
-      @passenger = Passenger.where(passenger_params)
-      if @passenger.exists?
-        passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf]).ids.first
-        redirect_to edit_passenger_path(passenger_id)
-      else
-        redirect_to new_passenger_path
-      end
+    @alert = Alert.new(alert_params)
+    @alert.user = current_user
+    @alert.passenger = @passenger
+    @alert.solved = false
+    if @alert.save
+      redirect_to passenger_path(@passenger), notice: 'Alerta criado com sucesso!'
     else
-      forbidden
+      render :new
     end
+  end
+
+    # if current_user.admin? || current_user.police?
+    #   @passenger = Passenger.where(passenger_params)
+    #   if @passenger.exists?
+    #     passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf]).ids.first
+    #     redirect_to edit_passenger_path(passenger_id)
+    #   else
+    #     redirect_to new_passenger_path
+    #   end
+    # else
+    #   forbidden
+    # end
+
       # => Antigo codigo, anterior a implementação da busca por CPF prévia ao
       # => cadastro da suspeita:
 
@@ -54,7 +90,6 @@ class AlertsController < ApplicationController
       #     render :new
       #   end
       # end
-  end
 
   def destroy
     @alert = Alert.find(params[:id])
@@ -71,23 +106,19 @@ class AlertsController < ApplicationController
     redirect_to root_path, alert: "Você não pode realizar esta ação."
   end
 
-  def passenger_params
-    params.require(:alert).require(:passenger).permit(:cpf)
-  end
-
   def alert_params
     params.require(:alert).permit(:felony, :description, :level)
   end
 
+  def set_passenger
+    @passenger = Passenger.find(params[:passenger_id])
+  end
+
   def passenger_params
-    params.require(:alert).require(:passenger).permit(:full_name,
-                                                      :date_of_birth,
-                                                      :gender,
-                                                      :cpf,
-                                                      :identification_number,
-                                                      :identification_state)
+    params.require(:alert).require(:passenger).permit(:cpf)
   end
 end
+
 
 # => Forma de params.require indicada pelo Prof. Roberto (passenger_params):
 # params.require(:alert).permit(passenger: [
@@ -98,7 +129,6 @@ end
 #                                 :identification_number,
 #                                 :identification_state
 #                                 ])
-
 
 # => Código anteriormente implementado no CREATE para
 # => para encontrar o passageiro pelos params de :alert
