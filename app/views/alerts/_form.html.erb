@@ -12,7 +12,8 @@
                 :label => 'Natureza',
                 prompt: "Escolha uma opção" %>
     <%= f.input :description, label: "Descrição" %>
-    <%= f.input :level, as: :radio_buttons, collection: [['yellow', 'Amarelo'] ,['red', 'Vermelho']], label_method: :second, value_method: :first, label: 'Nível de alerta', wrapper: :vertical_collection_inline %>
+    <p><strong>Nível de Prioridade</strong></p>
+    <%= f.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
     <div class="text-right">
        <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
     </div>

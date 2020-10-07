@@ -27,8 +27,10 @@
                     :label => 'Natureza',
                     prompt: "Escolha uma opção" %>
         <%= alert_form.input :description, label: "Descrição" %>
-        <p><strong>Nível de alerta</strong></p>
-        <%= alert_form.collection_radio_buttons :level, [['yellow', 'Amarelo'] ,['red', 'Vermelho']], :first, :last %>
+        <p><strong>Nível de Prioridade</strong></p>
+        <%= alert_form.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
+        <%#= alert_form.collection_radio_buttons :level, [['yellow', 'Amarelo'] ,['red', 'Vermelho']], :first, :last, wrapper: :vertical_collection_inline %>
+        <%#= f.input :level, as: :radio_buttons, collection: [['yellow', 'Amarelo'] ,['red', 'Vermelho']], label_method: :second, value_method: :first, label: 'Nível de prioridade', wrapper: :vertical_collection_inline %>
       <% end %>
     </div>
     <div class="form-actions text-right">
