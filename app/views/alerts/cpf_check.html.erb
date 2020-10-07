@@ -1,13 +1,13 @@
 <div class="container">
-<h3 class="titulo-page">Cadastrar Alerta</h3>
+  <h3 class="titulo-page">Cadastrar Alerta</h3>
   <div>
     <%= simple_form_for @alert, url: cpf_check_path, method: :post do |f| %>
       <%= f.simple_fields_for :passenger do |passenger_form| %>
         <%= passenger_form.input :cpf, label: "CPF" %>
+      <% end %>
+      <div class="form-actions text-right">
+        <%= f.button :submit, value: "Buscar", :class => "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
-    <div class="form-actions text-right">
-       <%= f.button :submit, value: "Buscar", :class => "btn btn-primary" %>
-    </div>
-  <% end %>
 </div>
