@@ -1,16 +1,16 @@
 .table-danger {
   background-color: rgb(255, 198, 194);
-  opacity: 0.8;
+  opacity: 1;
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 
 .table-warning {
   background-color: rgb(254, 209, 72);
-  opacity: 0.8;
+  opacity: 1;
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
 }
 
