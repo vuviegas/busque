@@ -18,7 +18,7 @@
       <% end %>
 
 
-      <td><%= @passenger.full_name %></td>
+      <td><%= @passenger.full_name.titleize %></td>
       <td><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
       <td><%= @passenger.gender %></td>
       <td><%= @passenger.formatted_cpf %></td>
@@ -50,7 +50,7 @@
         <td><%= passenger_trip.bus_travel.travel_line.destination %></td>
         <td><%= passenger_trip.bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
         <td><%= passenger_trip.bus_travel.travel_line.arrival_at %></td>
-        <td><%= passenger_trip.seat %></td>
+        <td><%= passenger_trip.seat.to_s.rjust(2, '0') %></td>
         <td><%= passenger_trip.arrival_spot %></td>
       </tr>
     <% end %>
@@ -126,7 +126,7 @@
               <td><%= passenger_trip.bus_travel.travel_line.destination %></td>
               <td class="text-center"><%= passenger_trip.bus_travel.arrival_on.strftime("%d/%m/%Y") %></td>
               <td class="text-center"><%= passenger_trip.bus_travel.travel_line.arrival_at %></td>
-              <td class="text-center"><%= passenger_trip.seat %></td>
+              <td class="text-center"><%= passenger_trip.seat.to_s.rjust(2, '0') %></td>
               <td><%= passenger_trip.arrival_spot %></td>
             </tr>
           <% end %>

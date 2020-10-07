@@ -45,7 +45,7 @@
             <% else %>
               <tr data-link="<%= passenger_path(passenger) %>">
             <% end %>
-              <td><%= passenger.full_name %></td>
+              <td><%= passenger.full_name.titleize %></td>
               <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
               <td><%= passenger.gender %></td>
               <td><%= passenger.formatted_cpf %></td>
@@ -55,8 +55,8 @@
           <% end %>
         <% else %>
           <% @passengers.each do |passenger| %>
-            <tr>
-              <td><%= passenger.full_name %></td>
+            <tr data-link="<%= passenger_path(passenger) %>">
+              <td><%= passenger.full_name.titleize %></td>
               <td><%= passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
               <td><%= passenger.gender %></td>
               <td><%= passenger.formatted_cpf %></td>
