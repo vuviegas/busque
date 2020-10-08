@@ -3,7 +3,7 @@ class Passenger < ApplicationRecord
   has_many :alerts, dependent: :destroy
   has_many :bus_travels, through: :passenger_trips
   has_one_attached :photo
-
+  before_save :unmask_cpf
   # accepts_nested_attributes_for :passenger_trips
 
   validates :full_name, :date_of_birth, :gender, :cpf, :identification_number, :identification_state, presence: true
@@ -23,5 +23,11 @@ class Passenger < ApplicationRecord
 
   def formatted_cpf
     CPF.new(cpf).formatted
+  end
+
+  private
+
+  def unmask_cpf
+    self.cpf = self.cpf.gsub('.', '').gsub('-', '')
   end
 end

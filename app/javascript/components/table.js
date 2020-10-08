@@ -20,4 +20,4 @@ const clickTableRow = () => {
   $("tr[data-link]").css('cursor', 'pointer');
 };
 
-export{ clickTableRow };
+export { clickTableRow };

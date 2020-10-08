@@ -21,12 +21,11 @@ class AlertsController < ApplicationController
 
   def cpf_check_post
     if current_user.admin? || current_user.police?
-      @passenger = Passenger.where(passenger_params)
-      if @passenger.exists?
-        passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf]).ids.first
+      passenger_id = Passenger.where(cpf: params[:alert][:passenger][:cpf].gsub('.', '').gsub('-', '')).ids.first
+      if passenger_id.present?
         redirect_to edit_passenger_path(passenger_id)
       else
-        redirect_to new_passenger_path
+        redirect_to new_passenger_path(cpf: params[:alert][:passenger][:cpf].gsub('.', '').gsub('-', ''))
       end
     else
       forbidden
