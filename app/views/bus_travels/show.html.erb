@@ -1,10 +1,10 @@
 <div class="container">
-  <h3>
+  <h4 class="titulo-page ml-3">
     <%= "#{@bus_travel.travel_line.company.company_name} - \n
      Linha #{@bus_travel.travel_line.identification_number}\n
      (#{@bus_travel.departure_on.strftime("%d/%m/%Y")})" %>
-  </h3>
-  <h5>
+  </h4>
+  <h5 class="titulo-page mt-4 ml-3">
     <%= "Origem: #{@bus_travel.travel_line.origin} (#{@bus_travel.travel_line.departure_at}) - \n" %>
     <%= "Destino: #{@bus_travel.travel_line.destination} (#{@bus_travel.travel_line.arrival_at})" %>
   </h5>
@@ -40,8 +40,8 @@
           <td><%= passenger_trip.passenger.gender %></td>
           <td><%= passenger_trip.passenger.formatted_cpf %></td>
           <td><%= passenger_trip.passenger.identification_number %></td>
-          <td><%= passenger_trip.passenger.identification_state %></td>
-          <td><%= passenger_trip.seat.to_s.rjust(2, '0') %></td>
+          <td class="text-center"><%= passenger_trip.passenger.identification_state %></td>
+          <td class="text-center"><%= passenger_trip.seat.to_s.rjust(2, '0') %></td>
           <td><%= passenger_trip.arrival_spot %></td>
           <% if current_user.admin? %>
             <td class="text-primary">
