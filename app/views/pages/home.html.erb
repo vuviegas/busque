@@ -1,9 +1,9 @@
 <div class="container">
-  <div>
-  <% if current_user.admin? || current_user.clerk? %>
-    <h4 class="titulo-page"> Lista de Viagens do dia</h4>
-  <% end %>
-    <div class="card-body">
+  <div class="mt-5">
+  <%# if current_user.admin? || current_user.clerk? %>
+    <h4 class="titulo-page" > Viagens de Hoje </h4>
+  <%# end %>
+    <div class="card-body mt-3" >
       <table style="width:100%">
         <tr class="text-primary">
           <th><i class="fas fa-bus"></i>Empresa</th>
@@ -81,7 +81,7 @@
                               data: { confirm: "Você tem certeza?" } %>
             <!-- </td> -->
       </table>
-      <div class="digg_pagination mt-3 d-flex justify-content-center  ">
+      <div class="digg_pagination mt-5 d-flex justify-content-center  ">
         <%= will_paginate @bus_travels, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
       </div>
     </div>

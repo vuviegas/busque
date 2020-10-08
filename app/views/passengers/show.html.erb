@@ -34,27 +34,35 @@
   <h4 class="mt-5 ml-1"> Alertas <%= link_to '<i class="fas fa-plus-circle btn-light"></i>'.html_safe, new_passenger_alert_path(@passenger) %></h4>
   <div class="card text-primary shadow-sm pb-3 bg-white rounded">
     <div class="card-body">
-        <% if current_user.admin? || current_user.police? %>
+      <% if current_user.admin? || current_user.police? %>
+        <% if @passenger.alerts.empty? %>
+          <div class="pt-3" style="text-align: center">
+            <th>
+              <strong><%= @passenger.full_name.split.first %></strong>
+              <strong><%= @passenger.full_name.split.last %></strong>
+              não possui alerta cadastrado
+            </th>
+          </div>
+        <% else %>
           <table>
             <tr class="text-primary">
               <th><i class="fas fa-bus"></i>Natureza</th>
               <th><i class="fas fa-road"></i>Descrição</th>
               <th><i class="fas fa-calendar-alt"></i>Status</th>
-             </tr>
+            </tr>
               <% @passenger.alerts.each do |alert| %>
                 <% if alert.level == 'red' %>
                   <tr class="table-danger">
                 <% else %>
                   <tr class="table-warning">
                 <% end %>
-                    <td><%= alert.felony %></td>
-                    <td><%= alert.description %></td>
-                    <% if alert.solved? %>
-                      <td><%= "Solucionado" %></td>
-                    <% else %>
-                      <td><%= "Não Solucionado" %></td>
-                    <% end %>
-
+                <td><%= alert.felony %></td>
+                <td><%= alert.description %></td>
+                <% if alert.solved? %>
+                  <td><%= "Solucionado" %></td>
+                <% else %>
+                  <td><%= "Não Solucionado" %></td>
+                <% end %>
                 <% if current_user == alert.user || current_user.admin? %>
                   <td class="text-primary">
                       <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
@@ -62,8 +70,8 @@
                                       method: :delete,
                                       data: { confirm: "Você tem certeza?" } %>
                 <% end %>
-              </tr>
-            <% end %>
+                </tr>
+              <% end %>
           </table>
         <% end %>
       </table>
@@ -73,12 +81,23 @@
   </div>
 -->
   </div>
-
-
+  <div class="btn-voltar mt-2">
+    <%= link_to 'Cadastrar Alerta', new_passenger_alert_path(@passenger), :class => "btn btn-primary btn-sm" %>
+    <%#= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
+  </div>
 
   <h4 class="mt-5 ml-1"> Histórico de Viagens</h4>
   <div class="card shadow-sm pb-3 bg-white rounded">
     <div class="card-body">
+      <% if @passenger.passenger_trips.empty? %>
+        <div class="pt-3" style="text-align: center">
+          <th>
+            <strong><%= @passenger.full_name.split.first %></strong>
+            <strong><%= @passenger.full_name.split.last %></strong>
+            não possui viagem cadastrada
+          </th>
+        </div>
+      <% else %>
         <table>
           <tr class="text-primary">
             <th><i class="fas fa-bus"></i>Empresa</th>
@@ -107,13 +126,17 @@
             </tr>
           <% end %>
         </table>
+      <% end %>
     </div>
   </div>
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
   </div>
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> master
 </div>
