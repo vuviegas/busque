@@ -16,9 +16,12 @@
         <%= f.input :description, label: "Descrição" %>
         <p><strong>Nível de Prioridade</strong></p>
         <%= f.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
-        <div class="text-right">
+
+        <div class="form-actions mt-2" style="display: flex; justify-content: space-between;">
+          <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
           <%= f.button :submit, value: "Salvar", :class => "btn btn-primary btn-sm" %>
         </div>
+
       <% end %>
     </div>
   </div>
