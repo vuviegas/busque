@@ -6,7 +6,11 @@
 
         <% if params[:travel_line].blank? %>
           <div class="form-inputs">
-            <%= f.input :travel_line, as: :fake_select, collection: TravelLine.all.map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha", input_html: { style: "width: 400px" } %>
+            <% if current_user.admin? %>
+              <%= f.input :travel_line, as: :fake_select, collection: TravelLine.all.map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha", input_html: { style: "width: 400px" } %>
+            <% elsif current_user.clerk? %>
+              <%= f.input :travel_line, as: :fake_select, collection: TravelLine.where('company_id IN (?)', current_user.company_ids).map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha", input_html: { style: "width: 400px" } %>
+            <% end %>
           </div>
         <% else %>
           <div>
