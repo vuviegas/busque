@@ -30,8 +30,8 @@
       </table>
     </div>
   </div>
-
-  <h4 class="mt-5 ml-1"> Alertas</h4>
+  
+  <h4 class="mt-5 ml-1"> Alertas <%= link_to '<i class="fas fa-plus-circle btn-light"></i>'.html_safe, new_passenger_alert_path(@passenger) %></h4>
   <div class="card text-primary shadow-sm pb-3 bg-white rounded">
     <div class="card-body">
         <% if current_user.admin? || current_user.police? %>
@@ -68,9 +68,10 @@
         <% end %>
       </table>
     </div>
-    <div class="btn-voltar mt-2">
-    <%= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
-    </div>
+ <!-- <div>
+    <%= link_to 'Cadastrar Alerta', new_passenger_alert_path(@passenger), :class => "btn btn-primary btn-sm" %>
+  </div>
+-->
   </div>
 
 
@@ -111,9 +112,7 @@
   <div class="btn-voltar mt-2">
     <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
   </div>
-  <div>
-    <%= link_to 'Cadastrar Alerta', new_passenger_alert_path(@passenger), :class => "btn btn-primary btn-sm" %>
-  </div>
+
 
 
 
