@@ -25,7 +25,7 @@
       <% end %>
     </tr>
     <% if current_user.police? || current_user.admin? %>
-      <% @bus_travel.passenger_trips.each do |passenger_trip| %>
+      <% @bus_travel.passenger_trips.order('seat ASC').each do |passenger_trip| %>
         <% if passenger_trip.passenger.alerts.exists? %>
           <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
             <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
