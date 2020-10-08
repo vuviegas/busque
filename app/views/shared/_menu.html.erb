@@ -84,7 +84,7 @@
     <% end %>
     <% if current_user.admin? || current_user.police? %>
           <li class="nav-item">
-            <%= link_to cpf_check_path, class: "nav-link text-dark", id: "suspeita" do %>
+            <%= link_to cpf_check_path, class: "nav-link text-dark", id: "csuspeita" do %>
               <i class="fas fa-exclamation-triangle ml-3 mr-2 text-primary fa-fw"></i>Cadastrar Suspeita
             <% end %>
           </li>
@@ -121,7 +121,7 @@
   if (typeof cempresa === "undefined"){ let cempresa = document.getElementById("cempresa"); }
   if (typeof clinha === "undefined"){ let clinha = document.getElementById("clinha"); }
   if (typeof cviagem === "undefined"){ let cviagem = document.getElementById("cviagem"); }
-  if (typeof suspeita === "undefined"){ let suspeita = document.getElementById("suspeita"); }
+  if (typeof csuspeita === "undefined"){ let csuspeita = document.getElementById("csuspeita"); }
   if (typeof alertas === "undefined"){ let alertas = document.getElementById("alertas"); }
   if (typeof diario === "undefined"){ let diario = document.getElementById("diario"); }
 
@@ -134,7 +134,7 @@
   if (window.location.pathname === "/companies/new") { cempresa.classList.toggle("bg-item-menu") }
   if (window.location.pathname === "/travel_lines/new") { clinha.classList.toggle("bg-item-menu") }
   if (window.location.pathname === "/bus_travels/new") { cviagem.classList.toggle("bg-item-menu") }
-  if (window.location.pathname === "/alerts/new") { suspeita.classList.toggle("bg-item-menu") }
+  if (window.location.pathname === "/cpf_check") { csuspeita.classList.toggle("bg-item-menu") }
   if (window.location.pathname === "/alerts") { alertas.classList.toggle("bg-item-menu") }
   if (window.location.pathname === "/#") { empresa.classList.toggle("bg-item-menu") }
 </script>
