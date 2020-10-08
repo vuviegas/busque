@@ -1,6 +1,6 @@
 <div class="container">
   <h4 class="mt-3 ml-1 mb-3 titulo-page""> Cadastrar Suspeita</h4>
-  <div class="card text-primary shadow-sm pb-3 bg-white rounded" style="width:60%">
+  <div class="card text-primary shadow-sm bg-white rounded" style="width:60%">
     <div class="card-body">
           <div>
             <%= simple_form_for (@passenger) do |f| %>
@@ -39,7 +39,9 @@
                 <%#= f.input :level, as: :radio_buttons, collection: [['yellow', 'Amarelo'] ,['red', 'Vermelho']], label_method: :second, value_method: :first, label: 'Nível de prioridade', wrapper: :vertical_collection_inline %>
               <% end %>
             </div>
-            <div class="form-actions text-right">
+
+            <div class="form-actions mt-2" style="display: flex; justify-content: space-between;">
+              <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
               <%= f.button :submit, value: "Salvar", :class => "btn btn-primary btn-sm" %>
             </div>
           <% end %>
