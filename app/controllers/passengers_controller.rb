@@ -13,20 +13,8 @@ class PassengersController < ApplicationController
     @passenger_trips = PassengerTrip.where(passenger: @passenger)
   end
 
-  def cpf_check
-    if current_user.admin? || current_user.police?
-      @alert = Alert.new
-    else
-      forbidden
-    end
-  end
-
-  def cpf_check_post
-
-  end
-
   def new
-    @passenger = Passenger.new
+    @passenger = Passenger.new(cpf: params[:cpf])
   end
 
   def create

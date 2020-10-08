@@ -1,21 +1,31 @@
 <div class="container">
-  <h3 class="titulo-page">Cadastrar Alerta</h3>
-  <%= simple_form_for [ @passenger, @alert ] do |f| %>
-    <%= f.input :felony, :collection => ["Contrabando",
-                                        "Descaminho",
-                                        "Crime Ambiental",
-                                        "Tráfico de Drogas",
-                                        "Tráfico de Armas",
-                                        "Tráfico de Pessoas",
-                                        "Outros"],
-                :input_html => {:class => 'selectpicker'},
-                :label => 'Natureza',
-                prompt: "Escolha uma opção" %>
-    <%= f.input :description, label: "Descrição" %>
-    <p><strong>Nível de Prioridade</strong></p>
-    <%= f.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
-    <div class="text-right">
-       <%= f.button :submit, value: "Salvar", :class => "btn btn-primary" %>
+  <h4 class="mt-3 ml-1"> Cadastrar Alerta</h4>
+  <div class="card text-primary shadow-sm bg-white rounded" style="width:60%">
+    <div class="card-body">
+      <%= simple_form_for [ @passenger, @alert ] do |f| %>
+        <%= f.input :felony, :collection => ["Contrabando",
+                                            "Descaminho",
+                                            "Crime Ambiental",
+                                            "Tráfico de Drogas",
+                                            "Tráfico de Armas",
+                                            "Tráfico de Pessoas",
+                                            "Outros"],
+                    :input_html => {:class => 'selectpicker'},
+                    :label => 'Natureza',
+                    prompt: "Escolha uma opção",
+                    input_html: {style: "width: 400px;"} %>
+        <%= f.label "Descrição" %><br>
+        <%= f.text_area :description, :cols => 42, :rows => 4,input_html: {style: "border-color: #333;"} %>
+<!--        <%= f.input :description, label: "Descrição" %> -->
+        <p><strong>Nível de Prioridade</strong></p>
+        <%= f.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
+
+        <div class="form-actions mt-2" style="display: flex; justify-content: space-between;">
+          <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
+          <%= f.button :submit, value: "Salvar", :class => "btn btn-primary btn-sm" %>
+        </div>
+
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

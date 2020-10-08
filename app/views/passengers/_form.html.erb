@@ -1,44 +1,50 @@
 <div class="container">
-    <h4 class="titulo-page">Cadastrar Suspeita</h4>
-    <div class="ml-2">
-        <div class="card-body">
-          <div>
-            <%= simple_form_for (@passenger) do |f| %>
-              <%= f.input :full_name, label: "Nome Completo" %>
-              <%= f.input :date_of_birth, label: "Data de Nascimento", order: [:day, :month, :year], include_blank: true, start_year: Date.today.year - 100, end_year: Date.today.year %>
-              <%= f.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
-                        label: "Gênero" %>
-              <%= f.input :cpf, label: "CPF", input_html: { class: 'cpf', value: params[:cpf] } %>
-              <%= f.input :identification_number, label: "RG" %>
-              <%=f.input :identification_state,
-                      :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
-                      label: "UF" %>
-              <%#= f.input :identification_state, label: "UF" %>
-          </div>
+  <h4 class="mt-3 ml-1 mb-3 titulo-page"> Cadastrar Suspeita</h4>
+  <div class="card text-primary shadow-sm bg-white rounded" style="width:60%">
+    <div class="card-body">
+      <%= simple_form_for (@passenger) do |f| %>
+        <%= f.input :full_name, label: "Nome Completo", input_html: {style: "width: 550px"} %>
+        <span class="d-flex flex-row align-items-center">
+          <%= f.input :date_of_birth, label: "Data de Nascimento", order: [:day, :month, :year], include_blank: true, start_year: Date.today.year - 100, end_year: Date.today.year, input_html: {style: "width: 150px" } %>
+        </span>
+        <%= f.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
+                  label: "Gênero", input_html: {style: "width: 165px"} %>
+        <%= f.input :cpf, label: "CPF", maxlength: "14", input_html: { class: 'cpf', style: "width: 250px"} %>
+        <%= f.input :identification_number, label: "RG", maxlength: "10", input_html: {style: "width: 150px"} %>
+        <%=f.input :identification_state,
+                :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
+                label: "UF", input_html: {style: "width: 75px"} %>
 
-            <div class="form-inputs">
-              <%= f.simple_fields_for :alert do |alert_form| %>
-                <%= alert_form.input :felony, :collection => ["Contrabando",
-                                                    "Descaminho",
-                                                    "Crime Ambiental",
-                                                    "Tráfico de Drogas",
-                                                    "Tráfico de Armas",
-                                                    "Tráfico de Pessoas",
-                                                    "Outros"],
-                            :input_html => {:class => 'selectpicker'},
-                            :label => 'Natureza',
-                            prompt: "Escolha uma opção" %>
-                <%= alert_form.input :description, label: "Descrição" %>
-                <p><strong>Nível de Prioridade</strong></p>
-                <%= alert_form.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
-                <%#= alert_form.collection_radio_buttons :level, [['yellow', 'Amarelo'] ,['red', 'Vermelho']], :first, :last, wrapper: :vertical_collection_inline %>
-                <%#= f.input :level, as: :radio_buttons, collection: [['yellow', 'Amarelo'] ,['red', 'Vermelho']], label_method: :second, value_method: :first, label: 'Nível de prioridade', wrapper: :vertical_collection_inline %>
-              <% end %>
-            </div>
-            <div class="form-actions text-right">
-              <%= f.button :submit, value: "Salvar", :class => "btn btn-primary btn-sm" %>
-            </div>
+        <div class="form-inputs">
+          <%= f.simple_fields_for :alert do |alert_form| %>
+            <%= alert_form.input :felony, :collection => ["Contrabando",
+                                                "Descaminho",
+                                                "Crime Ambiental",
+                                                "Tráfico de Drogas",
+                                                "Tráfico de Armas",
+                                                "Tráfico de Pessoas",
+                                                "Outros"],
+                        :input_html => {:class => 'selectpicker'},
+                        :label => 'Natureza',
+                        prompt: "Escolha uma opção",
+                        input_html: {style: "width: 400px;"} %>
+            <%= f.label "Descrição" %><br>
+            <%= alert_form.text_area :description, :cols => 42, :rows => 4,input_html: {style: "border-color: #333;"} %>
+            <p class="mt-2"><strong>Nível de Prioridade</strong></p>
+            <%= alert_form.input :level, as: :radio_buttons, collection: [['yellow', 'Médio'] ,['red', 'Alto']], label_method: :second, value_method: :first, wrapper: :horizontal_collection_inline, label: false %>
           <% end %>
         </div>
+
+        <div>
+          <%= f.input :photo, as: :file, label: false %>
+        </div>
+
+        <div class="form-actions mt-2" style="display: flex; justify-content: space-between;">
+          <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
+          <%= f.button :submit, value: "Salvar", :class => "btn btn-primary btn-sm" %>
+        </div>
+      <% end %>
     </div>
+  </div>
 </div>
+

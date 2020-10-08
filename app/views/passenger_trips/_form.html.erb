@@ -1,12 +1,12 @@
 <div class="container">
-  <h4 class="titulo-page"> Cadastrar Passageiro</h4>
-  <div class="ml-3">
+  <h4 class="mt-3 ml-1 mb-3 titulo-page"> Cadastrar Passageiro</h4>
+  <div class="card text-primary shadow-sm bg-white rounded" style="width:50%">
     <div class="card-body">
       <%= simple_form_for [@bus_travel, @passenger_trip] do |f| %>
 
         <% if params[:travel_line].blank? %>
           <div class="form-inputs">
-            <%= f.input :travel_line, as: :fake_select, collection: TravelLine.all.map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha" %>
+            <%= f.input :travel_line, as: :fake_select, collection: TravelLine.all.map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha", input_html: { style: "width: 400px" } %>
           </div>
         <% else %>
           <div>
@@ -14,10 +14,10 @@
           </div>
           <br>
           <div>
-            <%= f.input :bus_travel, collection: @bus_travels, label: "Viagem" %>
+            <%= f.input :bus_travel, collection: @bus_travels, label: "Viagem", label: "Linha", input_html: { style: "width: 500px" } %>
           </div>
           <div class="form-inputs">
-            <%= f.input :seat, label: "Poltrona" %>
+            <%= f.input :seat, label: "Poltrona", input_html: { style: "width: 70px" } %>
           </div>
           <div class="form-inputs">
           <%= f.input :arrival_spot, :collection => ["Mazagão",
@@ -32,25 +32,32 @@
                                            "Pedra Branca",
                                            "Laranjal do Jari",
                                            "Serra do Navio"].sort,
-                      :label => 'Local de Desembarque'%>
+                      :label => 'Local de Desembarque',
+                      input_html: { style: "width: 300px" } %>
           </div>
 
           <div>
             <%= f.simple_fields_for :passenger do |passenger_form| %>
               <%= passenger_form.input :full_name, label: "Nome Completo" %>
-              <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
+              <%= passenger_form.input :date_of_birth, label: "Data de Nascimento", input_html: { style: "width: 150px" } %>
               <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
-                      label: "Gênero" %>
-              <%= passenger_form.input :cpf, input_html: { maxlength: 11 }, label: "CPF" %>
-              <%= passenger_form.input :identification_number, label: "RG" %>
+                      label: "Gênero", input_html: {style: "width: 170px"} %>
+              <%= passenger_form.input :cpf, input_html: { maxlength: 11 }, label: "CPF", maxlength: "14", input_html: { style: "width: 250px" } %>
+              <%= passenger_form.input :identification_number, label: "RG", maxlength: "10", input_html: { style: "width: 150px" } %>
               <%= passenger_form.input :identification_state,
                   :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
-                  label: "UF" %>
+                  label: "UF", input_html: { style: "width: 75px" } %>
               <%#= passenger_form.input :photo, as: :file %>
 
               <%= passenger_form.input :photo_url, as: :hidden %>
 
-              <button type='button' id="upload_widget" class="cloudinary-button">Inserir Imagem</button>
+
+
+              <label class="btn-cam-claud">
+                <span style="display:none;">
+                  <button type='button' id="upload_widget" class="cloudinary-button">Inserir Imagem</button>
+                </span>
+              </label>
 
               <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
               <script type="text/javascript">
@@ -80,7 +87,7 @@
         <% end %>
 
         <div class="form-actions text-right">
-           <%= f.button :submit, value: "Enviar", :class => "btn btn-primary" %>
+           <%= f.button :submit, value: "Enviar", :class => "btn btn-primary btn-sm" %>
         </div>
       <% end %>
     </div>
