@@ -5,7 +5,7 @@
           <div>
             <%= simple_form_for @alert, url: cpf_check_path, method: :post do |f| %>
               <%= f.simple_fields_for :passenger do |passenger_form| %>
-                <%= passenger_form.input :cpf, label: "CPF" %>
+                  <%= passenger_form.input :cpf, label: "CPF", input_html: { class: "cpf" } %>
               <% end %>
               <div class="form-actions text-right">
                 <%= f.button :submit, value: "Buscar", :class => "btn btn-primary btn-sm" %>
@@ -15,3 +15,4 @@
         </div>
     </div>
 </div>
+
