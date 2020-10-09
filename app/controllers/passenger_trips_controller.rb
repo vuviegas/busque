@@ -8,7 +8,7 @@ class PassengerTripsController < ApplicationController
 
       if params[:travel_line].present?
         @travel_line = TravelLine.find(params[:travel_line])
-        @bus_travels = BusTravel.where(travel_line: @travel_line).map {|u| ["#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}", u.id]}
+        @bus_travels = BusTravel.where(travel_line: @travel_line).where('departure_on >= ?', Date.today).map {|u| ["#{u.departure_on.strftime('%d/%m/%Y')} - Linha #{u.travel_line.identification_number} - #{u.travel_line.origin} - #{u.travel_line.destination}", u.id]}
       end
     else
       forbidden

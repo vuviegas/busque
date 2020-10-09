@@ -1,53 +1,73 @@
 <div class="container">
-  <h4 class="mt-3 ml-1 mb-3 titulo-page"> Cadastrar Passageiro</h4>
-  <div class="card text-primary shadow-sm bg-white rounded" style="width:50%">
+  <h4 class="mt-3 ml-1 mb-3 titulo-page text-center"> Cadastrar Passageiro</h4>
+  <div class="card text-primary shadow-sm bg-white rounded" style="width: 35vw; margin: 0 auto">
     <div class="card-body">
       <%= simple_form_for [@bus_travel, @passenger_trip] do |f| %>
 
         <% if params[:travel_line].blank? %>
           <div class="form-inputs">
-            <%= f.input :travel_line, as: :fake_select, collection: TravelLine.all.map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha", input_html: { style: "width: 400px" } %>
+            <% if current_user.admin? %>
+              <div style="width: 100%">
+                <%= f.input :travel_line, as: :fake_select, collection: TravelLine.all.map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha" %>
+              </div>
+            <% elsif current_user.clerk? %>
+              <%= f.input :travel_line, as: :fake_select, collection: TravelLine.where('company_id IN (?)', current_user.company_ids).map {|u| ["#{u.identification_number} (#{u.origin} - #{u.destination})", u.id] }, label: "Linha" %>
+            <% end %>
           </div>
         <% else %>
           <div>
-            <%= "Linha #{@travel_line.identification_number} - Origem: #{@travel_line.origin} - Destino: #{@travel_line.destination}" %>
+            <strong><%= "Linha #{@travel_line.identification_number} - Origem: #{@travel_line.origin} - Destino: #{@travel_line.destination}" %></strong>
           </div>
           <br>
           <div>
-            <%= f.input :bus_travel, collection: @bus_travels, label: "Viagem", label: "Linha", input_html: { style: "width: 500px" } %>
+            <%= f.input :bus_travel, collection: @bus_travels, label: "Dia da Viagem", input_html: { style: "width: 100%" } %>
           </div>
-          <div class="form-inputs">
-            <%= f.input :seat, label: "Poltrona", input_html: { style: "width: 70px" } %>
+          <div class="form-inputs d-flex">
+            <div style="width: 20%">
+              <%= f.input :seat, label: "Poltrona" %>
+            </div>
+            <div class="flex-fill ml-4">
+              <%= f.input :arrival_spot, :collection => ["Mazagão",
+                                               "Maracá",
+                                               "Porto Grande",
+                                               "Ferreira Gomes",
+                                               "Tartarugalzinho",
+                                               "Amapá",
+                                               "Calçoene",
+                                               "Oiapoque",
+                                               "Cupixi",
+                                               "Pedra Branca",
+                                               "Laranjal do Jari",
+                                               "Serra do Navio"].sort,
+                          :label => 'Local de Desembarque' %>
+            </div>
           </div>
-          <div class="form-inputs">
-          <%= f.input :arrival_spot, :collection => ["Mazagão",
-                                           "Maracá",
-                                           "Macapá",
-                                           "Porto Grande",
-                                           "Ferreira Gomes",
-                                           "Tartarugalzinho",
-                                           "Amapá",
-                                           "Calçoene",
-                                           "Oiapoque",
-                                           "Cupixi",
-                                           "Pedra Branca",
-                                           "Laranjal do Jari",
-                                           "Serra do Navio"].sort,
-                      :label => 'Local de Desembarque',
-                      input_html: { style: "width: 300px" } %>
-          </div>
-
           <div>
             <%= f.simple_fields_for :passenger do |passenger_form| %>
               <%= passenger_form.input :full_name, label: "Nome Completo" %>
-              <%= passenger_form.input :date_of_birth, label: "Data de Nascimento", input_html: { style: "width: 150px" } %>
-              <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
-                      label: "Gênero", input_html: {style: "width: 170px"} %>
-              <%= passenger_form.input :cpf, input_html: { maxlength: 11 }, label: "CPF", maxlength: "14", input_html: { style: "width: 250px" } %>
-              <%= passenger_form.input :identification_number, label: "RG", maxlength: "10", input_html: { style: "width: 150px" } %>
-              <%= passenger_form.input :identification_state,
-                  :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
-                  label: "UF", input_html: { style: "width: 75px" } %>
+              <div class="d-flex">
+                <div class="mr-4" style="width: 40%">
+                  <%= passenger_form.input :date_of_birth, label: "Data de Nascimento" %>
+                </div>
+                <div class="flex-fill">
+                  <%= passenger_form.input :gender, :collection => ["Feminino", "Masculino", "Não Informado"],
+                          label: "Gênero" %>
+                </div>
+              </div>
+              <div class="d-flex">
+                <div class="mr-4 flex-fill" style="width: 40%">
+                  <%= passenger_form.input :cpf, input_html: { maxlength: 11 }, label: "CPF", maxlength: "14" %>
+                </div>
+                <div class="mr-4 flex-fill" style="width: 40%">
+                  <%= passenger_form.input :identification_number, label: "RG", maxlength: "10" %>
+                </div>
+                <div class="flex-fill">
+                  <%= passenger_form.input :identification_state,
+                      :collection => %w[AC AL AP AM BA CE ES GO MA MT MS MG PA PB PR PE PI RJ RN RS RO RR SC SP SE TO DF],
+                      label: "UF"%>
+                </div>
+              </div>
+
               <%#= passenger_form.input :photo, as: :file %>
 
               <%= passenger_form.input :photo_url, as: :hidden %>

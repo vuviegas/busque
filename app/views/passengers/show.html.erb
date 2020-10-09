@@ -1,46 +1,57 @@
 <div class="container">
   <h4 class="mt-5 ml-1"> Dados do Passageiro</h4>
-  <div class="card text-primary shadow-sm pb-3 bg-white rounded">
-    <div class="card-body">
-      <table style="width:100%">
-        <tr class="text-primary">
-          <th><i class="fas fa-camera ml-2" style="font-size: 25px;"></i></th>
-          <th><i class="fas fa-user"></i>Nome</th>
-          <th class="text-center"><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
-          <th class="text-center"><i class="fas fa-venus-mars"></i>Gênero</th>
-          <th class="text-center"><i class="fas fa-fingerprint"></i>CPF</th>
-          <th class="text-center"><i class="far fa-id-card"></i>RG</th>
-          <th class="text-center"><i class="fas fa-globe-americas"></i>Estado</th>
-        </tr>
-          <%# unless @passenger.photo.nil? %>
-          <% if @passenger.photo.attached? %>
-            <td><%= cl_image_tag @passenger.photo.key, height: 48, width: 48, crop: :fill %></td>
+
+  <div class="d-flex">
+    <div class="card text-primary shadow-sm bg-white rounded flex-fill">
+      <div class="card-body">
+        <table style="width:100%">
+          <tr class="text-primary">
+            <!-- <th><i class="fas fa-camera ml-2" style="font-size: 25px;"></i></th> -->
+            <th><i class="fas fa-user"></i>Nome</th>
+            <th class="text-center"><i class="far fa-calendar-alt"></i>Data de Nascimento</th>
+            <th class="text-center"><i class="fas fa-venus-mars"></i>Gênero</th>
+            <th class="text-center"><i class="fas fa-fingerprint"></i>CPF</th>
+            <th class="text-center"><i class="far fa-id-card"></i>RG</th>
+            <th class="text-center"><i class="fas fa-globe-americas"></i>Estado</th>
+          </tr>
+            <%# unless @passenger.photo.nil? %>
+          <tr>
+            <td><%= @passenger.full_name.titleize %></td>
+            <td class="text-center"><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
+            <td class="text-center"><%= @passenger.gender %></td>
+            <td class="text-center"><%= @passenger.formatted_cpf %></td>
+            <td class="text-center"><%= @passenger.identification_number %></td>
+            <td class="text-center"><%= @passenger.identification_state %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card text-primary shadow-sm bg-white rounded" style="width: 7vw; margin-left: 20px">
+      <div class="card-body passenger-img">
+        <% if @passenger.photo.attached? %>
+          <%= cl_image_tag @passenger.photo.key %>
+        <% else %>
+          <% if @passenger.gender == "Feminino" %>
+            <%= image_tag "https://cdn3.vectorstock.com/i/thumb-large/74/62/person-gray-photo-placeholder-woman-vector-23237462.jpg" %>
           <% else %>
-            <td><%= image_tag "https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236_960_720.png", height: 48, width: 48, crop: :fill %></td>
+            <%= image_tag "https://coenterprises.com.au/wp-content/uploads/2018/02/male-placeholder-image.jpeg" %>
           <% end %>
-
-
-          <td><%= @passenger.full_name.titleize %></td>
-          <td class="text-center"><%= @passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
-          <td class="text-center"><%= @passenger.gender %></td>
-          <td class="text-center"><%= @passenger.formatted_cpf %></td>
-          <td class="text-center"><%= @passenger.identification_number %></td>
-          <td class="text-center"><%= @passenger.identification_state %></td>
-        </tr>
-      </table>
+        <% end %>
+      </div>
     </div>
   </div>
-  
-  <h4 class="mt-5 ml-1"> Alertas <%= link_to '<i class="fas fa-plus-circle btn-light"></i>'.html_safe, new_passenger_alert_path(@passenger) %></h4>
-  <div class="card text-primary shadow-sm pb-3 bg-white rounded">
+
+  <% if current_user.admin? || current_user.police? %>
+    <h4 class="mt-5 ml-1"> Alertas <%= link_to '<i class="fas fa-plus-circle btn-light"></i>'.html_safe, new_passenger_alert_path(@passenger) %></h4>
+    <div class="card text-primary shadow-sm pb-3 bg-white rounded">
     <div class="card-body">
-      <% if current_user.admin? || current_user.police? %>
         <% if @passenger.alerts.empty? %>
           <div class="pt-3" style="text-align: center">
             <th>
               <strong><%= @passenger.full_name.split.first %></strong>
               <strong><%= @passenger.full_name.split.last %></strong>
-              não possui alerta cadastrado
+              não possui alerta cadastrado.
             </th>
           </div>
         <% else %>
@@ -64,7 +75,7 @@
                   <td><%= "Não Solucionado" %></td>
                 <% end %>
                 <% if current_user == alert.user || current_user.admin? %>
-                  <td class="text-primary">
+                    <td class="text-primary" style="background-color: white; border-bottom: white; text-align: center">
                       <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                                       alert_path(alert),
                                       method: :delete,
@@ -74,9 +85,9 @@
               <% end %>
           </table>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <!--  <div class="btn-voltar mt-2">
         <%= link_to 'Cadastrar Alerta', new_passenger_alert_path(@passenger), :class => "btn btn-primary btn-sm" %>
         <%#= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
@@ -91,7 +102,7 @@
           <th>
             <strong><%= @passenger.full_name.split.first %></strong>
             <strong><%= @passenger.full_name.split.last %></strong>
-            não possui viagem cadastrada
+            não possui viagem cadastrada.
           </th>
         </div>
       <% else %>
