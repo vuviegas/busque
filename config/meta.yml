@@ -1,4 +1,4 @@
 meta_product_name: "Busque"
 meta_title: "Busque - Sistema de Cadastro de Passageiros"
 meta_description: "Sistema usado pela Polícia Rodoviária Federal para melhoria do sistema de abordagem de coletivos"
-meta_image: "og_image_busque.png" # should exist in `app/assets/images/`
+meta_image: "og_image_busque.jpg" # should exist in `app/assets/images/`
