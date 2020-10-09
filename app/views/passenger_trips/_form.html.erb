@@ -22,7 +22,6 @@
           <div>
             <%= f.input :bus_travel, collection: @bus_travels, label: "Dia da Viagem", input_html: { style: "width: 100%" } %>
           </div>
-
           <div class="form-inputs d-flex">
             <div style="width: 20%">
               <%= f.input :seat, label: "Poltrona" %>
@@ -43,7 +42,6 @@
                           :label => 'Local de Desembarque' %>
             </div>
           </div>
-
           <div>
             <%= f.simple_fields_for :passenger do |passenger_form| %>
               <%= passenger_form.input :full_name, label: "Nome Completo" %>
