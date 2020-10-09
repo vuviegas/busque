@@ -42,10 +42,10 @@
     </div>
   </div>
 
-  <h4 class="mt-5 ml-1"> Alertas <%= link_to '<i class="fas fa-plus-circle btn-light"></i>'.html_safe, new_passenger_alert_path(@passenger) %></h4>
-  <div class="card text-primary shadow-sm pb-3 bg-white rounded">
+  <% if current_user.admin? || current_user.police? %>
+    <h4 class="mt-5 ml-1"> Alertas <%= link_to '<i class="fas fa-plus-circle btn-light"></i>'.html_safe, new_passenger_alert_path(@passenger) %></h4>
+    <div class="card text-primary shadow-sm pb-3 bg-white rounded">
     <div class="card-body">
-      <% if current_user.admin? || current_user.police? %>
         <% if @passenger.alerts.empty? %>
           <div class="pt-3" style="text-align: center">
             <th>
@@ -75,7 +75,7 @@
                   <td><%= "Não Solucionado" %></td>
                 <% end %>
                 <% if current_user == alert.user || current_user.admin? %>
-                    <td class="text-primary">
+                    <td class="text-primary" style="background-color: white; border-bottom: white; text-align: center">
                       <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
                                       alert_path(alert),
                                       method: :delete,
@@ -85,9 +85,9 @@
               <% end %>
           </table>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <!--  <div class="btn-voltar mt-2">
         <%= link_to 'Cadastrar Alerta', new_passenger_alert_path(@passenger), :class => "btn btn-primary btn-sm" %>
         <%#= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
