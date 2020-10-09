@@ -19,6 +19,8 @@ class BusTravelsController < ApplicationController
 
   def show
     @bus_travel = BusTravel.find(params[:id])
+    @passenger_trips = @bus_travel.passenger_trips.order('seat ASC').paginate(
+        :page => params[:page], :per_page => 10)
   end
 
   def new

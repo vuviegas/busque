@@ -25,7 +25,7 @@
       <% end %>
     </tr>
     <% if current_user.police? || current_user.admin? %>
-      <% @bus_travel.passenger_trips.order('seat ASC').each do |passenger_trip| %>
+      <% @passenger_trips.each do |passenger_trip| %>
         <% if passenger_trip.passenger.alerts.exists? %>
           <% if passenger_trip.passenger.alerts.where(level: 'red').count > 0 %>
             <tr class="table-danger" data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
@@ -53,7 +53,7 @@
           </tr>
       <% end %>
     <% else %>
-      <% @bus_travel.passenger_trips.order('seat ASC').each do |passenger_trip| %>
+      <% @passenger_trips.each do |passenger_trip| %>
         <tr data-link="<%= passenger_path(passenger_trip.passenger_id) %>">
           <td><%= passenger_trip.passenger.full_name.titleize %></td>
           <td><%= passenger_trip.passenger.date_of_birth.strftime("%d/%m/%Y") %></td>
@@ -72,10 +72,15 @@
         <% end %>
     <% end %>
   </table>
-  <div class="btn-voltar mt-2 mr-4">
-    <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
+  <div class="digg_pagination mt-5 d-flex justify-content-center  ">
+    <%= will_paginate @passenger_trips, :container => false, previous_label: "Anterior", next_label: "Próximo" %>
   </div>
-  <div class="text-center">
-    <button class="btn btn-primary btn-sm no-print" id="printPageButton" onClick="window.print();">Imprimir</button>
+  <div class="d-flex  justify-content-between">
+    <div class="btn-voltar mr-3">
+      <%= link_to 'Voltar', 'javascript:history.go(-1);', :class => "btn btn-primary btn-sm" %>
+    </div>
+    <div>
+      <button class="btn btn-primary btn-sm no-print" id="printPageButton" onClick="window.print();">Imprimir</button>
+    </div>
   </div>
 </div>

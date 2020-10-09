@@ -34,11 +34,11 @@ class PassengerTripsController < ApplicationController
         else
           @new_passenger = Passenger.new(passenger_params)
 
-          require 'open-uri'
-
-          file = URI.open(photo_url)
-          @new_passenger.photo.attach(io: file, filename: 'profile_photo.jpg')
-
+          unless photo_url.blank?
+            require 'open-uri'
+            file = URI.open(photo_url)
+            @new_passenger.photo.attach(io: file, filename: 'profile_photo.jpg')
+          end
           if @new_passenger.save
             @passenger_trip = PassengerTrip.new(passenger_trip_params)
             @passenger_trip.passenger = @new_passenger
