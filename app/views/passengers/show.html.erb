@@ -30,7 +30,15 @@
     <div class="card text-primary shadow-sm bg-white rounded" style="width: 7vw; margin-left: 20px">
       <div class="card-body passenger-img">
         <% if @passenger.photo.attached? %>
-          <%= cl_image_tag @passenger.photo.key %>
+          <%= cl_image_tag @passenger.photo.key, data: { target: "#ModalCenter", toggle: "modal"} %>
+          <!-- Modal -->
+          <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content card-body">
+                  <%= cl_image_tag @passenger.photo.key %>
+              </div>
+            </div>
+          </div>
         <% else %>
           <% if @passenger.gender == "Feminino" %>
             <%= image_tag "https://cdn3.vectorstock.com/i/thumb-large/74/62/person-gray-photo-placeholder-woman-vector-23237462.jpg" %>
@@ -88,11 +96,6 @@
       </div>
     </div>
   <% end %>
-<!--  <div class="btn-voltar mt-2">
-        <%= link_to 'Cadastrar Alerta', new_passenger_alert_path(@passenger), :class => "btn btn-primary btn-sm" %>
-        <%#= link_to 'Criar Alerta', edit_passenger_path(@passenger), :class => "btn btn-primary btn-sm" %>
-      </div>
-  -->
 
   <h4 class="mt-5 ml-1"> Histórico de Viagens</h4>
   <div class="card shadow-sm pb-3 bg-white rounded">
