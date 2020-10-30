@@ -21,7 +21,14 @@ class BusTravelsController < ApplicationController
     @bus_travel = BusTravel.find(params[:id])
     @passenger_trips = @bus_travel.passenger_trips.order('seat ASC').paginate(
         :page => params[:page], :per_page => 10)
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name"   # Excluding ".pdf" extension.
+      end
+    end
   end
+
 
   def new
     if current_user.admin?
