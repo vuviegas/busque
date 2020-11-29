@@ -32,7 +32,9 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <div class="page-content p-5" id="content">
+    <% if user_signed_in? %>
+      <div class="page-content p-5" id="content">
+    <% end %>
     <%= render 'shared/menu' %>
     <%= yield %>
     </div>

@@ -1,1 +1,26 @@
 // Specific CSS for your home-page
+.home-busque {
+  display: flex;
+  justify-content: space-between;
+  margin: 100px 13%;
+} h1 {
+  margin-top: 15px;
+}
+
+.home-logo {
+  text-align: left;
+  margin-right: 150px;
+  display: flex;
+} h1 {
+  font-family: "Helvetica";
+  margin: 0 30px;
+}
+
+.form-home {
+  width: 45%;
+  height: 350px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: white;
+  border-radius: 3px;
+}

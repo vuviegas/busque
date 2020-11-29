@@ -1,4 +1,35 @@
-<br><br><br>
+<div class="home-busque">
+  <div class="home-logo">
+    <img src="https://sicop.prf.gov.br/sicop/PRF-brasao.png" width="80" height="94">
+    <h1>Sistema de Controle<br>de Passageiros</h1>
+  </div>
+  <div class="form-home">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" },
+                    placeholder: "Digite seu e-mail",
+                    label: "E-mail" %>
+        <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" },
+                    placeholder: "Digite sua senha",
+                    label: "Senha" %>
+        <%= f.input :remember_me, label: "Lembrar", as: :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="log-btn text-center">
+        <%= f.button :submit, "Entrar", class: "btn btn-primary" %>
+        <p><%= render "devise/shared/links" %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!-- <br><br><br>
 <div class="login-page mt-5">
 	<div class="container">
 		<div class="row">
@@ -35,7 +66,7 @@
                     <p><%= render "devise/shared/links" %></p>
                   </div>
                 <% end %>
-                  
+
 								</div>
 								</div>
 							</div>
@@ -45,4 +76,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
