@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+  <% if current_user.clerk? %>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
     <%= link_to root_path, class: "" do %>
       <%= image_tag "https://i.ibb.co/pnDZ9sr/Logo-BUSque.png", class: "ml-1", alt: "Busque", width: 130 %>
       <% end %>
@@ -14,23 +15,69 @@
         <li class=""><a href="#" style="color: #C4C4C4" class="mr-3">Acesso à Informação</a> &nbsp;&nbsp;</li>
         <li class=""><a href="#" style="color: #C4C4C4" class="mr-3">Legislação</a> &nbsp;&nbsp;</li>
         <li class=""><a href="#" style="color: #C4C4C4" class="">Acessibilidade</a></li>
-<!--        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/Maykhodr", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <% if current_user.admin? %>
-              <%= link_to "Criar usuário", new_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Empresas", companies_path, class: "dropdown-item" %>
-              <%= link_to "Criar empresa", new_company_path, class: "dropdown-item" %>
-              <%= link_to "Criar passageiro", new_passenger_trip_path, class: "dropdown-item" %>
-              <%#= link_to "Criar linha", new_company_travel_line_path, class: "dropdown-item" %>
-              <%#= link_to "Viagens", company_travel_line_bus_travels_path(@travel_line), class: "dropdown-item" %>
-            <% end %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
--->
       </ul>
     </div>
   </div>
-  <br><br>
-<% end %>
+  <br>
+  <% else %>
+    <div>
+      <div class="navbar navbar-expand-sm navbar-lewagon navbar-prf fixed-top">
+        <div class="prf-id">
+          <a class="prf-logo" href="#">
+            <img src="https://sicop.prf.gov.br/sicop/prf.png" alt="PRF">
+          </a>
+          <a class="prf-busque" href="#">BUSQUE</a>
+        </div>
+        <div class="dropdown show d-flex">
+          <a class="btn-drop-sys dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+            Sistemas
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://sicop.prf.gov.br/sicop/login#/"><i class="far fa-square"></i>SICOP</a>
+            <a class="dropdown-item" href="http://www170.prf.gov.br/alertacentral/"><i class="far fa-square"></i>Alerta Brasil 2</a>
+            <a class="dropdown-item" href="https://novobat.prf.gov.br/novobat/login"><i class="far fa-square"></i>BAT</a>
+            <a class="dropdown-item" href="https://bop.prf.gov.br/bop/login.xhtml"><i class="far fa-square"></i>BOP</a>
+            <a class="dropdown-item" href="https://pdi.prf.gov.br/pdi/login"><i class="far fa-square"></i>PDI</a>
+            <a class="dropdown-item" href="https://sei.prf.gov.br/"><i class="far fa-square"></i>SEI</a>
+          </div>
+          <div class="dropdown show">
+            <a class="btn-drop-sys dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+            <%= current_user.name %>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#"><i class="fas fa-id-badge"></i>Perfil</a>
+            <a class="dropdown-item" rel="nofollow" data-method="delete" href="/users/sign_out"><i class="fas fa-sign-out-alt"></i>Sair</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<%else%>
+  <div>
+    <div class="navbar navbar-expand-sm navbar-lewagon navbar-prf fixed-top">
+      <div class="prf-id">
+        <a class="prf-logo" href="#">
+          <img src="https://sicop.prf.gov.br/sicop/prf.png" alt="PRF">
+        </a>
+        <a class="prf-busque" href="#">BUSQUE</a>
+      </div>
+      <div class="dropdown show">
+        <a class="btn-drop-sys dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+          Sistemas
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="https://sicop.prf.gov.br/sicop/login#/"><i class="far fa-square"></i>SICOP</a>
+          <a class="dropdown-item" href="http://www170.prf.gov.br/alertacentral/"><i class="far fa-square"></i>Alerta Brasil 2</a>
+          <a class="dropdown-item" href="https://novobat.prf.gov.br/novobat/login"><i class="far fa-square"></i>BAT</a>
+          <a class="dropdown-item" href="https://bop.prf.gov.br/bop/login.xhtml"><i class="far fa-square"></i>BOP</a>
+          <a class="dropdown-item" href="https://pdi.prf.gov.br/pdi/login"><i class="far fa-square"></i>PDI</a>
+          <a class="dropdown-item" href="https://sei.prf.gov.br/"><i class="far fa-square"></i>SEI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>

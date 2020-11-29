@@ -11,3 +11,36 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-prf {
+  background-color: #150958;
+  height: 55px;
+  box-shadow: 0 3px 7px 3px rgba(0, 0, 0, 0.1);
+}
+
+.prf-id a {
+  vertical-align: middle;
+}
+
+.prf-id .prf-logo img {
+  height: 2rem;
+}
+
+.navbar-prf a {
+  margin-left: 35px;
+}
+
+.navbar-prf .prf-busque {
+  color: white;
+  margin-left: 60px;
+  font-size: 2rem;
+  font-family: 'Helvetica';
+}
+
+.navbar-prf a:hover {
+  text-decoration: none;
+}
+
+.navbar-prf .dropdown-item {
+  margin: 0;
+}
