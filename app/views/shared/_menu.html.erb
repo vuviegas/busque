@@ -1,20 +1,25 @@
 <% if user_signed_in? %>
     <!-- Toggle button -->
-<button id="sidebarCollapse" type="button" class="btn shadow-sm toggle"><i class="fas fa-caret-left"></i></button>
+<button id="sidebarCollapse" type="button" class="btn shadow-sm toggle mt-4"><i class="fas fa-caret-left"></i></button>
 
 <!-- Vertical navbar -->
 <div class="vertical-nav bg-white" id="sidebar">
   <div class="py-4 px-3 mb-4 bg-light">
     <div class="media d-flex align-items-center ml-3">
-    <% if current_user.admin? %>
-      <img src="https://i.ibb.co/1GtNncH/admin.jpg" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-    <% end %>
-    <% if current_user.police? %>
-      <img src="https://i.ibb.co/GFVR2PR/police.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-    <% end %>
-    <% if current_user.clerk? %>
-      <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia-exp1.licdn.com%2Fdms%2Fimage%2FC4D03AQGvSyztOL1CPg%2Fprofile-displayphoto-shrink_200_200%2F0%3Fe%3D1602115200%26v%3Dbeta%26t%3D6kNzCBDAE0dtDZmkPfq72aDo019WO_Ls6GgvnLsCC2s" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-    <% end %>
+      <% if current_user.clerk? %>
+        <img src="https://i.ibb.co/1GtNncH/admin.jpg" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+      <% else %>
+        <img src="https://sicop.prf.gov.br/sicop/PRF-brasao.png" alt="PRF" width="45" class="mr-3">
+      <% end %>
+    <%# if current_user.admin? %>
+      <!-- <img src="https://i.ibb.co/1GtNncH/admin.jpg" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm"> -->
+    <%# end %>
+    <%# if current_user.police? %>
+      <!-- <img src="https://i.ibb.co/GFVR2PR/police.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm"> -->
+    <%# end %>
+    <%# if current_user.clerk? %>
+      <!-- <img src="https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia-exp1.licdn.com%2Fdms%2Fimage%2FC4D03AQGvSyztOL1CPg%2Fprofile-displayphoto-shrink_200_200%2F0%3Fe%3D1602115200%26v%3Dbeta%26t%3D6kNzCBDAE0dtDZmkPfq72aDo019WO_Ls6GgvnLsCC2s" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm"> -->
+    <%# end %>
       <div class="media-body">
         <p class="m-0"><%= current_user.name %></p>
         <% if current_user.role == 'police' %>
